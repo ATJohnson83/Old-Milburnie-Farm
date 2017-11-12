@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Mgmt-View-Orders</title>
+	<title>Customer-My Orders</title>
 	<meta charset="utf-8">
 	<script
   src="https://code.jquery.com/jquery-3.2.1.js"
@@ -22,6 +22,9 @@
   		vertical-align: top;
 			text-align: center;
 		}
+		.curusr{
+    color: blue;
+  	}
 	</style>
 
 </head>
@@ -30,63 +33,54 @@
 		<h1>Old Milburnie Farm</h1>
 		<ul class="nav nav-tabs">
 		  <li><a href="#">Main Menu</a></li>
-		  <li><a href="#">Users</a></li>
-		  <li><a href="#">Tasks</a></li>
-		  <li><a href="#">Sales Inventory</a></li>
-		  <li><a href="#">Orders</a></li>
-		  <li><a href="#">Employee Time</a></li>
-		  <li><a href="#">Harvests</a></li>
+		  <li><a href="#">Create Order</a></li>
 		  <li><a href="#">Log Out</a></li>
 		</ul>
 	</div>
 
 <div class="container">
-	<div class="panel panel-default">
-		
+	<div class="row">
+    <div class="col-lg-12">
+      <h3><span class="curusr">Customer Name</span></h3>
+    </div>
+  </div>
+	<div class="panel panel-default">		
 		<div class="panel-heading text-center">
-			<h2>View Orders</h2>
+			<h2>Orders</h2>
 		</div>
-
 			<div class="panel-body">
 				<div class="form-group">
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="mgmtords-container">
-								<h3>Order Info</h3>
-								<hr>
-							<div class="row">
-								<div class="col-lg-6">
-									<h4>Customer: <span></span></h4>
-								</div>
-								<div class="col-lg-6">
-									<h4>Order #: <span></span></h4>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-6">
-									<h4>Open Date: <span></span></h4>
-								</div>
-								<div class="col-lg-6">
-									<h4>Close Date: <span></span></h4>
-								</div>
-							</div>
-							<hr>
-								<h3>Order Details</h3>
+								<h3>Active Orders</h3>
 								<table class="table table-striped">
 									<thead>
-										<th>Item #</th>
-										<th>Name</th>
-										<th>Type</th>
-										<th>Quantity</th>
-										<th>Unit</th>
-										<th>Price</th>
-										<th>Item Amount</th>
+										<th>Order #</th>
+										<th>Open Date</th>
+										<th>Close Date</th>
+										<th>View</th>
 									</thead>
 									<tbody id="mgmtactords"></tbody>
 								</table>
 
+								<hr>
 								
-
+								<div class="row">
+									<div class="col-lg-4">
+										<h3>DeActive Orders</h3>
+									</div>
+								</div>
+								<table class="table table-striped">
+									<thead>
+										<th>Order #</th>
+										<th>Open Date</th>
+										<th>Close Date</th>
+										<th>View</th>
+									</thead>
+									<tbody id="mgmtdeactords"> </tbody>
+								</table>
+							
 							</div>
 						</div>
 					</div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Mgmt-View-Orders</title>
+	<title>Customer-Confirm-Order</title>
 	<meta charset="utf-8">
 	<script
   src="https://code.jquery.com/jquery-3.2.1.js"
@@ -22,6 +22,11 @@
   		vertical-align: top;
 			text-align: center;
 		}
+		
+		#odrttl{
+			float: right;
+			margin-right: 200px;
+		}
 	</style>
 
 </head>
@@ -30,12 +35,7 @@
 		<h1>Old Milburnie Farm</h1>
 		<ul class="nav nav-tabs">
 		  <li><a href="#">Main Menu</a></li>
-		  <li><a href="#">Users</a></li>
-		  <li><a href="#">Tasks</a></li>
-		  <li><a href="#">Sales Inventory</a></li>
-		  <li><a href="#">Orders</a></li>
-		  <li><a href="#">Employee Time</a></li>
-		  <li><a href="#">Harvests</a></li>
+		  <li><a href="#">My Orders</a></li>
 		  <li><a href="#">Log Out</a></li>
 		</ul>
 	</div>
@@ -44,7 +44,7 @@
 	<div class="panel panel-default">
 		
 		<div class="panel-heading text-center">
-			<h2>View Orders</h2>
+			<h2>Confirm Your Order</h2>
 		</div>
 
 			<div class="panel-body">
@@ -84,8 +84,15 @@
 									</thead>
 									<tbody id="mgmtactords"></tbody>
 								</table>
-
 								
+								<div id="odrttl">
+									<h4>Total: $<span></span></h4>
+								</div>
+								
+								<div class="text-center">
+									<button class="btn btn-primary">Place Order</button>
+								</div>
+
 
 							</div>
 						</div>
