@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Mgmt-Users</title>
+	<title>Mgmt-Sales Inventory</title>
 	<meta charset="utf-8">
 	<script
   src="https://code.jquery.com/jquery-3.2.1.js"
@@ -30,8 +30,8 @@
 		<h1>Old Milburnie Farm</h1>
 		<ul class="nav nav-tabs">
 		  <li><a href="#">Main Menu</a></li>
+		  <li><a href="#">Users</a></li>
 		  <li><a href="#">Tasks</a></li>
-		  <li><a href="#">Sales Inventory</a></li>
 		  <li><a href="#">Orders</a></li>
 		  <li><a href="#">Employee Time</a></li>
 		  <li><a href="#">Harvests</a></li>
@@ -43,56 +43,66 @@
 	<div class="panel panel-default">
 		
 		<div class="panel-heading text-center">
-			<h2>Users</h2>
+			<h2>Sales Inventory</h2>
 		</div>
 
 			<div class="panel-body">
 				<div class="form-group">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
-							<div class="user-container">
+						<div class="col-lg-12">
+							<div class="slsinv-container">
 								
-								<h3>Add User</h3>
-								<form id='adduser'>
+								<h3>Add Item</h3>
+								<form id='addslsinv'>
 									<label>Name</label>
-									<input placeholder="Enter a User" id="user-name" type="text" />
+									<input placeholder="Name" id="slsinv-name" type="text" />
 									<label>Type</label>
 									<select>
 										<option></option>
-										<option>Management</option>
-										<option>Employee</option>
-										<option>Customer</option>
+										<option>Meat</option>
+										<option>Root Veg</option>
+										<option>Lettuce</option>
 									</select>
-									<label>Password</label>
-									<input placeholder="Enter Users Password" id="user-password"/>
+									<label>Quantity</label>
+									<input placeholder="Quantity" id="slsinv-qnty"/>
+									<label>Units</label>
+									<select>
+										<option></option>
+										<option>Pounds</option>
+									</select>
+									<label>Price $</label>
+									<input placeholder="Price" id="slsinv-price"/>
 									<button type="submit" class="btn btn-primary glyphicon glyphicon-plus"></button>
 								</form>
 								
 								<hr>
 
-								<h3>Active Users</h3>
+								<h3>Active Sales Inventory</h3>
 								<table class="table table-striped">
 									<thead>
 										<th>Name</th>
 										<th>Type</th>
-										<th>Password</th>
-										<th>Deactivate</th>
+										<th>Quantity</th>
+										<th>Units</th>
+										<th>DeActivate</th>
 									</thead>
-									<tbody id="actusrtb"></tbody>
+									<tbody id="actslsinvtb"></tbody>
 								</table>
 
 								<hr>
 								
 								<div class="row">
 									<div class="col-lg-4">
-										<h3>Deactive Users</h3>
+										<h3>DeActive Sales Inventory</h3>
 									</div>
 								</div>
 								<table class="table table-striped">
 									<thead>
 										<th>Name</th>
 										<th>Type</th>
-										<th>Activate</th>
+										<th>Quantity</th>
+										<th>Units</th>
+										<th>DeActivate</th>
 										<th>Delete</th>
 									</thead>
 									<tbody id="deactusrtb"> </tbody>
