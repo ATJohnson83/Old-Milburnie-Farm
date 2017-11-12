@@ -17,5 +17,5 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: "Personal"
     }
   });
-  return Post;
+  return Task;
 };
