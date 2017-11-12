@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     Active: {
       type: DataTypes.BOOLEAN,
-      defaultValue: True
+      defaultValue: 1
     }
   });
   return Users;
