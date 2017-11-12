@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Mgmt-Users</title>
+	<title>Mgmt-Orders</title>
 	<meta charset="utf-8">
 	<script
   src="https://code.jquery.com/jquery-3.2.1.js"
@@ -30,9 +30,9 @@
 		<h1>Old Milburnie Farm</h1>
 		<ul class="nav nav-tabs">
 		  <li><a href="#">Main Menu</a></li>
+		  <li><a href="#">Users</a></li>
 		  <li><a href="#">Tasks</a></li>
 		  <li><a href="#">Sales Inventory</a></li>
-		  <li><a href="#">Orders</a></li>
 		  <li><a href="#">Employee Time</a></li>
 		  <li><a href="#">Harvests</a></li>
 		  <li><a href="#">Log Out</a></li>
@@ -43,59 +43,45 @@
 	<div class="panel panel-default">
 		
 		<div class="panel-heading text-center">
-			<h2>Users</h2>
+			<h2>Orders</h2>
 		</div>
 
 			<div class="panel-body">
 				<div class="form-group">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
-							<div class="user-container">
-								
-								<h3>Add User</h3>
-								<form id='adduser'>
-									<label>Name</label>
-									<input placeholder="Enter a User" id="user-name" type="text" />
-									<label>Type</label>
-									<select>
-										<option></option>
-										<option>Management</option>
-										<option>Employee</option>
-										<option>Customer</option>
-									</select>
-									<label>Password</label>
-									<input placeholder="Enter Users Password" id="user-password"/>
-									<button type="submit" class="btn btn-primary glyphicon glyphicon-plus"></button>
-								</form>
-								
-								<hr>
-
-								<h3>Active Users</h3>
+						<div class="col-lg-12">
+							<div class="mgmtords-container">
+								<h3>Active Orders</h3>
 								<table class="table table-striped">
 									<thead>
-										<th>Name</th>
-										<th>Type</th>
-										<th>Password</th>
-										<th>Deactivate</th>
+										<th>Order #</th>
+										<th>From</th>
+										<th>Open Date</th>
+										<th>Close Date</th>
+										<th>View</th>
+										<th>DeActivate</th>
 									</thead>
-									<tbody id="actusrtb"></tbody>
+									<tbody id="mgmtactords"></tbody>
 								</table>
 
 								<hr>
 								
 								<div class="row">
 									<div class="col-lg-4">
-										<h3>Deactive Users</h3>
+										<h3>DeActive Orders</h3>
 									</div>
 								</div>
 								<table class="table table-striped">
 									<thead>
-										<th>Name</th>
-										<th>Type</th>
+										<th>Order #</th>
+										<th>From</th>
+										<th>Open Date</th>
+										<th>Close Date</th>
+										<th>View</th>
 										<th>Activate</th>
 										<th>Delete</th>
 									</thead>
-									<tbody id="deactusrtb"> </tbody>
+									<tbody id="mgmtdeactords"> </tbody>
 								</table>
 							
 							</div>
