@@ -1,5 +1,5 @@
-DROP DATABASE IF EXISTS oldmilburnie;
-CREATE database oldmilburnie;
+DROP DATABASE IF EXISTS oldmillburnie;
+CREATE database oldmillburnie;
 
 -- USE oldbmillburne;
 
