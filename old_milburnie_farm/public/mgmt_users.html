@@ -49,23 +49,25 @@
 			<div class="panel-body">
 				<div class="form-group">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
+						<div class="col-md-10 col-md-offset-1">
 							<div class="user-container">
 								
 								<h3>Add User</h3>
-								<form id='adduser'>
+								<form id='adduserform'>
 									<label>Name</label>
 									<input placeholder="Enter a User" id="user-name" type="text" />
 									<label>Type</label>
-									<select>
+									<select id="user-type">
 										<option></option>
 										<option>Management</option>
 										<option>Employee</option>
 										<option>Customer</option>
 									</select>
+									<label>Username</label>
+									<input placeholder="Enter User Name" id="user-username"/>
 									<label>Password</label>
-									<input placeholder="Enter Users Password" id="user-password"/>
-									<button type="submit" class="btn btn-primary glyphicon glyphicon-plus"></button>
+									<input placeholder="Enter Password" id="user-password"/>
+									<button id="adduser" type="submit" class="btn btn-primary glyphicon glyphicon-plus"></button>
 								</form>
 								
 								<hr>
@@ -106,5 +108,23 @@
 		
 	</div>
 </div>
+<script type="text/javascript">
+	
+	var userName = $('#user-name');
+	var userType = $('#user-type');
+	var userUname = $('#user-username');
+	var userPass = $('#user-password');
+	
+	$("#adduser").click(function(){
+		var newUser = {
+			name: userName.val().trim(),
+			type: userType.val().trim(),
+			username: userUname.val().trim(),
+			password: userPass.val().trim()
+		}
+		alert(JSON.stringify(newUser));
+	});
+
+</script>
 </body>
 </html>
