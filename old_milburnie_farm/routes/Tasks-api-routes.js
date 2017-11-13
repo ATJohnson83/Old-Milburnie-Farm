@@ -11,30 +11,17 @@ var db = require("../models");
 // Routes
 // =============================================================
 module.exports = function(app) {
-  // GET route for getting all of the posts
+  // GET route for getting all of the tasks
   app.get("/api/tasks/", function(req, res) {
     db.Post.findAll({}).then(function(dbPost) {
       res.json(dbPost);
     });
   });
 
-  // Get route for returning posts of a specific category
-  app.get("/api/posts/category/:category", function(req, res) {
+  // Get route for returning tasks of a specific category by id
+  app.get("/api/tasks/:id", function(req, res) {
     db.Post
       .findAll({
-        where: {
-          category: req.params.category
-        }
-      })
-      .then(function(dbPost) {
-        res.json(dbPost);
-      });
-  });
-
-  // Get rotue for retrieving a single post
-  app.get("/api/posts/:id", function(req, res) {
-    db.Post
-      .findOne({
         where: {
           id: req.params.id
         }
@@ -44,8 +31,21 @@ module.exports = function(app) {
       });
   });
 
+  // Get rotue for retrieving a single Task
+  app.get("/api/tasks/:id", function(req, res) {
+    db.Task
+      .findOne({
+        where: {
+          id: req.params.id
+        }
+      })
+      .then(function(dbTask) {
+        res.json(dbTask);
+      });
+  });
+
   // POST route for saving a new post
-  app.post("/api/posts", function(req, res) {
+  app.post("/api/tasks", function(req, res) {
     console.log(req.body);
     db.Post
       .create({
@@ -58,8 +58,8 @@ module.exports = function(app) {
       });
   });
 
-  // DELETE route for deleting posts
-  app.delete("/api/posts/:id", function(req, res) {
+  // DELETE route for deleting tasks
+  app.delete("/api/tasks/:id", function(req, res) {
     db.Post
       .destroy({
         where: {
@@ -71,8 +71,8 @@ module.exports = function(app) {
       });
   });
 
-  // PUT route for updating posts
-  app.put("/api/posts", function(req, res) {
+  // PUT route for updating tasks
+  app.put("/api/tasks", function(req, res) {
     db.Post
       .update(req.body, {
         where: {
