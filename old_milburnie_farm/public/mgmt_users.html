@@ -121,7 +121,10 @@ $(document).ready(function() {
 	var deactiveUserList = $('#deactusrtb');
 	
 	$("#adduser").click(addUser);
-
+	$(document).on("click", "button.user_deactivate",deactivateUser);
+	$(document).on("click", "button.user_activate",activateUser);
+	$(document).on("click", "button.user_delete",deleteUser);
+	
 	getUsers();
 
 	function resetList(){
@@ -131,11 +134,8 @@ $(document).ready(function() {
 	};
 
 	function getUsers(){
-		$.get("/api/users", function(data){
-			console.log(data);
-			
+		$.get("/api/users", function(data){			
 			for (var i = 0; i < data.length; i++) {
-				console.log("database data" + JSON.stringify(data));
 				if(data[i].active == true){
 					createActiveUserRow(data[i]);
 				}
@@ -147,7 +147,6 @@ $(document).ready(function() {
 	};
 
 	function addUser(event) {
-		alert('adduser test');
     event.preventDefault(); 
     var newUser = {
 			name: userName.val().trim(),
@@ -172,12 +171,39 @@ $(document).ready(function() {
 	
 	function createDeactiveUserRow(dUserData){
 		var newTr = $('<tr>');
-		newTr.append("<td data-id='" + dUserData.id + "'>" + aUserData.name + "</td>");
-		newTr.append("<td data-id='" + dUserData.id + "'>" + aUserData.type + "</td>");
+		newTr.append("<td data-id='" + dUserData.id + "'>" + dUserData.name + "</td>");
+		newTr.append("<td data-id='" + dUserData.id + "'>" + dUserData.type + "</td>");
 		newTr.append("<td><button data-id='"+dUserData.id+"' class='user_activate btn btn-primary glyphicon glyphicon-hand-up'></button></td>");
 		newTr.append("<td><button data-id='"+dUserData.id+"' class='user_delete btn btn-danger glyphicon glyphicon-remove'></button></td>");
 		newTr.append("</tr>");
 		deactiveUserList.append(newTr);
+	}
+
+	function deactivateUser (event){
+		event.stopPropagation();
+		var id = $(this).data("id");
+    $.ajax({
+      method: "PUT",
+      url: "/api/users/deactivate/" + id
+    }).done(resetList);
+	}
+
+	function activateUser (event){
+		event.stopPropagation();
+		var id = $(this).data("id");
+    $.ajax({
+      method: "PUT",
+      url: "/api/users/activate/" + id
+    }).done(resetList);
+	}
+
+	function deleteUser(event){
+		event.stopPropagation();
+    var id = $(this).data("id");
+    $.ajax({
+      method: "DELETE",
+      url: "/api/users/" + id
+    }).done(resetList);
 	}
 
 });
