@@ -33,7 +33,7 @@ module.exports = function(app) {
   });
 
   // Get rotue for retrieving a single Task
-  app.get("/api/tasks/:id", function(req, res) {
+  app.get("/api/task/:id", function(req, res) {
     db.Task
       .findOne({
         where: {
@@ -50,9 +50,9 @@ module.exports = function(app) {
     console.log(req.body);
     db.Task
       .create({
-        title: "title"
+        title: "title",
         body: "req.body.body",
-        category: "req.bodycategory"
+        category: "req.body.category"
       })
       .then(function(dbTask) {
         res.json(dbTask);

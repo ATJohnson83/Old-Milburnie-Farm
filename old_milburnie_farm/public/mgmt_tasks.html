@@ -1,59 +1,52 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Mgmt-Orders</title>
-	<meta charset="utf-8">
-	<script
-  src="https://code.jquery.com/jquery-3.2.1.js"
-  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous"></script>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<style type="text/css">
-		ul{
-			display: inline-block;
-  		float: none;
-  		vertical-align: top;
-			text-align: center;
-		}
-	</style>
-
+    <title>Mgmt-Orders</title>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style type="text/css">
+    ul {
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+        text-align: center;
+    }
+    </style>
 </head>
+
 <body>
-	<div class="jumbotron text-center">
-		<h1>Old Milburnie Farm</h1>
-		<ul class="nav nav-tabs">
-		  <li><a href="#">Main Menu</a></li>
-		  <li><a href="#">Users</a></li>
-		  <li><a href="#">Tasks</a></li>
-		  <li><a href="#">Sales Inventory</a></li>
-		  <li><a href="#">Employee Time</a></li>
-		  <li><a href="#">Harvests</a></li>
-		  <li><a href="#">Log Out</a></li>
-		</ul>
-	</div>
-
-<div class="container">
-	<div class="panel panel-default">
-		
-		<div class="panel-heading text-center">
-			<h2>Tasks</h2>
-		</div>
-
-			<div class="panel-body">
-				<div class="form-group">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="mgmtords-container">
-								<h3>Add a task</h3>
-								<table class="table table-striped">
-									<thead>
+    <div class="jumbotron text-center">
+        <h1>Old Milburnie Farm</h1>
+        <ul class="nav nav-tabs">
+            <li><a href="#">Main Menu</a></li>
+            <li><a href="#">Users</a></li>
+            <li><a href="#">Tasks</a></li>
+            <li><a href="#">Sales Inventory</a></li>
+            <li><a href="#">Employee Time</a></li>
+            <li><a href="#">Harvests</a></li>
+            <li><a href="#">Log Out</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h2>Tasks</h2>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mgmtords-container">
+                                <h3>Add a task</h3>
+                                <table class="table table-striped">
+                                    <thead>
                                         <tr>
                                             <th>Name #</th>
                                             <th>For</th>
@@ -61,70 +54,67 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       <tr>   
-                                         <td><input type="text"></input><td>
-                                        
-                                         <td> <select>
-                                                <option label="Employee1">Employee 1</option>
-                                                <option label="Employee2">Employee 2</option>
-                                                <option label="Employee3">Employee 3</option>
-                                                <option label="Employee4">Employee 4</option>
-                                            </select></td>
-                                        
-                                       
-                                        <td> <textarea name="description" rows="5" cols="30"></textarea></td>
+                                        <tr>
+                                            <td>
+                                              <input type="text"></input>
+                                            </td>
+                                            <td>
+                                                <select>
+                                                    <option label="Employee1">Employee 1</option>
+                                                    <option label="Employee2">Employee 2</option>
+                                                    <option label="Employee3">Employee 3</option>
+                                                    <option label="Employee4">Employee 4</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <textarea name="description" rows="5" cols="30"></textarea>
+                                            </td>
                                         </tr>
                                     </tbody>
-									
-									
-									<tbody id="mgmtactords"></tbody>
-								</table>
-
-								<hr>
-								
-								<div class="row">
-									<div class="col-lg-4">
-										<h3>Active Tasks</h3>
-									</div>
-								</div>
-								<table class="table table-striped">
-									<thead>
-                                      <tr>
-										<th>Name</th>
-										<th>For</th>
-										<th>Open Date</th>
-										<th>Close Date</th>
-										<th>Description</th>
-                                        <th>Deactivate</th>
-                                      </tr>
-                                      <tr>
-                                        <td>placeholder for name</td>
-                                        <td>placeholder for for</td>
-                                        <td>placeholder for open</td>
-                                        <td>placeholder for close</td>
-                                        <td>placeholder for descritipn</td>
-                                        <td>placeholder for deactivate </td>
-                                      </tr>
-									</thead>
-									<tbody id="mgmtdeactords"> </tbody>
+                                    <tbody id="mgmtactords"></tbody>
                                 </table>
-
+                                <hr>
                                 <div class="row">
-									<div class="col-lg-4">
-										<h3>UnActive Tasks</h3>
-									</div>
-								</div>
+                                    <div class="col-lg-4">
+                                        <h3>Active Tasks</h3>
+                                    </div>
+                                </div>
                                 <table class="table table-striped">
-									<thead>
-										<th>Name</th>
-										<th>For</th>
-										<th>Open Date</th>
-										<th>Close Date</th>
-										<th>Description</th>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>For</th>
+                                            <th>Open Date</th>
+                                            <th>Close Date</th>
+                                            <th>Description</th>
+                                            <th>Deactivate</th>
+                                        </tr>
+                                        <tr>
+                                            <td>placeholder for name</td>
+                                            <td>placeholder for for</td>
+                                            <td>placeholder for open</td>
+                                            <td>placeholder for close</td>
+                                            <td>placeholder for descritipn</td>
+                                            <td>placeholder for deactivate </td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="mgmtdeactords"> </tbody>
+                                </table>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <h3>UnActive Tasks</h3>
+                                    </div>
+                                </div>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <th>Name</th>
+                                        <th>For</th>
+                                        <th>Open Date</th>
+                                        <th>Close Date</th>
+                                        <th>Description</th>
                                         <th>activate</th>
                                         <th>Delete</th>
                                     </thead>
-                                    
                                     <tr>
                                         <td>placeholder for name</td>
                                         <td>placeholder for for</td>
@@ -133,16 +123,15 @@
                                         <td>placeholder for descritipn</td>
                                         <td>placeholder for activate </td>
                                         <td>placeholder for delete </td>
-                                      </tr>
-									<tbody id="mgmtdeactords"> </tbody>
+                                    </tr>
+                                    <tbody id="mgmtdeactords"> </tbody>
                                 </table>
-                                
                                 <div class="row">
                                     <div class="thumbnail menu_item col-lg-12">
                                         <button type="submit" id="clockOut" class="btn btn-primary btn-lg btn-block btn-danger">Cancel</button>
                                     </div>
-								</div>
-								<div class="row">
+                                </div>
+                                <div class="row">
                                     <div class="thumbnail menu_item col-lg-12">
                                         <a href="/api/tasks/" type="submit" id="clockOut" class="btn btn-primary btn-lg btn-block btn-info">Save</a>
                                     </div>
@@ -152,15 +141,14 @@
                                         <button type="submit" id="clockOut" class="btn btn-primary btn-lg btn-block btn-success">Print</button>
                                     </div>
                                 </div>
-							
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		
-	</div>
-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="/js/tasks.js"></script>
+
 </html>
