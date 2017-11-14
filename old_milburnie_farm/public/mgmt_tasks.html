@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mgmt-Main</title>
+	<meta charset="utf-8">
+	<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<style type="text/css">
+  ul{
+      display: inline-block;
+      float: none;
+      vertical-align: top;
+      text-align: center;
+    }
+    .curusr{
+    color: blue;
+    }
+	</style>
+
+</head>
+<body>
+	<div class="jumbotron text-center">
+		<h1>Old Milburnie Farm</h1>
+    <ul class="nav nav-tabs">
+      <li><a href="#">Log Out</a></li>
+    </ul>
+	</div>
+
+	<div class='container'>
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h3>Welcome <span class="curusr">Management Name</span></h3>
+      </div>
+    </div>
+  	<div class="row">
+    	<div class="mgmt-main text-center panel col-md-8 col-md-offset-2">
+        <div class="row">
+          <div class="thumbnail menu_item col-lg-6">
+          <h3>Add A Task</h3>
+            <label type="text">Name</label>
+                <input type="text"></input>
+            <label type="text">For</label>
+                <select>
+                                <option label="Employee1">Employee 1</option>
+                                <option label="Employee2">Employee 2</option>
+                                <option label="Employee3">Employee 3</option>
+                                <option label="Employee4">Employee 4</option>
+                </select>
+            <label type="text">Description</label>
+               <textarea name="description" rows="5" cols="30"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="thumbnail menu_item col-lg-6">
+
+            <h3>Active Tasks</h3>
+            <div id="activeTasks"></div>
+          </div>
+          <div class="thumbnail menu_item col-lg-6">
+            <h3>UnActive Taks</h3>
+            <div id="unactiveTasks"></div>
+
+          </div>
+
+          <div class="row">
+                    <div class="thumbnail menu_item col-lg-12">
+                        <button type="submit" id="cancel" class="btn btn-primary btn-lg btn-block btn-danger">Cancel</button>
+                    </div>
+                </div>
+            <div class="row">
+                    <div class="thumbnail menu_item col-lg-12">
+                        <button type="submit" id="print" class="btn btn-primary btn-lg btn-block btn-success">Save / Print</button>
+                    </div>
+                </div>
+        </div>
+       
+        </div>
+    	</div>
+  	</div>
+	</div>
+</body>
+</html>
