@@ -8,13 +8,14 @@
 // Requiring our Todo model
 var db = require("../models");
 
+
 // Routes
 // =============================================================
 module.exports = function(app) {
   // GET route for getting all of the tasks
   app.get("/api/tasks/", function(req, res) {
-    db.Post.findAll({}).then(function(dbPost) {
-      res.json(dbPost);
+    db.Task.findAll({}).then(function(dbTask) {
+      res.json(dbTask);
     });
   });
 
@@ -47,14 +48,14 @@ module.exports = function(app) {
   // POST route for saving a new post
   app.post("/api/tasks", function(req, res) {
     console.log(req.body);
-    db.Post
+    db.Task
       .create({
-        title: req.body.title,
-        body: req.body.body,
-        category: req.body.category
+        title: "title"
+        body: "req.body.body",
+        category: "req.bodycategory"
       })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(dbTask) {
+        res.json(dbTask);
       });
   });
 

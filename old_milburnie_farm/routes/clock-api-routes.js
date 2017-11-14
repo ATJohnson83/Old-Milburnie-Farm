@@ -13,8 +13,8 @@ var db = require("../models");
 module.exports = function(app) {
   // GET route for getting all of the posts
   app.get("/api/clock/", function(req, res) {
-    db.Post.findAll({}).then(function(dbPost) {
-      res.json(dbPost);
+    db.Clock.findAll({}).then(function(dbClock) {
+      res.json(dbClock);
     });
   });
 
