@@ -23,9 +23,10 @@ $(document).ready(function() {
 
   var totalTime = () => {
       let total = clockOut - clock;
-      let totalTime = Math.floor(total / 60);
-      
-      console.log(totalTime);
+      let minutes = Math.floor(total / 60);
+      let seconds = total % 60;
+      console.log(`${minutes}: ${seconds}`)
+
 
      }
   
