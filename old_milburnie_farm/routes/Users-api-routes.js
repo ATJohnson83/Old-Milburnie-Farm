@@ -8,6 +8,16 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/users/:id", function(req, res) {
+    db.Users.findOne({
+      where: {
+        username: req.params.id
+      }
+    }).then(function(dbUsers) {
+      res.json(dbUsers);
+    });
+  });
+
 	app.post("/api/users", function(req, res) {
     db.Users.create({
       name: req.body.name,
