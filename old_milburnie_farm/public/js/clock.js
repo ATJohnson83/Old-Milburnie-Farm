@@ -26,17 +26,12 @@ $(document).ready(function() {
       let totalTime = Math.floor(total / 60);
       
       console.log(totalTime);
-     
-     
-      
-    
-  }
+
+     }
   
-  $.get("/api/users"), function(data){
-        if (data) {
-            $("#EmployeeName").text(name);
-        }
-    }
+  $.get("/api/clock"), function(data){
+    console.log(data);
+  }
 
 
 
