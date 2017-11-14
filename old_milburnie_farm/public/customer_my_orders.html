@@ -32,9 +32,9 @@
 	<div class="jumbotron text-center">
 		<h1>Old Milburnie Farm</h1>
 		<ul class="nav nav-tabs">
-		  <li><a href="#">Main Menu</a></li>
-		  <li><a href="#">Create Order</a></li>
-		  <li><a href="#">Log Out</a></li>
+		  <li><a href="/">Main Menu</a></li>
+		  <li><a href="/customer_create_order">Create Order</a></li>
+		  <li><a href="/login">Log Out</a></li>
 		</ul>
 	</div>
 
@@ -56,10 +56,10 @@
 								<h3>Active Orders</h3>
 								<table class="table table-striped">
 									<thead>
-										<th>Order #</th>
-										<th>Open Date</th>
-										<th>Close Date</th>
-										<th>View</th>
+										<th id="active-Order">Order #</th>
+										<th id="active-Open">Open Date</th>
+										<th id="active-Cloe">Close Date</th>
+										<th id="active-View">View</th>
 									</thead>
 									<tbody id="mgmtactords"></tbody>
 								</table>
@@ -73,10 +73,10 @@
 								</div>
 								<table class="table table-striped">
 									<thead>
-										<th>Order #</th>
-										<th>Open Date</th>
-										<th>Close Date</th>
-										<th>View</th>
+										<th id="inActive-Order">Order #</th>
+										<th id="inActive-Open">Open Date</th>
+										<th id="inActive-Close">Close Date</th>
+										<th id="inActive-View">View</th>
 									</thead>
 									<tbody id="mgmtdeactords"> </tbody>
 								</table>
