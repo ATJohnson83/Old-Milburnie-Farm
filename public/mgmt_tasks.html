@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Customer-My Orders</title>
+	<title>Mgmt-Users</title>
 	<meta charset="utf-8">
 	<script
   src="https://code.jquery.com/jquery-3.2.1.js"
@@ -22,9 +22,6 @@
   		vertical-align: top;
 			text-align: center;
 		}
-		.curusr{
-    color: blue;
-  	}
 	</style>
 
 </head>
@@ -32,53 +29,79 @@
 	<div class="jumbotron text-center">
 		<h1>Old Milburnie Farm</h1>
 		<ul class="nav nav-tabs">
-		  <li><a href="/customer_main">Main Menu</a></li>
-		  <li><a href="/customer_create_order">Create Order</a></li>
-		  <li><a href="/">Log Out</a></li>
+		  <li><a href="#">Main Menu</a></li>
+		  <li><a href="#">Tasks</a></li>
+		  <li><a href="#">Sales Inventory</a></li>
+		  <li><a href="#">Orders</a></li>
+		  <li><a href="#">Employee Time</a></li>
+		  <li><a href="#">Harvests</a></li>
+		  <li><a href="#">Log Out</a></li>
 		</ul>
 	</div>
 
 <div class="container">
-	<div class="row">
-    <div class="col-lg-12">
-      <h3><span class="curusr">Customer Name</span></h3>
-    </div>
-  </div>
-	<div class="panel panel-default">		
+	<div class="panel panel-default">
+		
 		<div class="panel-heading text-center">
-			<h2>Orders</h2>
+			<h2>Users</h2>
 		</div>
+
 			<div class="panel-body">
 				<div class="form-group">
 					<div class="row">
-						<div class="col-lg-12">
-							<div class="mgmtords-container">
-								<h3>Active Orders</h3>
+						<div class="col-md-8 col-md-offset-2">
+							<div class="user-container">
+								
+								
+								<form id='adduser'>
+									<label>Name</label>
+									<input placeholder="Enter a User" id="user-name" type="text" />
+									<label>Type</label>
+									<select>
+										<option></option>
+										<option>Management</option>
+										<option>Employee</option>
+										<option>Customer</option>
+									</select>
+									<label>Password</label>
+									<input placeholder="Enter Users Password" id="user-password"/>
+									<button type="submit" class="btn btn-primary glyphicon glyphicon-plus"></button>
+								</form>
+								
+								<hr>
+
+								<h3>ACTIVE USERS</h3>
 								<table class="table table-striped">
 									<thead>
-										<th id="active-Order">Order #</th>
-										<th id="active-Open">Open Date</th>
-										<th id="active-Cloe">Close Date</th>
-										<th id="active-View">View</th>
+										<th>Name</th>
+										<th>Type</th>
+										<th>Password</th>
+										<th>Deactivate</th>
 									</thead>
-									<tbody id="mgmtactords"></tbody>
+									<tbody id="actusrtb"></tbody>
 								</table>
 
 								<hr>
 								
 								<div class="row">
 									<div class="col-lg-4">
-										<h3>DeActive Orders</h3>
+										<h3>DEACTIVE USERS</h3>
+									</div>
+									<div class="col-lg-1">
+										<button id="dusershow" class="btn btn-default btn-sm duserbtns">Show</button>
+									</div>
+									<div class="col-lg-1">
+										<button id="duserhide" class="btn btn-default btn-sm duserbtns">Hide</button>
 									</div>
 								</div>
 								<table class="table table-striped">
 									<thead>
-										<th id="inActive-Order">Order #</th>
-										<th id="inActive-Open">Open Date</th>
-										<th id="inActive-Close">Close Date</th>
-										<th id="inActive-View">View</th>
+										<th>Name</th>
+										<th>Type</th>
+										<th>Activate</th>
+										<th>Delete</th>
 									</thead>
-									<tbody id="mgmtdeactords"> </tbody>
+									<tbody id="deactusrtb"> </tbody>
 								</table>
 							
 							</div>
