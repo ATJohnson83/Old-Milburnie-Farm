@@ -1,3 +1,5 @@
+var bcrypt = require("bcrypt-nodejs");
+
 module.exports = function(sequelize, DataTypes) {
   var Users= sequelize.define("Users", {
     name: {
@@ -28,5 +30,11 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 1
     }
   });
+
+
+  Users.prototype.validPassword = function(password) {
+    return (password == this.password);
+  };
+  
   return Users;
 };
