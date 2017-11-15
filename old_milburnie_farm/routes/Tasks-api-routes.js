@@ -50,9 +50,12 @@ module.exports = function(app) {
     console.log(req.body);
     db.Task
       .create({
-        title: "title",
-        body: "req.body.body",
-        category: "req.body.category"
+      name: req.body.name,
+      employee: req.body.employee,
+      OpenDate: req.body.OpenDate,
+      CloseDate: req.body.CloseDate,
+      Description : req.body.Description,
+      Active : req.body.isActive
       })
       .then(function(dbTask) {
         res.json(dbTask);

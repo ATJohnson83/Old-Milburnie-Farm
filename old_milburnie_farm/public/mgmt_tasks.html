@@ -42,7 +42,7 @@
             <div class="panel-body">
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="mgmtords-container">
                                 <h3>Add a task</h3>
                                 <table class="table table-striped">
@@ -51,15 +51,18 @@
                                             <th>Name #</th>
                                             <th>For</th>
                                             <th>Description</th>
+                                            <th>Start Date</th>
+                                            <th>Close Date</th>
+                                            <th>Active</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="mgmtactords">
                                         <tr>
                                             <td>
-                                              <input type="text"></input>
+                                              <input type="text" id="name"></input>
                                             </td>
                                             <td>
-                                                <select>
+                                                <select id="employee">
                                                     <option label="Employee1">Employee 1</option>
                                                     <option label="Employee2">Employee 2</option>
                                                     <option label="Employee3">Employee 3</option>
@@ -67,11 +70,19 @@
                                                 </select>
                                             </td>
                                             <td>
-                                                <textarea name="description" rows="5" cols="30"></textarea>
+                                                <textarea name="description" rows="5" cols="30" id="description"></textarea>
+                                            </td>
+                                            <td>
+                                              <input type="date" id="startDate"></input>
+                                            </td>
+                                            <td>
+                                              <input type="date" id="closeDate"></input>
+                                            </td>
+                                            <td>
+                                              <input type="text" id="isActive"></input>
                                             </td>
                                         </tr>
                                     </tbody>
-                                    <tbody id="mgmtactords"></tbody>
                                 </table>
                                 <hr>
                                 <div class="row">
@@ -128,17 +139,17 @@
                                 </table>
                                 <div class="row">
                                     <div class="thumbnail menu_item col-lg-12">
-                                        <button type="submit" id="clockOut" class="btn btn-primary btn-lg btn-block btn-danger">Cancel</button>
+                                        <button type="submit" id="cancel" class="btn btn-primary btn-lg btn-block btn-danger">Cancel</button>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="thumbnail menu_item col-lg-12">
-                                        <a href="/api/tasks/" type="submit" id="clockOut" class="btn btn-primary btn-lg btn-block btn-info">Save</a>
+                                        <a href="/api/tasks/" type="submit" id="save" class="btn btn-primary btn-lg btn-block btn-info">Save</a>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="thumbnail menu_item col-lg-12">
-                                        <button type="submit" id="clockOut" class="btn btn-primary btn-lg btn-block btn-success">Print</button>
+                                        <button type="submit" id="print" class="btn btn-primary btn-lg btn-block btn-success">Print</button>
                                     </div>
                                 </div>
                             </div>

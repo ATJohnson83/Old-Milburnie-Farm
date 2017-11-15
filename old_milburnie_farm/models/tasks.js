@@ -1,20 +1,30 @@
 module.exports = function(sequelize, DataTypes) {
   var Task= sequelize.define("Task", {
-    title: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       }
     },
-    body: {
-      type: DataTypes.TEXT,
+    employee: {
+      type: DataTypes.STRING,
       allowNull: false,
       len: [1]
     },
-    category: {
-      type: DataTypes.STRING,
-      defaultValue: "Personal"
+    OpenDate: {
+      type: DataTypes.DATE,
+      defaultValue: Date
+    },
+    CloseDate: {
+      type: DataTypes.DATE,
+    },
+    Description: {
+      type: DataTypes.TEXT,
+    },
+    Active : {
+      type: DataTypes.BOOLEAN,
+      defaultValue : 1
     }
   });
   return Task;
