@@ -35,4 +35,5 @@ db.sequelize.sync().then(function() {
   });
 });
 
-// db.sequelize.sync({force: true}) - deletes db & tables on load
+db.sequelize.sync({force: true})
+ //deletes db & tables on load
