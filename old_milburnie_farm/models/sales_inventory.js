@@ -12,21 +12,22 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       len: [1]
     },
-    Quantity: {
-      type: DataTypes.INTEGER,
+    quantity: {
+      type: DataTypes.DECIMAL(10,3),
       allowNull:true,
       defaultValue: 0
     },
-    Unit: {
+    unit: {
       type: DataTypes.STRING,
       allowNull: false,
+      len: [1]
     },
-    Price: {
-      type: DataTypes.INTEGER,
+    price: {
+      type: DataTypes.DECIMAL(10,2),
       allowNull: true,
       defaultValue: 0
     },
-    Active: {
+    active: {
       type: DataTypes.BOOLEAN,
       defaultValue: 1
     }

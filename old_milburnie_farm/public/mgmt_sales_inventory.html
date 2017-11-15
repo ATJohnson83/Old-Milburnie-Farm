@@ -23,7 +23,6 @@
 			text-align: center;
 		}
 	</style>
-
 </head>
 <body>
 	<div class="jumbotron text-center">
@@ -57,22 +56,23 @@
 									<label>Name</label>
 									<input placeholder="Name" id="slsinv-name" type="text" />
 									<label>Type</label>
-									<select>
+									<select id="slsinv-type">
 										<option></option>
-										<option>Meat</option>
-										<option>Root Veg</option>
-										<option>Lettuce</option>
+										<option>Chicken</option>
+										<option>Pork</option>
+										<option>Vegetable</option>
+										<option>Mushroom</option>
+										<option>Other</option>
 									</select>
 									<label>Quantity</label>
 									<input placeholder="Quantity" id="slsinv-qnty"/>
 									<label>Units</label>
-									<select>
-										<option></option>
+									<select id="slsinv-unit">
 										<option>Pounds</option>
 									</select>
 									<label>Price $</label>
 									<input placeholder="Price" id="slsinv-price"/>
-									<button type="submit" class="btn btn-primary glyphicon glyphicon-plus"></button>
+									<button id='additem' type="submit" class="btn btn-primary glyphicon glyphicon-plus"></button>
 								</form>
 								
 								<hr>
@@ -84,6 +84,7 @@
 										<th>Type</th>
 										<th>Quantity</th>
 										<th>Units</th>
+										<th>Price</th>
 										<th>DeActivate</th>
 									</thead>
 									<tbody id="actslsinvtb"></tbody>
@@ -102,10 +103,11 @@
 										<th>Type</th>
 										<th>Quantity</th>
 										<th>Units</th>
+										<th>Price</th>
 										<th>DeActivate</th>
 										<th>Delete</th>
 									</thead>
-									<tbody id="deactusrtb"> </tbody>
+									<tbody id="deactslsinvtb"> </tbody>
 								</table>
 							
 							</div>
@@ -116,5 +118,6 @@
 		
 	</div>
 </div>
+<script type="text/javascript" src="./js/sales_inventory.js"></script>
 </body>
 </html>
