@@ -14,14 +14,14 @@ $(document).ready(function() {
 	  };
 
 	function createActiveItemRow(aItemData){
-	  var newTr = $('<tr>');
-	  newTr.append("<td data-id='" + aItemData.id + "'>" + aItemData.name + "</td>");
-	  newTr.append("<td data-id='" + aItemData.id + "'>" + aItemData.quantity + "</td>");
-	  newTr.append("<td data-id='" + aItemData.id + "'>" + aItemData.unit + "</td>");
-	  newTr.append("<td data-id='" + aItemData.id + "'>$ " + aItemData.price + "</td>");
+	  var newTr = $("<tr class='row-select'>");
+	  newTr.append("<td class = 'name' type='" + aItemData.type + " 'data-id='" + aItemData.id + "'>" + aItemData.name + "</td>");
+	  newTr.append("<td class = 'quantavail' data-id='" + aItemData.id + "'>" + aItemData.quantity + "</td>");
+	  newTr.append("<td class = 'unit' data-id='" + aItemData.id + "'>" + aItemData.unit + "</td>");
+	  newTr.append("<td class = 'price' data-id='" + aItemData.id + "'>$ " + aItemData.price + "</td>");
 	  newTr.append("<td>|</td>");
 	  newTr.append("<td><input type='checkbox'></td>");
-	  newTr.append("<td><input type='text'></td>");
+	  newTr.append("<td><input class='quant' type='text'></td>");
 	  newTr.append("</tr>");
 
 	  switch (aItemData.type) {
@@ -43,19 +43,31 @@ $(document).ready(function() {
 		}
 	};
 
+
+  $('#create_order').click(function() {
+    $('.row-select input[type="checkbox"]:checked').each(function() {
+      
+      var orderArr = [];
+      var id, name, quantavail, type, unit, price, quantity;
+      
+      name = $(this).closest('tr').find('.name').html();
+      quantavail = $(this).closest('tr').find('.quantavail').html();
+      type = $(this).closest('tr').find('.name').attr('type');
+      unit = $(this).closest('tr').find('.unit').html();
+      price = $(this).closest('tr').find('.price').html();
+      quantity = $(this).closest('tr').find('.quant').val().trim();
+      
+      var orderObj = {}
+      
+      if (parseInt(quantity) > parseInt(quantavail)){
+      	alert("choose a valid "+name+" quantity");
+      };
+   
+    })
+  })
+
+
 });
-
-
-
-// $('#save').click(function () {
-//     $('#mytable').find('tr').each(function () {
-//         var row = $(this);
-//         if (row.find('input[type="checkbox"]').is(':checked') &&
-//             row.find('textarea').val().length <= 0) {
-//             alert('You must fill the text area!');
-//         }
-//     });
-// });
 
 // do something like this ^ to go through table rows, and get the sales inventory id and amount entered by customer
 // for each checked item, put them in an array [{item id: 1, item quant: 4}, {item id: 3, item quant: 6}] etc.
