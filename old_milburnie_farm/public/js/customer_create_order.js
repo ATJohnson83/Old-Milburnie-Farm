@@ -45,11 +45,11 @@ $(document).ready(function() {
 
 
   $('#create_order').click(function() {
+  	var orderArr = [];
+    var id, name, quantavail, type, unit, price, quantity;
+    
     $('.row-select input[type="checkbox"]:checked').each(function() {
-      
-      var orderArr = [];
-      var id, name, quantavail, type, unit, price, quantity;
-      
+       
       name = $(this).closest('tr').find('.name').html();
       quantavail = $(this).closest('tr').find('.quantavail').html();
       type = $(this).closest('tr').find('.name').attr('type');
@@ -57,13 +57,15 @@ $(document).ready(function() {
       price = $(this).closest('tr').find('.price').html();
       quantity = $(this).closest('tr').find('.quant').val().trim();
       
-      var orderObj = {}
-      
+      orderObj = {'name':name,'type':type,'unit':unit,'price':price,'quantity':quantity};
+      orderArr.push(orderObj);
+
       if (parseInt(quantity) > parseInt(quantavail)){
       	alert("choose a valid "+name+" quantity");
-      };
+      }     	
    
-    })
+    });
+    console.log(orderArr);
   })
 
 
