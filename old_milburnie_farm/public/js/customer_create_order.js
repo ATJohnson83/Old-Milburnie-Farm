@@ -1,3 +1,52 @@
+$(document).ready(function() {
+
+	getSalesInventory()
+
+	function getSalesInventory(){
+	    $.get("/api/sales_inventory", function(data){ 
+	    console.log("db data: " + JSON.stringify(data));    
+	      for (var i = 0; i < data.length; i++) {
+	        if(data[i].active == true){
+	          createActiveItemRow(data[i]);
+	        }
+	      };
+	    });
+	  };
+
+	function createActiveItemRow(aItemData){
+	  var newTr = $('<tr>');
+	  newTr.append("<td data-id='" + aItemData.id + "'>" + aItemData.name + "</td>");
+	  newTr.append("<td data-id='" + aItemData.id + "'>" + aItemData.quantity + "</td>");
+	  newTr.append("<td data-id='" + aItemData.id + "'>" + aItemData.unit + "</td>");
+	  newTr.append("<td data-id='" + aItemData.id + "'>$ " + aItemData.price + "</td>");
+	  newTr.append("<td>|</td>");
+	  newTr.append("<td><input type='checkbox'></td>");
+	  newTr.append("<td><input type='text'></td>");
+	  newTr.append("</tr>");
+
+	  switch (aItemData.type) {
+		  case "Chicken":
+		      $('#chickentb').append(newTr);
+		      break;
+		  case "Pork":
+		       $('#porktb').append(newTr);
+		      break;
+		  case "Vegetable":
+		       $('#vegetabletb').append(newTr);
+		      break;
+		  case "Mushroom":
+		       $('#mushroomtb').append(newTr);
+		      break;
+		  case "Other":
+		       $('#othertb').append(newTr);
+		      break;
+		}
+	};
+
+});
+
+
+
 // $('#save').click(function () {
 //     $('#mytable').find('tr').each(function () {
 //         var row = $(this);
