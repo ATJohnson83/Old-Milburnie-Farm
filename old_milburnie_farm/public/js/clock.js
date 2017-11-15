@@ -34,6 +34,8 @@ $(document).ready(function() {
     console.log(data);
   }
 
+  $("#clockIn").text(total);
+
 
 
  

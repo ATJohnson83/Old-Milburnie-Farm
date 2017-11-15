@@ -6,6 +6,16 @@ $(document).ready(function() {
   var CloseDate = $('#closeDate');
   var Description = $('#description');
   var isActive = $('#isActive');
+ var activeTaskList = $("#acttasks");
+ var deactiveTaskList = $("#deacttasks");
+
+ $("#cancel").click(function(){
+   $("#name").val('');
+   $("#startDate").val('');
+   $("#closeDate").val('');
+   $("#description").val("");
+   $("#isActive").val('');
+ });
   
   $("#save").click(addTasks);
   $(document).on("click", "button.user_deactivate",deactivateTask);
@@ -15,25 +25,28 @@ $(document).ready(function() {
   getTasks();
 
   function resetList(){
+    console.log(`reset list called`);
     activeTaskList.empty();
     deactiveTaskList.empty();
     getTasks();
   };
 
-  function getTasks(){
-    $.get("/api/tasks", function(data){     
+  function getTasks() {
+    console.log(`get tasks called`);
+    $.get("/api/tasks", function(data) {
+      console.log(data);
       for (var i = 0; i < data.length; i++) {
-        if(data[i].active == true){
+        if (data[i].Active == true) {
           createActiveTaskRow(data[i]);
-        }
-        else{
+        } else {
           createDeactiveTaskRow(data[i]);
         }
-      };
+      }
     });
-  };
+  }
 
   function addTasks(event) {
+    console.log(`add tasks called`);
     event.preventDefault(); 
     var newTask = {
       name: name.val().trim(),
@@ -41,31 +54,36 @@ $(document).ready(function() {
       OpenDate: OpenDate.val().trim(),
       CloseDate: CloseDate.val().trim(),
       Description : Description.val().trim(),
-      Active : isActive.val()
-    }
-    $.post("/api/users",newTask,resetList);
+      active : true
+    };
+    console.log(newTask);
+    $.post("/api/tasks",newTask,resetList);
+    console.log(newTask, resetList);
   };
 
   function createActiveTaskRow(aTasksData){
+    console.log(`create task row called`);
     var newTr = $('<tr>');
     newTr.append("<td data-id='" + aTasksData.id + "'>" + aTasksData.name + "</td>");
-    newTr.append("<td data-id='" + aTasksData.id + "'>" + aTasksData.type + "</td>");
-    newTr.append("<td data-id='" + aTasksData.id + "'>" + aTasksData.username + "</td>");
-    newTr.append("<td><button data-id='"+aTasksData.id+"' type='button' class='user_password btn btn-primary glyphicon glyphicon-modal-window' data-toggle='modal' data-target='.bs-example-modal-sm'></button></td>");
+    newTr.append("<td data-id='" + aTasksData.id + "'>" + aTasksData.employee + "</td>");
+    newTr.append("<td data-id='" + aTasksData.id + "'>" + aTasksData.OpenDate + "</td>");
+    newTr.append("<td data-id='" + aTasksData.id + "'>" + aTasksData.CloseDate + "</td>");
+    newTr.append("<td data-id='" + aTasksData.id + "'>" + aTasksData.Description + "</td>");
     newTr.append("<td><button data-id='"+aTasksData.id+"' class='user_deactivate btn btn-primary glyphicon glyphicon-hand-down'></button></td>");
     newTr.append("</tr>");
-    activeUserList.append(newTr);
+    activeTaskList.prepend(newTr);
   }
 
   
   function createDeactiveTaskRow(dTaskData){
+    console.log(`creat deactive class row called`);
     var newTr = $('<tr>');
     newTr.append("<td data-id='" + dTaskData.id + "'>" + dTaskData.name + "</td>");
     newTr.append("<td data-id='" + dTaskData.id + "'>" + dTaskData.type + "</td>");
     newTr.append("<td><button data-id='"+dTaskData.id+"' class='user_activate btn btn-primary glyphicon glyphicon-hand-up'></button></td>");
     newTr.append("<td><button data-id='"+dTaskData.id+"' class='user_delete btn btn-danger glyphicon glyphicon-remove'></button></td>");
     newTr.append("</tr>");
-    deactiveTaskList.append(newTr);
+    deactiveTaskList.prepend(newTr);
   }
 
   function deactivateTask (event){

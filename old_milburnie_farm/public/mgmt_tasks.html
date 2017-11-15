@@ -72,16 +72,19 @@
                                                 </select>
                                             </td>
                                             <td>
-                                                <textarea name="description" rows="5" cols="30" id="description"></textarea>
+                                                <textarea name="description" rows="3" cols="20" id="description"></textarea>
                                             </td>
                                             <td>
-                                              <input type="date" id="startDate"></input>
+                                              <input type="date" id="startDate" required pattern=="[0-9]{4}-[0-9]{2}-[0-9]{2}"></input>
                                             </td>
                                             <td>
-                                              <input type="date" id="closeDate"></input>
+                                              <input type="date" id="closeDate"required pattern=="[0-9]{4}-[0-9]{2}-[0-9]{2}" ></input>
                                             </td>
                                             <td>
                                               <input type="text" id="isActive"></input>
+                                            </td>
+                                            <td>
+                                                <a href="/api/tasks/" type="submit" id="save" class="btn btn-primary glyphicon glyphicon-plus"></a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -103,15 +106,8 @@
                                             <th>Description</th>
                                             <th>Deactivate</th>
                                         </tr>
-                                        <tr>
-                                            <td>placeholder for name</td>
-                                            <td>placeholder for for</td>
-                                            <td>placeholder for open</td>
-                                            <td>placeholder for close</td>
-                                            <td>placeholder for descritipn</td>
-                                            <td>placeholder for deactivate </td>
-                                        </tr>
-                                    </thead>
+                                     </thead>
+                                 <tbody id="acttasks">
                                  </tbody>
                                 </table>
                                 <div class="row">
@@ -129,25 +125,12 @@
                                         <th>activate</th>
                                         <th>Delete</th>
                                     </thead>
-                                    <tr>
-                                        <td>placeholder for name</td>
-                                        <td>placeholder for for</td>
-                                        <td>placeholder for open</td>
-                                        <td>placeholder for close</td>
-                                        <td>placeholder for descritipn</td>
-                                        <td>placeholder for activate </td>
-                                        <td>placeholder for delete </td>
-                                    </tr>
-                                    <tbody id="mgmtdeactords"> </tbody>
+                                    
+                                    <tbody id="deacttsks"> </tbody>
                                 </table>
                                 <div class="row">
                                     <div class="thumbnail menu_item col-lg-12">
                                         <button type="submit" id="cancel" class="btn btn-primary btn-lg btn-block btn-danger">Cancel</button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="thumbnail menu_item col-lg-12">
-                                        <a href="/api/tasks/" type="submit" id="save" class="btn btn-primary btn-lg btn-block btn-info">Save</a>
                                     </div>
                                 </div>
                                 <div class="row">
