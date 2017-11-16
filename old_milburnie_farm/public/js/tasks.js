@@ -5,7 +5,6 @@ $(document).ready(function() {
   var OpenDate = $('#startDate');
   var CloseDate = $('#closeDate');
   var Description = $('#description');
-  var isActive = $('#isActive');
  var activeTaskList = $("#acttasks");
  var deactiveTaskList = $("#deacttasks");
 
@@ -76,7 +75,8 @@ $(document).ready(function() {
 
   
   function createDeactiveTaskRow(dTaskData){
-    console.log(`create deactive class row called ${dTaskData.name}`);
+    console.log(dTaskData)
+    console.log(dTaskData.name, dTaskData.employee, dTaskData.OpenDate, dTaskData.CloseDate, dTaskData.Description, dTaskData.id);
     var newTr = $('<tr>');
     newTr.append("<td data-id='" + dTaskData.id + "'>" + dTaskData.name + "</td>");
     newTr.append("<td data-id='" + dTaskData.id + "'>" + dTaskData.employee + "</td>");
