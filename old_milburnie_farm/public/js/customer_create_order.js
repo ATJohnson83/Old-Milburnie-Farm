@@ -1,6 +1,15 @@
 $(document).ready(function() {
 
-	getSalesInventory()
+	loggedInForeman();
+	getSalesInventory();
+
+	function loggedInForeman(){
+    $.get("/api/user_data").then(function(data) {
+    	console.log(data);
+      currentUser = data.name;
+      $(".member-name").text(currentUser);
+    });
+  };
 
 	function getSalesInventory(){
 	    $.get("/api/sales_inventory", function(data){ 
