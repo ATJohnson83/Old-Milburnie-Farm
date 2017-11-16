@@ -50,52 +50,121 @@
         <h3>Welcome <span class="curusr">Employee Name</span></h3>
       </div>
     </div>
-  	<div class="row">
-          <h1 style="text-align:center;text-decoration:underline">Harvests</h1>
-      </div>
-    
-    <div class="row">
-            <label type="text">
-             <span id="input">   <input type="text" id="Date">Date</input></span>
-            </label>
-        </div>
-    <div class="row">
-            <label type="text">
-             <span id="input">   <input type="text" id="name">Name</input></span>
-            </label>
-        </div>
-    <div class="row">
-            <label type="text">
-            <span id="input">    <input type="text" id="type">Type</input></span>
-            </label>
-        </div>
-    <div class="row">
-            <label type="text">
-            <span id="input">    <input type="text" id="field">Field</input></span>
-            </label>
-        </div>
-    <div class="row">
-            <label type="text">
-            <span id="input">    <input type="text" id="bed">Bed</input></span>
-            </label>
-        </div>
-    <div class="row">
-            <label type="text">
-            <span id="input">    <input type="text" id="quantity">Quantity</input></span>
-            </label>
-        </div>
-    <div class="row">
-            <label type="text">
-            <span id="input">    <input type="text" id="units">Units</input></span>
-            </label>
-        </div>
-    <div class="row">
-                    <div class="thumbnail menu_item col-lg-12">
-                        <button type="submit" id="addHarvest" class="btn btn-primary btn-lg btn-block btn-danger">Add Harvest</button>
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <h2>Tasks</h2>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="mgmtords-container">
+                                    <h3>Add a task</h3>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Type</th>
+                                                <th>Name</th>
+                                                <th>Field</th>
+                                                <th>Bed</th>
+                                                <th>Quantity</th>
+                                                <th>Units</th>
+        
+                                            </tr>
+                                        </thead>
+                                        <div class="col-lg-12 col-md-12 col-xs-12 col-sm12">
+                                            <tbody id="mgmtactords">
+                                                <tr>
+                                                    <td>
+                                                        <input type="date" id="date"></input>
+                                                    </td>
+                                                    <td>
+                                                        <select id="type">
+                                                            <option label="Meat">Meat</option>
+                                                            <option label="Raw Vegetables">Raw Vegetables</option>
+                                                            <option label="Lettuce">Lettuce</option>
+                                                            
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="name"></input>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="field"></input>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="bed" ></input>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="quantity"></input>
+                                                    </td>
+        
+                                                    <td>
+                                                        <button type="submit" id="addHarvest" class="btn btn-primary glyphicon glyphicon-plus"></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                    </table>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <h3>Active Harvest</h3>
+                                        </div>
+                                    </div>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Type</th>
+                                                <th>Name</th>
+                                                <th>Field</th>
+                                                <th>Bed</th>
+                                                <th>Quantity</th>
+                                                <th>Deactivate</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="activeHarvest">
+                                        </tbody>
+                                    </table>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <h3>UnActive Harvest</h3>
+                                        </div>
+                                    </div>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <th>Date</th>
+                                            <th>Type</th>
+                                            <th>Name</th>
+                                            <th>Field</th>
+                                            <th>Bed</th>
+                                            <th>Quantity</th>
+                                            <th>activate</th>
+                                            <th>Delete</th>
+                                        </thead>
+                                    
+                                        <tbody id="deactiveHarvest"> </tbody>
+                                    </table>
+                                    <div class="row">
+                                    <div>
+                                      <button type="submit" id="cancel" class="btn btn-primary btn-large btn-danger">Cancel</button>
+                                     </div>   
+                                   
+                                  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+   
             
         </div>
     </div>
 </body>
+<script src="/js/harvest.js"></script>
 </html>

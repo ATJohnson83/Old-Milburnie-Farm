@@ -33,7 +33,7 @@ module.exports = function(app) {
   });
 
   // Get rotue for retrieving a single Task
-  app.get("/api/task/:id", function(req, res) {
+  app.get("/api/tasks/:id", function(req, res) {
     db.Task
       .findOne({
         where: {
