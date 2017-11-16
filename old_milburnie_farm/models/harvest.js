@@ -1,5 +1,8 @@
 module.exports = function(sequelize, DataTypes) {
-  var Task= sequelize.define("Task", {
+  var Harvest = sequelize.define("Harvest", {
+    date: {
+      type: DataTypes.DATEONLY
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -7,25 +10,28 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    employee: {
+    type: {
       type: DataTypes.STRING,
       allowNull: false,
       len: [1]
     },
-    OpenDate: {
-      type: DataTypes.DATEONLY,
-      defaultValue: Date
+   field: {
+      type: DataTypes.TEXT
     },
-    CloseDate: {
-      type: DataTypes.DATEONLY,
+    bed: {
+      type: DataTypes.TEXT,
     },
-    Description: {
+    quantity: {
+      type: DataTypes.TEXT,
+    },
+    units: {
       type: DataTypes.TEXT,
     },
     active : {
       type: DataTypes.BOOLEAN,
-      defaultValue : 1
+      defaultValue: 1
     }
+
   });
-  return Task;
+  return Harvest;
 };

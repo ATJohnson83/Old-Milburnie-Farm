@@ -1,3 +1,5 @@
+var jsPDF = require('jdPDF');
+
 
 $("#submit").click(function () {
     console.log(`clicked`);
