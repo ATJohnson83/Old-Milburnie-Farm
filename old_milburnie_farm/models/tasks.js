@@ -13,16 +13,16 @@ module.exports = function(sequelize, DataTypes) {
       len: [1]
     },
     OpenDate: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       defaultValue: Date
     },
     CloseDate: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
     },
     Description: {
       type: DataTypes.TEXT,
     },
-    Active : {
+    active : {
       type: DataTypes.BOOLEAN,
       defaultValue : 1
     }

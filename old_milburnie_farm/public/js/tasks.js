@@ -36,7 +36,7 @@ $(document).ready(function() {
     $.get("/api/tasks", function(data) {
       console.log(data);
       for (var i = 0; i < data.length; i++) {
-        if (data[i].Active == true) {
+        if (data[i].active == true) {
           createActiveTaskRow(data[i]);
         } else {
           createDeactiveTaskRow(data[i]);
@@ -76,10 +76,13 @@ $(document).ready(function() {
 
   
   function createDeactiveTaskRow(dTaskData){
-    console.log(`creat deactive class row called`);
+    console.log(`create deactive class row called ${dTaskData.name}`);
     var newTr = $('<tr>');
     newTr.append("<td data-id='" + dTaskData.id + "'>" + dTaskData.name + "</td>");
-    newTr.append("<td data-id='" + dTaskData.id + "'>" + dTaskData.type + "</td>");
+    newTr.append("<td data-id='" + dTaskData.id + "'>" + dTaskData.employee + "</td>");
+    newTr.append("<td data-id='" + dTaskData.id + "'>" + dTaskData.OpenDate + "</td>");
+    newTr.append("<td data-id='" + dTaskData.id + "'>" + dTaskData.CloseDate + "</td>");
+    newTr.append("<td data-id='" + dTaskData.id + "'>" + dTaskData.Description + "</td>");
     newTr.append("<td><button data-id='"+dTaskData.id+"' class='user_activate btn btn-primary glyphicon glyphicon-hand-up'></button></td>");
     newTr.append("<td><button data-id='"+dTaskData.id+"' class='user_delete btn btn-danger glyphicon glyphicon-remove'></button></td>");
     newTr.append("</tr>");

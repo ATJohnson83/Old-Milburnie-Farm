@@ -14,14 +14,14 @@ var db = require("../models");
 module.exports = function(app) {
   // GET route for getting all of the tasks
   app.get("/api/tasks/", function(req, res) {
-    db.Task.findAll({}).then(function(dbTask) {
-      res.json(dbTask);
+    db.Task.findAll({}).then(function(dbTasks) {
+      res.json(dbTasks);
     });
   });
 
   // Get route for returning tasks of a specific category by id
   app.get("/api/tasks/:id", function(req, res) {
-    db.Post
+    db.Task
       .findAll({
         where: {
           id: req.params.id
@@ -48,43 +48,50 @@ module.exports = function(app) {
   // POST route for saving a new post
   app.post("/api/tasks", function(req, res) {
     console.log(req.body);
-    db.Task
-      .create({
+    db.Task.create({
       name: req.body.name,
       employee: req.body.employee,
       OpenDate: req.body.OpenDate,
       CloseDate: req.body.CloseDate,
       Description : req.body.Description,
-      Active : req.body.isActive
+      active : true
       })
-      .then(function(dbTask) {
-        res.json(dbTask);
+      .then(function(dbTasks) {
+        res.json(dbTasks);
       });
   });
 
-  // DELETE route for deleting tasks
-  app.delete("/api/tasks/:id", function(req, res) {
-    db.Post
-      .destroy({
-        where: {
-          id: req.params.id
-        }
-      })
-      .then(function(dbPost) {
-        res.json(dbPost);
-      });
+    app.delete("/api/tasks/:id", function(req, res) {
+    db.Task.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbTasks) {
+      res.json(dbTasks);
+    });
   });
 
-  // PUT route for updating tasks
-  app.put("/api/tasks", function(req, res) {
-    db.Task
-      .update(req.body, {
-        where: {
-          id: req.body.id
-        }
-      })
-      .then(function(dbPost) {
-        res.json(dbPost);
-      });
+  app.put("/api/tasks/deactivate/:id", function(req, res) {
+    db.Task.update({
+      active: false
+    }, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbTasks) {
+      res.json(dbTasks);
+    });
+  });
+
+  app.put("/api/tasks/activate/:id", function(req, res) {
+    db.Task.update({
+      active: true
+    }, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbTasks) {
+      res.json(dbTasks);
+    });
   });
 };

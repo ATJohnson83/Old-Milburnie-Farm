@@ -11,15 +11,15 @@ var db = require("../models");
 // Routes
 // =============================================================
 module.exports = function(app) {
-  // GET route for getting all of the posts
+  // GET route for getting all of the clocks
   app.get("/api/clock/", function(req, res) {
     db.Clock.findAll({}).then(function(dbClock) {
       res.json(dbClock);
     });
   });
 
-  // Get route for returning posts of a specific category
-  app.get("/api/posts/category/:category", function(req, res) {
+  // Get route for returning clocks of a specific category
+  app.get("/api/clocks/category/:category", function(req, res) {
     db.Post
       .findAll({
         where: {
@@ -32,7 +32,7 @@ module.exports = function(app) {
   });
 
   // Get rotue for retrieving a single post
-  app.get("/api/posts/:id", function(req, res) {
+  app.get("/api/clocks/:id", function(req, res) {
     db.Post
       .findOne({
         where: {
@@ -45,7 +45,7 @@ module.exports = function(app) {
   });
 
   // POST route for saving a new post
-  app.post("/api/posts", function(req, res) {
+  app.post("/api/clocks", function(req, res) {
     console.log(req.body);
     db.Post
       .create({
@@ -58,8 +58,8 @@ module.exports = function(app) {
       });
   });
 
-  // DELETE route for deleting posts
-  app.delete("/api/posts/:id", function(req, res) {
+  // DELETE route for deleting clocks
+  app.delete("/api/clocks/:id", function(req, res) {
     db.Post
       .destroy({
         where: {
@@ -71,8 +71,8 @@ module.exports = function(app) {
       });
   });
 
-  // PUT route for updating posts
-  app.put("/api/posts", function(req, res) {
+  // PUT route for updating clocks
+  app.put("/api/clocks", function(req, res) {
     db.Post
       .update(req.body, {
         where: {

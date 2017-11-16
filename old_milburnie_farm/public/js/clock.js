@@ -26,15 +26,13 @@ $(document).ready(function() {
       let minutes = Math.floor(total / 60);
       let seconds = total % 60;
       console.log(`${minutes}: ${seconds}`)
-
+        $("#totalTime").append(total);
 
      }
   
-  $.get("/api/clock"), function(data){
-    console.log(data);
-  }
 
-  $("#clockIn").text(total);
+
+
 
 
 
