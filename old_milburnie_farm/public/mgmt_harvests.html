@@ -81,7 +81,7 @@
 								
 								<div class="row">
 									<div class="col-lg-4">
-										<h3>Get Harvest</h3>
+										<h3>Active Harvests</h3>
 									</div>
 								</div>
 								<table class="table table-striped">
@@ -95,27 +95,19 @@
 										<th>Added by</th>
 									</thead>
 
-									<tbody id="mgmtdeactords">
-										<tr>
-											<td>Order #</td>
-											<td>From</td>
-											<td>Type</td>
-											<td>Field</td>
-											<td>Bed</td>
-											<td>Quantity</td>
-											<td>Added by</td>
-										</tr>
+									<tbody id="activeHarvests">
+									
 									 </tbody>
 								</table>
 
 								<div class="row">
                                     <div class="thumbnail menu_item col-lg-12">
-                                        <button type="submit" id="clockOut" class="btn btn-primary btn-lg btn-block btn-danger">Cancel</button>
+                                        <button type="submit" id="getActiveHarvest" class="btn btn-primary btn-lg btn-block btn-success">Get Active Harvests</button>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="thumbnail menu_item col-lg-12">
-                                        <button type="submit" id="clockOut" class="btn btn-primary btn-lg btn-block btn-success">Print / Save</button>
+                                        <button type="submit" id="clockOut" class="btn btn-primary btn-lg btn-block btn-info">Print / Save</button>
                                     </div>
                                 </div>
 							
@@ -128,4 +120,5 @@
 	</div>
 </div>
 </body>
+<script src="/js/harvest.js"></script>
 </html>

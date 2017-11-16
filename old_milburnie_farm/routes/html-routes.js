@@ -16,6 +16,10 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
+    app.get("/login", function(req, res) {
+      res.sendFile(path.join(__dirname, "../public/login.html"));
+    });
+
   // --------- Management Pages ----------
   // management main page
   app.get("/mgmt_main", function(req, res) {
@@ -51,6 +55,11 @@ module.exports = function(app) {
   app.get("/mgmt_harvests", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/mgmt_harvests.html"));
   });
+
+  //management order views page
+   app.get("/mgmt_order_view", function(req, res) {
+     res.sendFile(path.join(__dirname, "../public/mgmt_order_view.html"));
+   });
 
   // ----------- Employee Pages -------------
   // employee main page

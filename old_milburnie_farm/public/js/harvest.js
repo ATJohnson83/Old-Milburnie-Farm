@@ -5,8 +5,8 @@ $(document).ready(function() {
   var field = $("#field");
   var bed = $("#bed");
   var quantity = $("#quantity")
-  var activeHarvestList = $("#activeharvest");
-  var deactiveHarvestList = $("#deacivetharvest");
+  var activeHarvestList = $("#activeHarvest");
+  var deactiveHarvestList = $("#deaciveHarvest");
 
   $("#cancel").click(function() {
     console.log(`cancel clicked`);
@@ -18,6 +18,7 @@ $(document).ready(function() {
   });
 
   $("#addHarvest").click(addHarvest);
+  $("#getActiveHarvest").click(getHarvest);
   $(document).on("click", "button.user_deactivate", deactivateHarvest);
   $(document).on("click", "button.user_activate", activateHarvest);
   $(document).on("click", "button.user_delete", deleteHarvest);
