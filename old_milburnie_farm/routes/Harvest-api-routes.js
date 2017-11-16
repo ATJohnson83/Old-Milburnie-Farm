@@ -47,7 +47,7 @@ module.exports = function(app) {
   // POST route for saving a new post
   app.post("/api/harvests", function(req, res) {
     console.log(req.body);
-    db.Task
+    db.Harvest
       .create({
         name: req.body.name,
         type: req.body.type,
@@ -57,13 +57,13 @@ module.exports = function(app) {
         quantity: req.body.quantity,
         active: true
       })
-      .then(function(dbTasks) {
-        res.json(dbTasks);
+      .then(function(dbHarvest) {
+        res.json(dbHarvest);
       });
   });
 
   app.delete("/api/harvests/:id", function(req, res) {
-    db.Task
+    db.Harvest
       .destroy({
         where: {
           id: req.params.id
