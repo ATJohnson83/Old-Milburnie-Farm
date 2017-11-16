@@ -12,7 +12,7 @@ var db = require("../models");
 // =============================================================
 module.exports = function(app) {
   // GET route for getting all of the harvests
-  app.get("/api/harvests/", function(req, res) {
+  app.get("/api/harvests", function(req, res) {
     db.Harvest.findAll({}).then(function(dbHarvest) {
       res.json(dbHarvests);
     });
