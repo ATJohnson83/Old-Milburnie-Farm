@@ -20,7 +20,6 @@ $(document).ready(function() {
 	  newTr.append("<td class = 'unit' data-id='" + aItemData.id + "'>" + aItemData.unit + "</td>");
 	  newTr.append("<td class = 'price' data-id='" + aItemData.id + "'>$ " + aItemData.price + "</td>");
 	  newTr.append("<td>|</td>");
-	  newTr.append("<td><input type='checkbox'></td>");
 	  newTr.append("<td><input class='quant' type='text'></td>");
 	  newTr.append("</tr>");
 
@@ -45,25 +44,28 @@ $(document).ready(function() {
 
 
   $('#create_order').click(function() {
-    $('.row-select input[type="checkbox"]:checked').each(function() {
-      
-      var orderArr = [];
-      var id, name, quantavail, type, unit, price, quantity;
-      
-      name = $(this).closest('tr').find('.name').html();
-      quantavail = $(this).closest('tr').find('.quantavail').html();
-      type = $(this).closest('tr').find('.name').attr('type');
-      unit = $(this).closest('tr').find('.unit').html();
-      price = $(this).closest('tr').find('.price').html();
-      quantity = $(this).closest('tr').find('.quant').val().trim();
-      
-      var orderObj = {}
-      
-      if (parseInt(quantity) > parseInt(quantavail)){
-      	alert("choose a valid "+name+" quantity");
-      };
-   
-    })
+  	var orderArr = [];
+    var id, name, quantavail, type, unit, price, quantity;
+    
+    $('.row-select input[type="text"]').each(function() {
+    	if ($(this).val().trim().length > 0){
+	       
+	      name = $(this).closest('tr').find('.name').html();
+	      quantavail = $(this).closest('tr').find('.quantavail').html();
+	      type = $(this).closest('tr').find('.name').attr('type');
+	      unit = $(this).closest('tr').find('.unit').html();
+	      price = $(this).closest('tr').find('.price').html();
+	      quantity = $(this).closest('tr').find('.quant').val().trim();
+	      
+	      orderObj = {'name':name,'type':type,'unit':unit,'price':price,'quantity':quantity};
+	      orderArr.push(orderObj);
+
+	      if (parseInt(quantity) > parseInt(quantavail)){
+	      	alert("choose a valid "+name+" quantity");
+	      }     	
+	   	}
+    });
+    console.log(orderArr);
   })
 
 
