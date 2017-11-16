@@ -1,89 +1,86 @@
-// *********************************************************************************
-// api-routes.js - this file offers a set of routes for displaying and saving data to the db
-// *********************************************************************************
-
-// Dependencies
-// =============================================================
-
-// Requiring our Todo model
 var db = require("../models");
 
-// Routes
-// =============================================================
 module.exports = function(app) {
-  // GET route for getting all of the sales_inventories
-  app.get("/api/sales_inventories/", function(req, res) {
-    db.Post.findAll({}).then(function(dbPost) {
-      res.json(dbPost);
+  
+  app.get("/api/sales_inventory", function(req, res) {
+    db.Sales_Inventory.findAll({}).then(function(dbSlsinv) {
+      res.json(dbSlsinv);
     });
   });
 
-  // Get route for returning sales_inventories of a specific category by id
-  app.get("/api/sales_inventories/:id", function(req, res) {
-    db.Post
+  app.get("/api/sales_inventory/:id", function(req, res) {
+    db.Sales_Inventory
       .findAll({
         where: {
           id: req.params.id
         }
       })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(dbSlsinv) {
+        res.json(dbSlsinv);
       });
   });
 
-  // Get rotue for retrieving a single Task
-  app.get("/api/sales_inventories/:id", function(req, res) {
-    db.Task
+  app.get("/api/sales_inventory/:id", function(req, res) {
+    db.Sales_Inventory
       .findOne({
         where: {
           id: req.params.id
         }
       })
-      .then(function(dbTask) {
-        res.json(dbTask);
+      .then(function(dbSlsinv) {
+        res.json(dbSlsinv);
       });
   });
 
-  // POST route for saving a new post
-  app.post("/api/sales_inventories", function(req, res) {
+  app.post("/api/sales_inventory", function(req, res) {
     console.log(req.body);
-    db.Post
+    db.Sales_Inventory
       .create({
         name: req.body.name,
         type: req.body.type,
-        Quantity: req.body.Quantity,
-        Unit: req.body.Unit,
-        Price: req.body.Price,
-        Active : req.body.Active
+        quantity: req.body.quantity,
+        unit: req.body.unit,
+        price: req.body.price,
+        active: true
       })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(dbSlsinv) {
+        res.json(dbSlsinv);
       });
   });
 
-  // DELETE route for deleting sales_inventories
-  app.delete("/api/sales_inventories/:id", function(req, res) {
-    db.Post
-      .destroy({
-        where: {
-          id: req.params.id
-        }
-      })
-      .then(function(dbPost) {
-        res.json(dbPost);
-      });
+  app.delete("/api/sales_inventory/:id", function(req, res) {
+    db.Sales_Inventory.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbSlsinv) {
+      res.json(dbSlsinv);
+    });
   });
 
-  // PUT route for updating sales_inventories
-  app.put("/api/sales_inventories", function(req, res) {
-    db.Post
-      .update(req.body, {
-        where: {
-          id: req.body.id
-        }
-      })
-      .then(function(dbPost) {
-        res.json(dbPost);
-      });
+  app.put("/api/sales_inventory/deactivate/:id", function(req, res) {
+    db.Sales_Inventory.update({
+      active: false
+    }, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbSlsinv) {
+      res.json(dbSlsinv);
+    });
   });
+
+  app.put("/api/sales_inventory/activate/:id", function(req, res) {
+    db.Sales_Inventory.update({
+      active: true
+    }, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbSlsinv) {
+      res.json(dbSlsinv);
+    });
+  });
+
+
 };
