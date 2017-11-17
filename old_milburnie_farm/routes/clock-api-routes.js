@@ -12,7 +12,7 @@ var db = require("../models");
 // =============================================================
 module.exports = function(app) {
   // GET route for getting all of the clocks
-  app.get("/api/clock/", function(req, res) {
+  app.get("/api/clock", function(req, res) {
     db.Clock.findAll({}).then(function(dbClock) {
       res.json(dbClock);
     });
@@ -20,7 +20,7 @@ module.exports = function(app) {
 
   // Get route for returning clocks of a specific category
   app.get("/api/clocks/category/:category", function(req, res) {
-    db.Post
+    db.Clock
       .findAll({
         where: {
           category: req.params.category
@@ -33,54 +33,54 @@ module.exports = function(app) {
 
   // Get rotue for retrieving a single post
   app.get("/api/clocks/:id", function(req, res) {
-    db.Post
+    db.Clock
       .findOne({
         where: {
           id: req.params.id
         }
       })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(dbClock) {
+        res.json(dbClock);
       });
   });
 
-  // POST route for saving a new post
+  // Clock route for saving a new Clock
   app.post("/api/clocks", function(req, res) {
     console.log(req.body);
-    db.Post
+    db.Clock
       .create({
         title: req.body.title,
         body: req.body.body,
         category: req.body.category
       })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(dbClock) {
+        res.json(dbClock);
       });
   });
 
   // DELETE route for deleting clocks
   app.delete("/api/clocks/:id", function(req, res) {
-    db.Post
+    db.Clock
       .destroy({
         where: {
           id: req.params.id
         }
       })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(dbClock) {
+        res.json(dbClock);
       });
   });
 
   // PUT route for updating clocks
   app.put("/api/clocks", function(req, res) {
-    db.Post
+    db.Clock
       .update(req.body, {
         where: {
           id: req.body.id
         }
       })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(dbClock) {
+        res.json(dbClock);
       });
   });
 };
