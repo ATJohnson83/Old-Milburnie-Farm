@@ -2,6 +2,17 @@ $(document).ready(function() {
 
 	loggedInForeman();
 	getSalesInventory();
+	showCreateScreen();
+
+	function showCreateScreen(){
+		$('.create_order').show();
+		$('.confirm_order').hide();
+	}
+
+	function showConfirmScreen(){
+		$('.create_order').hide();
+		$('.confirm_order').show();
+	}
 
 	function loggedInForeman(){
     $.get("/api/user_data").then(function(data) {
@@ -75,7 +86,8 @@ $(document).ready(function() {
 	   	}
     });
     console.log(orderArr);
-  })
+    showConfirmScreen();
+  });
 
 
 });
