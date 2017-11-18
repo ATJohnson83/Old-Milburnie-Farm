@@ -1,14 +1,24 @@
+
 $(document).ready(function(){
 
-var clockIn= $("#clockIn").val();
-var clockOut = $("#clockOut").val();
+
+
+ $("#clockIn").click(function(){
+ clockIn = moment();
+
+});
+ $("#clockOut").click(function(){
+clockOut =  moment();
+});
 var totalTime = $("#totalTime");
 
 var clockInTime = $("#clockInTime");
 var clockOutTime = $("#clockOutTime");
 var totalTimeWorked = $("#totalTime");
 
-totalTime.click(addTime);
+var activeTime = $("#activeTime");
+
+totalTimeWorked.click(addTime);
 
 getTime()
 
@@ -25,7 +35,7 @@ getTime()
    $.get("/api/clock", function(data){  
        console.log(data);
       for (var i = 0; i < data.length; i++) {
-        if(data[i].active == true){
+        if(data[i].isActive == true){
           createActiveTimeRow(data[i]);
         }
         else{
@@ -37,11 +47,14 @@ getTime()
 
     function addTime(event) {
     console.log(`add time called`);
-    event.preventDefault();
+   
+    let total = clockOut.diff(clockIn, "minutes");
+    console.log( total);
     var newTime = {
       clockIn: clockIn,
       clockOut: clockOut,
-      total : clockOut - clockIn
+      totalTime : total,
+      isActive: true
       };
     console.log(newTime);
     $.post("/api/clock", newTime, resetList);
@@ -52,10 +65,13 @@ getTime()
     console.log(`create Time row called`);
     var newTr = $("<tr>");
     newTr.append(
-      "<td data-id='" + aharvestData.id + "'>" + aharvestData.clockIn + "</td>"
+      "<td data-id='" + aTimeData.id + "'>" + aTimeData.clockIn + "</td>"
     );
     newTr.append(
-      "<td data-id='" + aharvestData.id + "'>" + aharvestData.clockOut + "</td>"
+      "<td data-id='" + aTimeData.id + "'>" + aTimeData.clockOut + "</td>"
+    );
+    newTr.append(
+      "<td data-id='" + aTimeData.id + "'>" + aTimeData.TotalTime + "</td>"
     );
   
     newTr.append("</tr>");

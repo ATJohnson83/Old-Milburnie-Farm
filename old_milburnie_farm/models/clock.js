@@ -6,10 +6,10 @@ module.exports = function(sequelize, DataTypes) {
     clockOut: {
       type: DataTypes.STRING,
       },
-      total: {
+      totalTime: {
       type: DataTypes.STRING,
       },
-     active : {
+     isActive : {
       type: DataTypes.BOOLEAN,
       defaultValue : 1
     }

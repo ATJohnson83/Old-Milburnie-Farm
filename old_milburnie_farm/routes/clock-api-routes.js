@@ -45,13 +45,14 @@ module.exports = function(app) {
   });
 
   // Clock route for saving a new Clock
-  app.post("/api/clocks", function(req, res) {
+  app.post("/api/clock", function(req, res) {
     console.log(req.body);
     db.Clock
       .create({
-        title: req.body.title,
-        body: req.body.body,
-        category: req.body.category
+        clockIn: req.body.clockIn,
+        clockOut: req.body.clockOut,
+        totalTime: req.body.totalTime,
+        isActive: true
       })
       .then(function(dbClock) {
         res.json(dbClock);
