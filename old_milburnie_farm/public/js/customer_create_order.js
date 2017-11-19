@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
-	loggedInForeman();
+  var thisUser = $(".member-name");
+
+	loggedInUser();
 	getSalesInventory();
 	showCreateScreen();
 
@@ -9,16 +11,67 @@ $(document).ready(function() {
 		$('.confirm_order').hide();
 	}
 
+	function createOrder(){
+		var date = new Date();
+		var formattedDate = moment(date).format('YYYY-MM-DD');
+		orderData={
+			UserId: thisUser.attr("value"),
+			open_date: formattedDate 
+		};
+		console.log(orderData);
+		$.post("/api/orders", orderData, function(data) {
+		console.log("db return: " + JSON.stringify(data));
+		var orderNum = data.id;
+		$('#ordnum').text(orderNum);
+		var odate = data.open_date;
+		$('#ordopend').text(odate);
+		var cdate = data.close_date;
+		$('#ordclosed').text(cdate);
+      // window.location.href = "/blog";
+    });
+	}
+
 	function showConfirmScreen(){
 		$('.create_order').hide();
 		$('.confirm_order').show();
 	}
 
-	function loggedInForeman(){
+	function createOrderLines(olines){
+		var confirmOL = $('#confirmol');
+		var oltotals = [];
+		for (var i = 0; i < olines.length; i++) {
+			var olquant = olines[i].quantity;
+			var olprice = olines[i].price;
+			var oltotal = olquant * olprice;
+			oltotals.push(oltotal);
+			var newOLtr = $("<tr>");
+			newOLtr.append("<td>"+ (i+1)+"</td>");
+			newOLtr.append("<td>"+ olines[i].name+"</td>");
+			newOLtr.append("<td>"+ olines[i].type+"</td>");
+			newOLtr.append("<td>"+ olquant+"</td>");
+			newOLtr.append("<td>"+ olines[i].unit+"</td>");
+			newOLtr.append("<td>$ "+ olprice+"</td>");
+			newOLtr.append("<td>$"+ oltotal.toFixed(2)+"</td></tr>");
+			confirmOL.append(newOLtr);
+		}
+		console.log(typeof oltotals[1]);
+		getOrderTotals(oltotals);
+	};
+
+	function getOrderTotals(oltotals){
+		var oltots = oltotals.reduce(function(sum, value) {
+  	return sum + value;}, 1);
+  	console.log("oltots: "+oltots);
+	
+			$("#oltotals").html(oltots.toFixed(2));
+	};
+
+	function loggedInUser(){
     $.get("/api/user_data").then(function(data) {
-    	console.log(data);
-      currentUser = data.name;
-      $(".member-name").text(currentUser);
+    	console.log(JSON.stringify(data));
+      thisUser.attr("value", data.id);
+      thisUser.text(data.name);
+      console.log('here: ' + thisUser.attr("value"));
     });
   };
 
@@ -38,7 +91,7 @@ $(document).ready(function() {
 	  newTr.append("<td class = 'name' type='" + aItemData.type + " 'data-id='" + aItemData.id + "'>" + aItemData.name + "</td>");
 	  newTr.append("<td class = 'quantavail' data-id='" + aItemData.id + "'>" + aItemData.quantity + "</td>");
 	  newTr.append("<td class = 'unit' data-id='" + aItemData.id + "'>" + aItemData.unit + "</td>");
-	  newTr.append("<td class = 'price' data-id='" + aItemData.id + "'>$ " + aItemData.price + "</td>");
+	  newTr.append("<td>$<span class = 'price' data-id='" + aItemData.id + "'>" + aItemData.price + "</span></td>");
 	  newTr.append("<td>|</td>");
 	  newTr.append("<td><input class='quant' type='text'></td>");
 	  newTr.append("</tr>");
@@ -66,6 +119,7 @@ $(document).ready(function() {
   $('#create_order').click(function() {
   	var orderArr = [];
     var id, name, quantavail, type, unit, price, quantity;
+    var alertArr = [];
     
     $('.row-select input[type="text"]').each(function() {
     	if ($(this).val().trim().length > 0){
@@ -81,12 +135,21 @@ $(document).ready(function() {
 	      orderArr.push(orderObj);
 
 	      if (parseInt(quantity) > parseInt(quantavail)){
-	      	alert("choose a valid "+name+" quantity");
+	      	alertArr.push(name);
 	      }     	
 	   	}
-    });
-    console.log(orderArr);
-    showConfirmScreen();
+    })
+    
+    if (alertArr.length > 0){
+    	alert("Please Enter valid " + alertArr+" quantities.");
+    	return false;
+    } 
+    else{
+    	console.log("orderArr :" + JSON.stringify(orderArr));
+    	showConfirmScreen();
+    	createOrderLines(orderArr);
+ 			createOrder();
+    }	
   });
 
 
