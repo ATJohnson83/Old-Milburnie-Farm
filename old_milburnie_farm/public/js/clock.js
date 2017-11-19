@@ -4,11 +4,15 @@ $(document).ready(function(){
 
 
  $("#clockIn").click(function(){
- clockIn = moment();
+ clockInTime = new Date()
+ clockIn = moment(clockInTime, "hh:mm")
+ console.log(clockIn);
 
 });
  $("#clockOut").click(function(){
-clockOut =  moment();
+clockOutTime = new Date();
+clockOut =  moment(clockOutTime, "hh:mm");
+console.log(clockOut)
 });
 var totalTime = $("#totalTime");
 
@@ -35,7 +39,7 @@ getTime()
    $.get("/api/clock", function(data){  
        console.log(data);
       for (var i = 0; i < data.length; i++) {
-        if(data[i].isActive == true){
+        if(data[i].active == true){
           createActiveTimeRow(data[i]);
         }
         else{

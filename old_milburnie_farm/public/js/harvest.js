@@ -7,7 +7,8 @@ $(document).ready(function() {
   var quantity = $("#quantity")
   var activeHarvestList = $("#activeHarvest");
   var trackHarvest = $("#trackHarvest");
-  var deactiveHarvestList = $("#deaciveHarvest");
+  var deactiveHarvestList = $("#deactiveHarvest");
+  var trackActiveHarvest = $("#activeHarvest");
 
   $("#cancel").click(function() {
     console.log(`cancel clicked`);
@@ -18,10 +19,14 @@ $(document).ready(function() {
     $("#field").val("");
   });
 
+  $("#addHarvest").click(addHarvest);
+  $("#getActiveHarvest").click(trackHarvest);
 
-  $("#trackHarvest").click(trackHarvest);
-  $("#addHarvest").click(activateHarvest);
-  $("#getActiveHarvest").click(getHarvest);
+  $(document).on("click", "button.trackHarvest", trackHarvest);
+  $(document).on("click", "button.addHarvest", activateHarvest);
+  $(document).on("click", "button.getActiveHarvest", trackHarvest);
+
+
   $(document).on("click", "button.user_deactivate", deactivateHarvest);
   $(document).on("click", "button.user_activate", activateHarvest);
   $(document).on("click", "button.user_delete", deleteHarvest);
@@ -179,10 +184,10 @@ $(document).ready(function() {
       "<td data-id='" + aharvestData.id + "'>" + aharvestData.id + "</td>"
     );
     newTr.append(
-      "<td data-id='" + aharvestData.id + "'>" + aharvestData.open + "</td>"
+      "<td data-id='" + aharvestData.id + "'>" + aharvestData.createdAt + "</td>"
     );
     newTr.append(
-      "<td data-id='" + aharvestData.id + "'>" + aharvestData.name + "</td>"
+      "<td data-id='" + aharvestData.id + "'>" + aharvestData.type + "</td>"
     );
     newTr.append(
       "<td data-id='" + aharvestData.id + "'>" + aharvestData.field + "</td>"
@@ -191,7 +196,11 @@ $(document).ready(function() {
       "<td data-id='" + aharvestData.id + "'>" + aharvestData.bed + "</td>"
     );
     newTr.append(
-        "<td data-id='" + aharvestData.id + "'>" + aharvestData.quantity + "</td>");
+        "<td data-id='" + aharvestData.id + "'>" + aharvestData.quantity + "</td>"
+      );
+         newTr.append(
+        "<td data-id='" + aharvestData.id + "'>" + aharvestData.name + "</td>"
+      );
     newTr.append(
       "<td><button data-id='" +
         aharvestData.id +
