@@ -55,15 +55,21 @@ $(document).ready(function() {
 			confirmOL.append(newOLtr);
 		}
 		console.log(typeof oltotals[1]);
-		getOrderTotals(oltotals);
+		getOrderTotals(oltotals,olines);
 	};
 
-	function getOrderTotals(oltotals){
+	function getOrderTotals(oltotals,olines){
 		var oltots = oltotals.reduce(function(sum, value) {
   	return sum + value;}, 1);
   	console.log("oltots: "+oltots);
-	
-			$("#oltotals").html(oltots.toFixed(2));
+		$("#oltotals").html(oltots.toFixed(2));
+		placeOrder(olines);
+	};
+
+	function placeOrder(olines){
+		$('#place_order').click(function(){
+			console.log('olines for DB: '+ JSON.stringify(olines));
+		})
 	};
 
 	function loggedInUser(){
