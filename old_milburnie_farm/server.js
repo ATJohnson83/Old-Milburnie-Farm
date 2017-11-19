@@ -19,12 +19,13 @@ app.use(passport.session());
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 require("./routes/Users-api-routes.js")(app);
-
 require("./routes/Tasks-api-routes.js")(app);
 require("./routes/Sales-Inventories-api-routes.js")(app);
 require("./routes/Orders-api-routes.js")(app);
 require("./routes/login-api-routes.js")(app);
 require("./routes/Order-Lines-api-routes.js")(app);
+require("./routes/Harvest-api-routes.js")(app);
+require("./routes/clock-api-routes.js")(app);
 
 
 

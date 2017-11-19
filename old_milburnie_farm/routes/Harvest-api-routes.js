@@ -12,8 +12,8 @@ var db = require("../models");
 // =============================================================
 module.exports = function(app) {
   // GET route for getting all of the harvests
-  app.get("/api/harvests/", function(req, res) {
-    db.Harvest.findAll({}).then(function(dbHarvest) {
+  app.get("/api/harvests", function(req, res) {
+    db.Harvest.findAll({}).then(function(dbHarvests) {
       res.json(dbHarvests);
     });
   });
@@ -26,8 +26,8 @@ module.exports = function(app) {
           id: req.params.id
         }
       })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(dbHarvest) {
+        res.json(dbHarvest);
       });
   });
 
@@ -105,6 +105,22 @@ module.exports = function(app) {
       )
       .then(function(dbHarvests) {
         res.json(dbHarvests);
+      });
+  });
+
+//Managment Routes
+//----------------------------------------------------------------------------------------------------------------------
+app.get("/api/harvests/track", function(req, res) {
+    db.Harvest
+      .findAll({
+        CreatedAt : {
+          OpenDate : req.params.OpenDate,
+          CloseDate : req.params.CloseDate,
+        }
+      })
+      .then(function(dbHarvest) {
+        res.json(dbHarvest);
+        console.log(dbHarvest);
       });
   });
 };

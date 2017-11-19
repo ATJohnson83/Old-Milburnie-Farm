@@ -6,7 +6,9 @@ $(document).ready(function() {
   var bed = $("#bed");
   var quantity = $("#quantity")
   var activeHarvestList = $("#activeHarvest");
-  var deactiveHarvestList = $("#deaciveHarvest");
+  var trackHarvest = $("#trackHarvest");
+  var deactiveHarvestList = $("#deactiveHarvest");
+  var trackActiveHarvest = $("#activeHarvest");
 
   $("#cancel").click(function() {
     console.log(`cancel clicked`);
@@ -18,7 +20,13 @@ $(document).ready(function() {
   });
 
   $("#addHarvest").click(addHarvest);
-  $("#getActiveHarvest").click(getHarvest);
+  $("#getActiveHarvest").click(trackHarvest);
+
+  $(document).on("click", "button.trackHarvest", trackHarvest);
+  $(document).on("click", "button.addHarvest", activateHarvest);
+  $(document).on("click", "button.getActiveHarvest", trackHarvest);
+
+
   $(document).on("click", "button.user_deactivate", deactivateHarvest);
   $(document).on("click", "button.user_activate", activateHarvest);
   $(document).on("click", "button.user_delete", deleteHarvest);
@@ -64,7 +72,7 @@ $(document).ready(function() {
     console.log(newHarvest, resetList);
   }
 
-  function createActiveTaskRow(aharvestData) {
+  function createActiveHarvestRow(aharvestData) {
     console.log(`create task row called`);
     var newTr = $("<tr>");
     newTr.append(
@@ -90,35 +98,29 @@ $(document).ready(function() {
         "' class='user_deactivate btn btn-primary glyphicon glyphicon-hand-down'></button></td>"
     );
     newTr.append("</tr>");
-    activeTaskList.prepend(newTr);
+    activeHarvestList.prepend(newTr);
   }
 
-  function createDeactiveTaskRow(dTaskData) {
+  function createDeactiveHarvestRow(dTaskData) {
     console.log(dTaskData);
-    console.log(
-      dTaskData.name,
-      dTaskData.employee,
-      dTaskData.OpenDate,
-      dTaskData.CloseDate,
-      dTaskData.Description,
-      dTaskData.id
-    );
     var newTr = $("<tr>");
+    newTr.append(
+      "<td data-id='" + dTaskData.id + "'>" + dTaskData.date + "</td>"
+    );
+    newTr.append(
+      "<td data-id='" + dTaskData.id + "'>" + dTaskData.type + "</td>"
+    );
     newTr.append(
       "<td data-id='" + dTaskData.id + "'>" + dTaskData.name + "</td>"
     );
     newTr.append(
-      "<td data-id='" + dTaskData.id + "'>" + dTaskData.employee + "</td>"
+      "<td data-id='" + dTaskData.id + "'>" + dTaskData.field + "</td>"
     );
     newTr.append(
-      "<td data-id='" + dTaskData.id + "'>" + dTaskData.OpenDate + "</td>"
+      "<td data-id='" + dTaskData.id + "'>" + dTaskData.bed + "</td>"
     );
-    newTr.append(
-      "<td data-id='" + dTaskData.id + "'>" + dTaskData.CloseDate + "</td>"
-    );
-    newTr.append(
-      "<td data-id='" + dTaskData.id + "'>" + dTaskData.Description + "</td>"
-    );
+     newTr.append (
+     "<td data-id='" + dTaskData.id + "'>" + dTaskData.quantity + "</td>");
     newTr.append(
       "<td><button data-id='" +
         dTaskData.id +
@@ -130,7 +132,7 @@ $(document).ready(function() {
         "' class='user_delete btn btn-danger glyphicon glyphicon-remove'></button></td>"
     );
     newTr.append("</tr>");
-    deactiveTaskList.prepend(newTr);
+    deactiveHarvestList.prepend(newTr);
   }
 
   function deactivateHarvest(event) {
@@ -159,4 +161,87 @@ $(document).ready(function() {
       url: "/api/harvests/" + id
     }).done(resetList);
   }
+
+    function trackHarvest() {
+    console.log(`track harvest called`);
+   $.get("/api/harvests/track", function(data){  
+       console.log(data);
+      for (var i = 0; i < data.length; i++) {
+        if(data[i].active == true){
+          createTrackHarvestRow(data[i]);
+        }
+        else{
+          createUntrackedHarvestRow(data[i]);
+        }
+      };
+    });
+  };
+
+   function createTrackHarvestRow(aharvestData) {
+    console.log(`create task row called`);
+    var newTr = $("<tr>");
+    newTr.append(
+      "<td data-id='" + aharvestData.id + "'>" + aharvestData.id + "</td>"
+    );
+    newTr.append(
+      "<td data-id='" + aharvestData.id + "'>" + aharvestData.createdAt + "</td>"
+    );
+    newTr.append(
+      "<td data-id='" + aharvestData.id + "'>" + aharvestData.type + "</td>"
+    );
+    newTr.append(
+      "<td data-id='" + aharvestData.id + "'>" + aharvestData.field + "</td>"
+    );
+    newTr.append(
+      "<td data-id='" + aharvestData.id + "'>" + aharvestData.bed + "</td>"
+    );
+    newTr.append(
+        "<td data-id='" + aharvestData.id + "'>" + aharvestData.quantity + "</td>"
+      );
+         newTr.append(
+        "<td data-id='" + aharvestData.id + "'>" + aharvestData.name + "</td>"
+      );
+    newTr.append(
+      "<td><button data-id='" +
+        aharvestData.id +
+        "' class='user_deactivate btn btn-primary glyphicon glyphicon-hand-down'></button></td>"
+    );
+    newTr.append("</tr>");
+    trackHarvestList.prepend(newTr);
+  }
+
+  function createUntrackedHarvestRow(dTaskData) {
+    console.log(dTaskData);
+    var newTr = $("<tr>");
+    newTr.append(
+      "<td data-id='" + dTaskData.id + "'>" + dTaskData.date + "</td>"
+    );
+    newTr.append(
+      "<td data-id='" + dTaskData.id + "'>" + dTaskData.type + "</td>"
+    );
+    newTr.append(
+      "<td data-id='" + dTaskData.id + "'>" + dTaskData.name + "</td>"
+    );
+    newTr.append(
+      "<td data-id='" + dTaskData.id + "'>" + dTaskData.field + "</td>"
+    );
+    newTr.append(
+      "<td data-id='" + dTaskData.id + "'>" + dTaskData.bed + "</td>"
+    );
+     newTr.append (
+     "<td data-id='" + dTaskData.id + "'>" + dTaskData.quantity + "</td>");
+    newTr.append(
+      "<td><button data-id='" +
+        dTaskData.id +
+        "' class='user_activate btn btn-primary glyphicon glyphicon-hand-up'></button></td>"
+    );
+    newTr.append(
+      "<td><button data-id='" +
+        dTaskData.id +
+        "' class='user_delete btn btn-danger glyphicon glyphicon-remove'></button></td>"
+    );
+    newTr.append("</tr>");
+    untrackedHarvestList.prepend(newTr);
+  }
+  
 });

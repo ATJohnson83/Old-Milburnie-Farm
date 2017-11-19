@@ -73,6 +73,7 @@
 											</td>
 											<td><input type="date"></td>
 											<td><input type="date"></td>
+											<td><button type="submit" id="trackHarvest" class="btn btn-info">track harvest</button></td>
 										</tr>
 									</tbody>
 								</table>
@@ -92,22 +93,40 @@
 										<th>Field</th>
 										<th>Bed</th>
 										<th>Quantity</th>
-										<th>Added by</th>
+										<th>DeActivate</th>
 									</thead>
 
-									<tbody id="activeHarvests">
+									<tbody id="activeHarvest">
 									
 									 </tbody>
 								</table>
 
 								<div class="row">
-                                    <div class="thumbnail menu_item col-lg-12">
-                                        <button type="submit" id="getActiveHarvest" class="btn btn-primary btn-lg btn-block btn-success">Get Active Harvests</button>
-                                    </div>
+									<div class="col-lg-4">
+										<h3>UnActive Harvests</h3>
+									</div>
+								</div>
+								<table class="table table-striped">
+									<thead>
+										<th>Order #</th>
+										<th>From</th>
+										<th>Type</th>
+										<th>Field</th>
+										<th>Bed</th>
+										<th>Quantity</th>
+										<th>Activate</th>
+										<th>Delete</th>
+									</thead>
+
+									<tbody id="deactiveHarvest">
+									
+									 </tbody>
+								</table>
+
                                 </div>
                                 <div class="row">
                                     <div class="thumbnail menu_item col-lg-12">
-                                        <button type="submit" id="clockOut" class="btn btn-primary btn-lg btn-block btn-info">Print / Save</button>
+                                        <button type="submit" id="clockOut" class="btn btn-primary btn-lg btn-block btn-info">Print</button>
                                     </div>
                                 </div>
 							
