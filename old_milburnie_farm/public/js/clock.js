@@ -4,14 +4,16 @@ $(document).ready(function(){
 
 
  $("#clockIn").click(function(){
- clockInTime = new Date()
- clockIn = moment(clockInTime, "hh:mm")
+ 
+ clockIn = new Date();
+
  console.log(clockIn);
 
 });
  $("#clockOut").click(function(){
-clockOutTime = new Date();
-clockOut =  moment(clockOutTime, "hh:mm");
+
+clockOut =  new Date();
+
 console.log(clockOut)
 });
 var totalTime = $("#totalTime");
@@ -20,7 +22,9 @@ var clockInTime = $("#clockInTime");
 var clockOutTime = $("#clockOutTime");
 var totalTimeWorked = $("#totalTime");
 
-var activeTime = $("#activeTime");
+var activeTimeList = $("#activeTime");
+var deactiveTime = $("deactiveTime");
+$(document).on("click", "button.user_delete", deleteTime);
 
 totalTimeWorked.click(addTime);
 
@@ -29,7 +33,7 @@ getTime()
 
   function resetList() {
     console.log(`reset list called`);
-    clockInTime.empty();
+    activeTimeList.empty();
     clockOutTime.empty();
     getTime();
   }
@@ -39,26 +43,37 @@ getTime()
    $.get("/api/clock", function(data){  
        console.log(data);
       for (var i = 0; i < data.length; i++) {
-        if(data[i].active == true){
+       
           createActiveTimeRow(data[i]);
-        }
-        else{
-          createDeactiveTimeRow(data[i]);
-        }
       };
     });
   };
 
     function addTime(event) {
     console.log(`add time called`);
+
+  var total = Math.abs(clockOut - clockIn);
+   var minutes = Math.floor(total / 60000);
+  var seconds = ((total % 60000) / 1000).toFixed(0);
+  
+
+
+  if (seconds < 10) {
+    seconds = "0" + seconds;
+  }
+  if (minutes < 10) {
+    minutes = '0' + minutes;
+  }
+
+  console.log(minutes, seconds);
    
-    let total = clockOut.diff(clockIn, "minutes");
+    
     console.log( total);
     var newTime = {
       clockIn: clockIn,
       clockOut: clockOut,
-      totalTime : total,
-      isActive: true
+      minutes : minutes,
+      seconds: seconds
       };
     console.log(newTime);
     $.post("/api/clock", newTime, resetList);
@@ -66,7 +81,8 @@ getTime()
   }
 
   function createActiveTimeRow(aTimeData) {
-    console.log(`create Time row called`);
+    console.log(`create time row called`);
+    console.log(aTimeData);
     var newTr = $("<tr>");
     newTr.append(
       "<td data-id='" + aTimeData.id + "'>" + aTimeData.clockIn + "</td>"
@@ -75,29 +91,41 @@ getTime()
       "<td data-id='" + aTimeData.id + "'>" + aTimeData.clockOut + "</td>"
     );
     newTr.append(
-      "<td data-id='" + aTimeData.id + "'>" + aTimeData.TotalTime + "</td>"
+      "<td data-id='" + aTimeData.id + "'>" + aTimeData.minutes + ":" + aTimeData.seconds +"</td>"
+    );
+      newTr.append(
+        "<td><button data-id='"+aTimeData.id+"' class='user_delete btn btn-danger glyphicon glyphicon-remove'></button></td>"
     );
   
     newTr.append("</tr>");
-    activeTime.prepend(newTr);
+    activeTimeList.prepend(newTr);
   }
 
-  function createDeactiveHarvestRow(dTaskData) {
-    console.log(dTaskData);
+  function createDeactiveTimeRow(dTimeData) {
+    console.log(dTimeData);
     var newTr = $("<tr>");
     newTr.append(
-      "<td data-id='" + dTaskData.id + "'>" + dTaskData.clockIn + "</td>"
+      "<td data-id='" + dTimeData.id + "'>" + dTimeData.clockIn + "</td>"
     );
     newTr.append(
-      "<td data-id='" + dTaskData.id + "'>" + dTaskData.clockOut + "</td>"
+      "<td data-id='" + dTimeData.id + "'>" + dTimeData.clockOut + "</td>"
     );
     newTr.append(
-      "<td data-id='" + dTaskData.id + "'>" + dTaskData.total + "</td>"
+      "<td data-id='" + dTimeData.id + "'>" + dTimeData.minutes + ":" + dTimeData.seconds  + "</td>"
     );
     newTr.append("</tr>");
-    deactiveHarvestList.prepend(newTr);
+    deactiveTime .prepend(newTr);
   }
 
+
+    function deleteTime(event){
+    event.stopPropagation();
+    var id = $(this).data("id");
+    $.ajax({
+      method: "DELETE",
+      url: "/api/clocks/" + id
+    }).done(resetList);
+  }
 
 
 

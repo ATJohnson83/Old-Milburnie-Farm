@@ -18,23 +18,10 @@ module.exports = function(app) {
     });
   });
 
-  // Get route for returning clocks of a specific category
-  app.get("/api/clocks/category/:category", function(req, res) {
-    db.Clock
-      .findAll({
-        where: {
-          category: req.params.category
-        }
-      })
-      .then(function(dbPost) {
-        res.json(dbPost);
-      });
-  });
-
-  // Get rotue for retrieving a single post
+    // Get route for returning Clock of a specific category by id
   app.get("/api/clocks/:id", function(req, res) {
     db.Clock
-      .findOne({
+      .findAll({
         where: {
           id: req.params.id
         }
@@ -44,15 +31,29 @@ module.exports = function(app) {
       });
   });
 
+    // Get rotue for retrieving a single Clock
+  app.get("/api/clocks/:id", function(req, res) {
+    db.Clock
+      .findOne({
+        where: {
+          id: req.params.id
+        }
+      })
+      .then(function(dbClocks) {
+        res.json(dbClocks);
+      });
+  });
+
+
   // Clock route for saving a new Clock
-  app.post("/api/clock", function(req, res) {
+  app.post("/api/clocks", function(req, res) {
     console.log(req.body);
     db.Clock
       .create({
         clockIn: req.body.clockIn,
         clockOut: req.body.clockOut,
-        totalTime: req.body.totalTime,
-        isActive: true
+        minutes: req.body.minutes,
+        seconds: req.body.seconds
       })
       .then(function(dbClock) {
         res.json(dbClock);
@@ -72,6 +73,8 @@ module.exports = function(app) {
       });
   });
 
+  
+
   // PUT route for updating clocks
   app.put("/api/clocks", function(req, res) {
     db.Clock
@@ -85,3 +88,5 @@ module.exports = function(app) {
       });
   });
 };
+
+
