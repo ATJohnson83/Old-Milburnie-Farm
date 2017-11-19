@@ -60,7 +60,7 @@ $(document).ready(function() {
 
 	function getOrderTotals(oltotals,olines){
 		var oltots = oltotals.reduce(function(sum, value) {
-  	return sum + value;}, 1);
+  	return sum + value;}, 0);
   	console.log("oltots: "+oltots);
 		$("#oltotals").html(oltots.toFixed(2));
 		placeOrder(olines);
@@ -83,10 +83,19 @@ $(document).ready(function() {
 				$.post("/api/order_lines", olinesObj, function(data) {
 					console.log("olines db return: " + JSON.stringify(data));
 				});
+				updateSlsInv(olines[i]);
 			}
 			showCreateScreen();
 		})
 	};
+
+	function updateSlsInv(olines){
+		var itemID = olines.itemid;
+		var slsquant = olines.quantavail;
+		var ordquant = olines.quantity;
+		var newslsquant = slsquant - ordquant;
+		console.log('update data: ' + newslsquant);
+	}
 
 	function loggedInUser(){
     $.get("/api/user_data").then(function(data) {
@@ -110,10 +119,10 @@ $(document).ready(function() {
 
 	function createActiveItemRow(aItemData){
 	  var newTr = $("<tr class='row-select'>");
-	  newTr.append("<td class = 'name' type='" + aItemData.type + " 'data-id='" + aItemData.id + "'>" + aItemData.name + "</td>");
+	  newTr.append("<td class = 'name' type='" + aItemData.type + "'>" + aItemData.name + "</td>");
 	  newTr.append("<td class = 'quantavail' data-id='" + aItemData.id + "'>" + aItemData.quantity + "</td>");
-	  newTr.append("<td class = 'unit' data-id='" + aItemData.id + "'>" + aItemData.unit + "</td>");
-	  newTr.append("<td>$<span class = 'price' data-id='" + aItemData.id + "'>" + aItemData.price + "</span></td>");
+	  newTr.append("<td class = 'unit'>" + aItemData.unit + "</td>");
+	  newTr.append("<td>$<span class = 'price'>" + aItemData.price + "</span></td>");
 	  newTr.append("<td>|</td>");
 	  newTr.append("<td><input class='quant' type='text'></td>");
 	  newTr.append("</tr>");
@@ -148,12 +157,13 @@ $(document).ready(function() {
 	       
 	      name = $(this).closest('tr').find('.name').html();
 	      quantavail = $(this).closest('tr').find('.quantavail').html();
+	      itemid = $(this).closest('tr').find('.quantavail').data('id');
 	      type = $(this).closest('tr').find('.name').attr('type');
 	      unit = $(this).closest('tr').find('.unit').html();
 	      price = $(this).closest('tr').find('.price').html();
 	      quantity = $(this).closest('tr').find('.quant').val().trim();
 	      
-	      orderObj = {'name':name,'type':type,'unit':unit,'price':price,'quantity':quantity};
+	      orderObj = {'name':name,'type':type,'unit':unit,'price':price,'quantavail':quantavail,'quantity':quantity,'itemid':itemid};
 	      orderArr.push(orderObj);
 
 	      if (parseInt(quantity) > parseInt(quantavail)){
