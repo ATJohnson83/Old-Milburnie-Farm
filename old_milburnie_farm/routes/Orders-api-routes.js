@@ -47,16 +47,8 @@ module.exports = function(app) {
   // POST route for saving a new post
   app.post("/api/orders", function(req, res) {
     console.log(req.body);
-    db.Post
-      .create({
-        title: req.body.title,
-        customer: req.body.customer,
-        Active: req.body.Active,
-        open_date: req.body.open_date,
-        close_date : req.body.close_date
-      })
-      .then(function(dbPost) {
-        res.json(dbPost);
+    db.Orders.create(req.body).then(function(dbOrders) {
+        res.json(dbOrders);
       });
   });
 
