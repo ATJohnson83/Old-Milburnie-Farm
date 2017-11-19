@@ -1,12 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
   var Orders= sequelize.define("Orders", {
-    customer: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
-    },
+    // customer: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   validate: {
+    //     len: [1]
+    //   }
+    // },
     open_date: {
       type: DataTypes.DATEONLY,
       allowNull: false,
@@ -21,5 +21,13 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 1
     }
   });
+
+  Orders.associate = function(models){
+    Orders.belongsTo(models.Users, {
+      foreignKey: {
+        allowNull:false
+      }
+    });
+  };
   return Orders;
 };

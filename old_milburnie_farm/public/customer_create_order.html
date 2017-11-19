@@ -7,6 +7,9 @@
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
+	 
+	 <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -47,103 +50,147 @@
 	  </div>
 
 	  <div class="row">
-	  <div class="col-lg-10 col-lg-offset-1">
-
-		<div class="panel panel-default">	
-			<div class="panel-heading text-center">
-				<h2>Create an Order</h2>
-			</div>
-				<div class="panel-body">
-					<div class="form-group">
-						<div class="row">
-							<div class="col-lg-12">
-								<div class="slsinv-container">
-									
-									<h3 class="text-center">Available Inventory | Create Order</h3>
-
-									<hr>
-									<h3>Chicken</h3>
-									<table class="createord table table-striped">
-										<thead>
-											<th id="">Name</th>
-											<th id="">Available Quantity</th>
-											<th id="">Units</th>
-											<th id="">Price</th>
-											<th id="">|</th>
-											<th id="">Order Quantity</th>
-										</thead>
-										<tbody id="chickentb"></tbody>
-									</table>
-
-									<hr>
-									
-									<h3>Pork</h3>
-									<table class="createord table table-striped">
-										<thead>
-											<th id="">Name</th>
-											<th id="">Available Quantity</th>
-											<th id="">Units</th>
-											<th id="">Price</th>
-											<th id="">|</th>
-											<th id="">Order Quantity</th>
-										</thead>
-										<tbody id="porktb"> </tbody>
-									</table>
-
-									<hr>
-									
-									<h3>Vegetable</h3>
-									<table class="createord table table-striped">
-										<thead>
-											<th id="">Name</th>
-											<th id="">Available Quantity</th>
-											<th id="">Units</th>
-											<th id="">Price</th>
-											<th id="">|</th>
-											<th id="">Order Quantity</th>
-										</thead>
-										<tbody id="vegetabletb"> </tbody>
-									</table>
-
-									<h3>Mushroom</h3>
-									<table class="createord table table-striped">
-										<thead>
-											<th id="">Name</th>
-											<th id="">Available Quantity</th>
-											<th id="">Units</th>
-											<th id="">Price</th>
-											<th id="">|</th>
-											<th id="">Order Quantity</th>
-										</thead>
-										<tbody id="mushroomtb"> </tbody>
-									</table>
-
-									<h3>Other</h3>
-									<table class="createord table table-striped">
-										<thead>
-											<th id="">Name</th>
-											<th id="">Available Quantity</th>
-											<th id="">Units</th>
-											<th id="">Price</th>
-											<th id="">|</th>
-											<th id="">Order Quantity</th>
-										</thead>
-										<tbody id="othertb"> </tbody>
-									</table>
-								
-									<div class="text-center">
-										<button class="btn btn-primary" id="create_order">Create Order</button>
+		  <div class="col-lg-10 col-lg-offset-1">
+				
+				<div class="create_order panel panel-default">	
+					<div class="panel-heading text-center">
+						<h2>Create an Order</h2>
+					</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="slsinv-container">									
+										<h3 class="text-center">Available Inventory | Create Order</h3>
+										<hr>
+										<h3>Chicken</h3>
+										<table class="createord table table-striped">
+											<thead>
+												<th id="">Name</th>
+												<th id="">Available Quantity</th>
+												<th id="">Units</th>
+												<th id="">Price</th>
+												<th id="">|</th>
+												<th id="">Order Quantity</th>
+											</thead>
+											<tbody id="chickentb"></tbody>
+										</table>
+										<hr>									
+										<h3>Pork</h3>
+										<table class="createord table table-striped">
+											<thead>
+												<th id="">Name</th>
+												<th id="">Available Quantity</th>
+												<th id="">Units</th>
+												<th id="">Price</th>
+												<th id="">|</th>
+												<th id="">Order Quantity</th>
+											</thead>
+											<tbody id="porktb"> </tbody>
+										</table>
+										<hr>									
+										<h3>Vegetable</h3>
+										<table class="createord table table-striped">
+											<thead>
+												<th id="">Name</th>
+												<th id="">Available Quantity</th>
+												<th id="">Units</th>
+												<th id="">Price</th>
+												<th id="">|</th>
+												<th id="">Order Quantity</th>
+											</thead>
+											<tbody id="vegetabletb"> </tbody>
+										</table>
+										<h3>Mushroom</h3>
+										<table class="createord table table-striped">
+											<thead>
+												<th id="">Name</th>
+												<th id="">Available Quantity</th>
+												<th id="">Units</th>
+												<th id="">Price</th>
+												<th id="">|</th>
+												<th id="">Order Quantity</th>
+											</thead>
+											<tbody id="mushroomtb"> </tbody>
+										</table>
+										<h3>Other</h3>
+										<table class="createord table table-striped">
+											<thead>
+												<th id="">Name</th>
+												<th id="">Available Quantity</th>
+												<th id="">Units</th>
+												<th id="">Price</th>
+												<th id="">|</th>
+												<th id="">Order Quantity</th>
+											</thead>
+											<tbody id="othertb"> </tbody>
+										</table>							
+										<div class="text-center">
+											<button class="btn btn-primary" id="create_order">Create Order</button>
+										</div>
 									</div>
-
 								</div>
 							</div>
 						</div>
-					</div>
+					</div>				
 				</div>
 			
+				<div class="confirm_order panel panel-default">	
+					<div class="panel-heading text-center">
+						<h2>Confirm Your Order</h2>
+					</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="mgmtords-container">
+										<h3>Order Info</h3>
+										<hr>
+									<div class="row">
+										<div class="col-lg-6">
+											<h4>Customer: <span class="member-name"></span></h4>
+										</div>
+										<div class="col-lg-6">
+											<h4>Order #: <span id="ordnum"></span></h4>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-6">
+											<h4>Open Date: <span id="ordopend"></span></h4>
+										</div>
+										<div class="col-lg-6">
+											<h4>Close Date: <span id="ordclosed"></span></h4>
+										</div>
+									</div>
+									<hr>
+										<h3>Order Details</h3>
+										<table class="table table-striped">
+											<thead>
+												<th>Item #</th>
+												<th>Name</th>
+												<th>Type</th>
+												<th>Quantity</th>
+												<th>Unit</th>
+												<th>Price</th>
+												<th>Item Amount</th>
+											</thead>
+											<tbody id="confirmol"></tbody>
+										</table>							
+										<div id="odrttl">
+											<h4>Total: $<span id="oltotals"></span></h4>
+										</div>							
+										<div class="text-center">
+											<button class="btn btn-primary">Place Order</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+
+			</div>
 		</div>
-	</div>
-	</div>
 	</div>
 </body>
 

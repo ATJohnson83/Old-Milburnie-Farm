@@ -30,7 +30,8 @@ module.exports = function(app){
       // Otherwise send back the user's name 
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
-        name: req.user.name
+        name: req.user.name,
+        id: req.user.id
       });
     }
   });
