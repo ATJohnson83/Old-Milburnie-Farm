@@ -20,9 +20,9 @@ $(document).ready(function() {
 		};
 		console.log(orderData);
 		$.post("/api/orders", orderData, function(data) {
-		console.log("db return: " + JSON.stringify(data));
+		console.log("orders db return: " + JSON.stringify(data));
 		var orderNum = data.id;
-		$('#ordnum').text(orderNum);
+		$('#ordnum').text(orderNum).attr('value',orderNum);
 		var odate = data.open_date;
 		$('#ordopend').text(odate);
 		var cdate = data.close_date;
@@ -69,6 +69,22 @@ $(document).ready(function() {
 	function placeOrder(olines){
 		$('#place_order').click(function(){
 			console.log('olines for DB: '+ JSON.stringify(olines));
+			var ordNumba = $('#ordnum').attr("value");
+			console.log("order num for lines: "+ typeof ordNumba);
+			for (var i = 0; i < olines.length; i++) {
+				olinesObj = {
+					name:olines[i].name,
+					type:olines[i].type,
+					Quantity:olines[i].quantity,
+					Unit:olines[i].unit,
+					Price:olines[i].price,
+					OrderId: ordNumba
+				};
+				$.post("/api/order_lines", olinesObj, function(data) {
+					console.log("olines db return: " + JSON.stringify(data));
+				});
+			}
+			showCreateScreen();
 		})
 	};
 

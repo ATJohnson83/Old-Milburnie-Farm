@@ -37,7 +37,7 @@ module.exports = function(app) {
 
   app.post("/api/order_lines", function(req, res) {
     console.log(req.body);
-    db.Orders.create(req.body).then(function(dbOlines) {
+    db.Order_Lines.create(req.body).then(function(dbOlines) {
         res.json(dbOlines);
       });
   });
