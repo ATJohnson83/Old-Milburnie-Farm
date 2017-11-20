@@ -1,26 +1,33 @@
+"use strict";
+
 $(document).ready(function() {
-
-  var thisUser = $(".member-name");
-
 	loggedInUser();
 	getSalesInventory();
 	showCreateScreen();
 
+	
+  
+  var thisUser = $(".member-name");
+
 	function showCreateScreen(){
 		$('.create_order').show();
 		$('.confirm_order').hide();
-	}
+	};
+
+	function showConfirmScreen(){
+		$('.create_order').hide();
+		$('.confirm_order').show();
+	};
+
 
 	function createOrder(){
 		var date = new Date();
 		var formattedDate = moment(date).format('YYYY-MM-DD');
-		orderData={
+		var orderData={
 			UserId: thisUser.attr("value"),
 			open_date: formattedDate 
 		};
-		console.log(orderData);
 		$.post("/api/orders", orderData, function(data) {
-		console.log("orders db return: " + JSON.stringify(data));
 		var orderNum = data.id;
 		$('#ordnum').text(orderNum).attr('value',orderNum);
 		var odate = data.open_date;
@@ -29,13 +36,9 @@ $(document).ready(function() {
 		$('#ordclosed').text(cdate);
       // window.location.href = "/blog";
     });
-	}
+	};
 
-	function showConfirmScreen(){
-		$('.create_order').hide();
-		$('.confirm_order').show();
-	}
-
+	
 	function createOrderLines(olines){
 		var confirmOL = $('#confirmol');
 		var oltotals = [];
@@ -54,25 +57,22 @@ $(document).ready(function() {
 			newOLtr.append("<td>$"+ oltotal.toFixed(2)+"</td></tr>");
 			confirmOL.append(newOLtr);
 		}
-		console.log(typeof oltotals[1]);
 		getOrderTotals(oltotals,olines);
 	};
 
 	function getOrderTotals(oltotals,olines){
 		var oltots = oltotals.reduce(function(sum, value) {
   	return sum + value;}, 0);
-  	console.log("oltots: "+oltots);
 		$("#oltotals").html(oltots.toFixed(2));
 		placeOrder(olines);
 	};
 
 	function placeOrder(olines){
+		console.log('placeOrder');
 		$('#place_order').click(function(){
-			console.log('olines for DB: '+ JSON.stringify(olines));
 			var ordNumba = $('#ordnum').attr("value");
-			console.log("order num for lines: "+ typeof ordNumba);
 			for (var i = 0; i < olines.length; i++) {
-				olinesObj = {
+				var olinesObj = {
 					name:olines[i].name,
 					type:olines[i].type,
 					Quantity:olines[i].quantity,
@@ -85,7 +85,6 @@ $(document).ready(function() {
 				});
 				updateSlsInv(olines[i]);
 			}
-			showCreateScreen();
 		})
 	};
 
@@ -94,27 +93,39 @@ $(document).ready(function() {
 		var slsquant = olines.quantavail;
 		var ordquant = olines.quantity;
 		var newslsquant = slsquant - ordquant;
-		console.log('update data: ' + newslsquant);
+    $.ajax({
+      method: "PUT",
+      url: "/api/sales_inventory/update/"+itemID+"/"+newslsquant
+    }).done(function(res){
+    	console.log('update DB res: '+ res);
+    	window.location.href = "/customer_create_order";
+    });
 	}
+
+	function clearCurrInv(){
+		$('#chickentb').empty();
+		$('#porktb').empty();
+		$('#vegetabletb').empty();
+		$('#mushroomtb').empty();
+		$('#othertb').empty();
+	};
 
 	function loggedInUser(){
     $.get("/api/user_data").then(function(data) {
-    	console.log(JSON.stringify(data));
       thisUser.attr("value", data.id);
       thisUser.text(data.name);
-      console.log('here: ' + thisUser.attr("value"));
     });
   };
 
 	function getSalesInventory(){
-	    $.get("/api/sales_inventory", function(data){ 
-	    console.log("db data: " + JSON.stringify(data));    
+		// clearCurrInv();
+	    $.get("/api/sales_inventory", function(data){    
 	      for (var i = 0; i < data.length; i++) {
 	        if(data[i].active == true){
 	          createActiveItemRow(data[i]);
 	        }
 	      };
-	    });
+	    })
 	  };
 
 	function createActiveItemRow(aItemData){
@@ -149,7 +160,7 @@ $(document).ready(function() {
 
   $('#create_order').click(function() {
   	var orderArr = [];
-    var id, name, quantavail, type, unit, price, quantity;
+    var id, name, quantavail,itemid, type, unit, price, quantity;
     var alertArr = [];
     
     $('.row-select input[type="text"]').each(function() {
@@ -163,29 +174,32 @@ $(document).ready(function() {
 	      price = $(this).closest('tr').find('.price').html();
 	      quantity = $(this).closest('tr').find('.quant').val().trim();
 	      
-	      orderObj = {'name':name,'type':type,'unit':unit,'price':price,'quantavail':quantavail,'quantity':quantity,'itemid':itemid};
+	      var orderObj = {'name':name,'type':type,'unit':unit,'price':price,'quantavail':quantavail,'quantity':quantity,'itemid':itemid};
 	      orderArr.push(orderObj);
 
-	      if (parseInt(quantity) > parseInt(quantavail)){
+	      if (parseInt(quantity) > parseInt(quantavail)|| parseInt(quantity)< 0){
 	      	alertArr.push(name);
 	      }     	
 	   	}
     })
+    if (orderArr.length == 0){
+    	alert('Your Order is Empty.');
+    	return false;
+    }
     
     if (alertArr.length > 0){
     	alert("Please Enter valid " + alertArr+" quantities.");
     	return false;
     } 
     else{
-    	console.log("orderArr :" + JSON.stringify(orderArr));
     	showConfirmScreen();
     	createOrderLines(orderArr);
  			createOrder();
     }	
   });
 
+});	
 
-});
 
 // do something like this ^ to go through table rows, and get the sales inventory id and amount entered by customer
 // for each checked item, put them in an array [{item id: 1, item quant: 4}, {item id: 3, item quant: 6}] etc.
