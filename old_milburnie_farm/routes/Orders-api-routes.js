@@ -20,14 +20,14 @@ module.exports = function(app) {
 
   // Get route for returning orders of a specific category by id
   app.get("/api/orders/:id", function(req, res) {
-    db.Post
+    db.Orders
       .findAll({
         where: {
-          id: req.params.id
+          UserId: req.params.id
         }
       })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(dbOrders) {
+        res.json(dbOrders);
       });
   });
 
@@ -44,7 +44,6 @@ module.exports = function(app) {
       });
   });
 
-  // POST route for saving a new post
   app.post("/api/orders", function(req, res) {
     console.log(req.body);
     db.Orders.create(req.body).then(function(dbOrders) {

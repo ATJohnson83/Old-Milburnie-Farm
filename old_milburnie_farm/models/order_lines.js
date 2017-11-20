@@ -1,9 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
   var Order_Lines= sequelize.define("Order_Lines", {
-    order_num: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -31,5 +27,12 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 0
     }
   });
+  Order_Lines.associate = function(models){
+    Order_Lines.belongsTo(models.Orders, {
+      foreignKey: {
+        allowNull:false
+      }
+    });
+  };
   return Order_Lines;
 };
