@@ -4,6 +4,7 @@ $(document).ready(function() {
 	var thisUser = $(".member-name");
 
 	loggedInUser();
+
 	showMyOrders();
 
 	$('#btmo').click(showMyOrders);
@@ -18,6 +19,7 @@ $(document).ready(function() {
 		$(".my_order_view").show();
 	};
 
+
 	function loggedInUser(){
     $.get("/api/user_data").then(function(data) {
       thisUser.text(data.name);
@@ -31,7 +33,9 @@ $(document).ready(function() {
   	console.log(id);
 	    $.get("/api/orders/"+ id, function(data){    
 	      for (var i = 0; i < data.length; i++) {
+
 	        if(data[i].order_status == "Open"){
+
 	          createActiveRow(data[i]);
 	        }
 	      };
@@ -44,6 +48,7 @@ $(document).ready(function() {
 	 	var myOrderstr = $("<tr>");
 			myOrderstr.append("<td>"+ data.id +"</td>");
 			myOrderstr.append("<td>"+ data.open_date+"</td>");
+
 			myOrderstr.append("<td><button data-id='"+ data.id +"' class='viewmyorder btn btn-primary glyphicon glyphicon-sunglasses'></button></td>");
 		customeractords.append(myOrderstr);
 	 }
@@ -94,6 +99,7 @@ $(document).ready(function() {
   	return sum + value;}, 0);
 		$("#totalPrice").html(totalPrice.toFixed(2));
 	};
+
 
 
 

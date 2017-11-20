@@ -2,82 +2,71 @@
 $(document).ready(function(){
 
 
-
+//register clock in time
  $("#clockIn").click(function(){
+  clockIn = new Date();
+});
  
- clockIn = new Date();
-
- console.log(clockIn);
-
-});
- $("#clockOut").click(function(){
-
+//register clock out time
+$("#clockOut").click(function(){
 clockOut =  new Date();
-
-console.log(clockOut)
 });
-var totalTime = $("#totalTime");
 
+var totalTime = $("#totalTime");
 var clockInTime = $("#clockInTime");
 var clockOutTime = $("#clockOutTime");
 var totalTimeWorked = $("#totalTime");
-
 var activeTimeList = $("#activeTime");
-var deactiveTime = $("deactiveTime");
+var deactiveTime = $("#deactiveTime");
 $(document).on("click", "button.user_delete", deleteTime);
+$(document).on("click", "button.totalTimeWorked", totalTime);
 
+//add tiem function
 totalTimeWorked.click(addTime);
 
+//get time function on page load
 getTime()
 
-
+//reset list gets called afted add Time
   function resetList() {
     console.log(`reset list called`);
     activeTimeList.empty();
     clockOutTime.empty();
     getTime();
   }
-
+//get time called after reset list
     function getTime() {
     console.log(`get time called`);
    $.get("/api/clock", function(data){  
-       console.log(data);
+      
       for (var i = 0; i < data.length; i++) {
-       
           createActiveTimeRow(data[i]);
       };
     });
   };
 
-    function addTime(event) {
-    console.log(`add time called`);
+  //function to add total time
+  function addTime(event) {
+    
 
   var total = Math.abs(clockOut - clockIn);
-   var minutes = Math.floor(total / 60000);
+  var minutes = Math.floor(total / 60000);
   var seconds = ((total % 60000) / 1000).toFixed(0);
   
-
-
   if (seconds < 10) {
     seconds = "0" + seconds;
   }
   if (minutes < 10) {
     minutes = '0' + minutes;
   }
-
-  console.log(minutes, seconds);
-   
-    
-    console.log( total);
     var newTime = {
       clockIn: clockIn,
       clockOut: clockOut,
       minutes : minutes,
       seconds: seconds
       };
-    console.log(newTime);
-    $.post("/api/clock", newTime, resetList);
-    console.log(newTime, resetList);
+
+    $.post("/api/clocks", newTime, resetList);
   }
 
   function createActiveTimeRow(aTimeData) {
@@ -93,6 +82,7 @@ getTime()
     newTr.append(
       "<td data-id='" + aTimeData.id + "'>" + aTimeData.minutes + ":" + aTimeData.seconds +"</td>"
     );
+    
       newTr.append(
         "<td><button data-id='"+aTimeData.id+"' class='user_delete btn btn-danger glyphicon glyphicon-remove'></button></td>"
     );
@@ -129,14 +119,6 @@ getTime()
 
 
 
-  
 
-
-
-
-
-
- 
- 
- }) ;
+ }); //close document ready function
   
