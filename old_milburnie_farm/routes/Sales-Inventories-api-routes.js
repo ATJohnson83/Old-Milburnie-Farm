@@ -58,6 +58,7 @@ module.exports = function(app) {
     });
   });
 
+
   app.put("/api/sales_inventory/deactivate/:id", function(req, res) {
     db.Sales_Inventory.update({
       active: false
@@ -73,6 +74,19 @@ module.exports = function(app) {
   app.put("/api/sales_inventory/activate/:id", function(req, res) {
     db.Sales_Inventory.update({
       active: true
+    }, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbSlsinv) {
+      res.json(dbSlsinv);
+    });
+  });
+
+  app.put("/api/sales_inventory/update/:id/:newslsquant", function(req, res) {
+    console.log("from FE :"+ req.params.newslsquant);
+    db.Sales_Inventory.update({
+      quantity: req.params.newslsquant
     }, {
       where: {
         id: req.params.id
