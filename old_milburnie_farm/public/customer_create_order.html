@@ -29,6 +29,15 @@
 		.curusr{
     color: blue;
   	}
+
+  	.ordhead{
+  		font-weight: bold;
+  	}
+
+  	.headdata{
+  		margin-left: 10px;
+  	}
+  	
 	</style>
 
 </head>
@@ -149,18 +158,15 @@
 										<hr>
 									<div class="row">
 										<div class="col-lg-6">
-											<h4>Customer: <span class="member-name"></span></h4>
+											<h4> <span class="ordhead">Customer:</span><span class="headdata member-name"></span></h4>
 										</div>
 										<div class="col-lg-6">
-											<h4>Order #: <span id="ordnum"></span></h4>
+											<h4><span class="ordhead">Order #:</span><span class="headdata" id="ordnum"></span></h4>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-6">
-											<h4>Open Date: <span id="ordopend"></span></h4>
-										</div>
-										<div class="col-lg-6">
-											<h4>Close Date: <span id="ordclosed"></span></h4>
+											<h4> <span class="ordhead">Order Date:</span><span class="headdata" id="ordopend"></span></h4>
 										</div>
 									</div>
 									<hr>

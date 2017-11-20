@@ -31,16 +31,15 @@ module.exports = function(app) {
       });
   });
 
-  // Get rotue for retrieving a single Task
-  app.get("/api/orders/:id", function(req, res) {
-    db.Task
+  app.get("/api/order/:id", function(req, res) {
+    db.Orders
       .findOne({
         where: {
           id: req.params.id
         }
       })
-      .then(function(dbTask) {
-        res.json(dbTask);
+      .then(function(dbOrder) {
+        res.json(dbOrder);
       });
   });
 
