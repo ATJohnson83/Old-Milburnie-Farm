@@ -25,6 +25,14 @@
 		.curusr{
     color: blue;
   	}
+
+  	#btmo{
+  		color:blue;
+  	}
+  	
+  	#btmo:hover{
+  		font-size: 15px;
+  	}
 	</style>
 
 </head>
@@ -39,55 +47,115 @@
 	</div>
 
 <div class="container">
+	
 	<div class="row">
     <div class="col-lg-12">
       <h3><span class="member-name curusr"></span></h3>
     </div>
   </div>
-	<div class="panel panel-default">		
+	
+	<div class="my_orders_view panel panel-default">		
 		<div class="panel-heading text-center">
 			<h2>Orders</h2>
-		</div>
-			<div class="panel-body">
-				<div class="form-group">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="mgmtords-container">
-								<h3>Active Orders</h3>
-								<table class="table table-striped">
-									<thead>
-										<th id="">Order #</th>
-										<th id="">Open Date</th>
-										<th id="">Close Date</th>
-										<th id="">View</th>
-									</thead>
-									<tbody id="customeractords"></tbody>
-								</table>
+		</div>		
+		<div class="panel-body">
+			<div class="form-group">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="mgmtords-container">
+							<h3>Open Orders</h3>
+							<table class="table table-striped">
+								<thead>
+									<th id="">Order #</th>
+									<th id="">Order Date</th>
+									<th id="">View</th>
+								</thead>
+								<tbody id="customeractords"></tbody>
+							</table>
 
-								<hr>
-								
-								<div class="row">
-									<div class="col-lg-4">
-										<h3>DeActive Orders</h3>
-									</div>
-								</div>
-								<table class="table table-striped">
-									<thead>
-										<th id="">Order #</th>
-										<th id="">Open Date</th>
-										<th id="">Close Date</th>
-										<th id="">View</th>
-									</thead>
-									<tbody id="customerdeactords"> </tbody>
-								</table>
+							<hr>
 							
+							<div class="row">
+								<div class="col-lg-4">
+									<h3>Closed Orders</h3>
+								</div>
 							</div>
+							<table class="table table-striped">
+								<thead>
+									<th id="">Order #</th>
+									<th id="">Order Date</th>
+									<th id="">View</th>
+								</thead>
+								<tbody id="customerdeactords"> </tbody>
+							</table>
+						
 						</div>
 					</div>
 				</div>
 			</div>
-		
+		</div>	
 	</div>
+
+	<div class="my_order_view panel panel-default">	
+		<div class="panel-heading text-center">
+			<h2>Your Order</h2>
+			<h5 id="btmo">Back to My Orders</h5>
+		</div>
+		<div class="panel-body">
+			<div class="form-group">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="mgmtords-container">
+							<h3>Order Info</h3>
+							<hr>
+							<div class="row">
+								<div class="col-lg-6">
+									<h4> <span class="ordhead">Customer:</span><span class="headdata member-name"></span></h4>
+								</div>
+								<div class="col-lg-6">
+									<h4><span class="ordhead">Order #:</span><span class="headdata" id="ordnum"></span></h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-6">
+									<h4> <span class="ordhead">Order Date:</span><span class="headdata" id="ordopend"></span></h4>
+								</div>
+								<div class="col-lg-6">
+									<h4> <span class="ordhead">Date Delivered:</span><span class="headdata" id="orddelivd"></span></h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-6">
+									<h4> <span class="ordhead">Payment Status:</span><span class="headdata" id="ordpaystatus"></span></h4>
+								</div>
+								<div class="col-lg-6">
+									<h4> <span class="ordhead">Order Status:</span><span class="headdata" id="ordstatus"></span></h4>
+								</div>
+							</div>
+							<hr>
+							<h3>Order Details</h3>
+							<table class="table table-striped">
+								<thead>
+									<th>Item #</th>
+									<th>Name</th>
+									<th>Type</th>
+									<th>Quantity</th>
+									<th>Unit</th>
+									<th>Price</th>
+									<th>Item Amount</th>
+								</thead>
+								<tbody id="viewmyorder"></tbody>
+							</table>							
+							<div id="odrttl">
+								<h4>Total: $<span id="totalPrice"></span></h4>
+							</div>							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+
 </div>
 <script type="text/javascript" src="./js/customer_my_orders.js"></script>
 </body>

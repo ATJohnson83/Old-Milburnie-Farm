@@ -32,8 +32,6 @@ $(document).ready(function() {
 		$('#ordnum').text(orderNum).attr('value',orderNum);
 		var odate = data.open_date;
 		$('#ordopend').text(odate);
-		var cdate = data.close_date;
-		$('#ordclosed').text(cdate);
       // window.location.href = "/blog";
     });
 	};
