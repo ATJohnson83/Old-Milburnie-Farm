@@ -5,13 +5,17 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       len: [1]
     },
-    close_date: {
+    delivered_date: {
       type: DataTypes.DATEONLY,
-      allowNull: true
+      allowNull: true,
     },
-    Active: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: 1
+    payment_status: {
+      type: DataTypes.STRING,
+      defaultValue: "Unpaid"
+    },
+    order_status: {
+      type: DataTypes.STRING,
+      defaultValue: "Open"
     }
   });
 

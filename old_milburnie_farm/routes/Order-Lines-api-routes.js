@@ -10,14 +10,14 @@ module.exports = function(app) {
 
   
   app.get("/api/order_lines/:id", function(req, res) {
-    db.Post
+    db.Order_Lines
       .findAll({
         where: {
-          id: req.params.id
+          OrderId: req.params.id
         }
       })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(dbOlines) {
+        res.json(dbOlines);
       });
   });
 

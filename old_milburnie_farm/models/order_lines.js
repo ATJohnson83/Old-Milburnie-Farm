@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
       len: [1]
     },
     Quantity: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DECIMAL(10,3),
       allowNull:true,
       defaultValue: 0
     },
@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
     },
     Price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DECIMAL(10,2),
       allowNull: true,
       defaultValue: 0
     }
