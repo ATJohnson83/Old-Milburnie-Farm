@@ -162,6 +162,8 @@ $(document).ready(function() {
     }).done(resetList);
   }
 
+
+//Managment Harvest Tasks --------------------------------------------------------------------------
     function trackHarvest() {
     console.log(`track harvest called`);
    $.get("/api/harvests/track", function(data){  
@@ -243,5 +245,13 @@ $(document).ready(function() {
     newTr.append("</tr>");
     untrackedHarvestList.prepend(newTr);
   }
+
+//Query Harvests ------------------------------------------------------
+$("#trackHarvest").click(function(event){
+   event.preventDefault();
+   $.get('/api/harvests/:name?/:type?/createdAt?/:updatedAt?', function(data) {
+     console.log(data);
+   })
+})
   
 });

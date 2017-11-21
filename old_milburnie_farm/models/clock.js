@@ -6,13 +6,9 @@ module.exports = function(sequelize, DataTypes) {
     clockOut: {
       type: DataTypes.STRING,
       },
-      minutes: {
-      type: DataTypes.INTEGER,
-      },
-     seconds : {
-      type: DataTypes.INTEGER,
-      defaultValue : 1
-    }
+      total: {
+      type: DataTypes.STRING,
+      }
   });
   return Clock;
 };

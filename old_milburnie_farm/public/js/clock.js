@@ -2,15 +2,15 @@
 $(document).ready(function(){
 
 
-//register clock in time
- $("#clockIn").click(function(){
-  clockIn = new Date();
-});
+// //register clock in time
+//  $("#clockIn").click(function(){
+//   clockIn = moment();
+// });
  
-//register clock out time
-$("#clockOut").click(function(){
-clockOut =  new Date();
-});
+// //register clock out time
+// $("#clockOut").click(function(){
+// clockOut =  moment();
+// });
 
 var totalTime = $("#totalTime");
 var clockInTime = $("#clockInTime");
@@ -38,7 +38,30 @@ getTime()
     function getTime() {
     console.log(`get time called`);
    $.get("/api/clock", function(data){  
+      console.log(data);
+    
+      //register clock in time
+
+      $("#clockInBtn").click(function(){
+        clockIn = moment();
+      });
+ 
       
+ 
+//register clock out time
+
+      $("#clockOutBtn").click(function(){
+        clockOut =  moment();
+        });
+
+      $("#clockInBtn").click(function(){
+        clockIn = moment();
+      })
+
+      
+
+      // total = clockOut.diff(clockIn, 'minutes');
+      // console.log(total);   
       for (var i = 0; i < data.length; i++) {
           createActiveTimeRow(data[i]);
       };
@@ -49,21 +72,21 @@ getTime()
   function addTime(event) {
     
 
-  var total = Math.abs(clockOut - clockIn);
-  var minutes = Math.floor(total / 60000);
-  var seconds = ((total % 60000) / 1000).toFixed(0);
+  // var total = Math.abs(clockOut - clockIn);
+  // var minutes = Math.floor(total / 60000);
+  // var seconds = ((total % 60000) / 1000).toFixed(0);
   
-  if (seconds < 10) {
-    seconds = "0" + seconds;
-  }
-  if (minutes < 10) {
-    minutes = '0' + minutes;
-  }
+  // if (seconds < 10) {
+  //   seconds = "0" + seconds;
+  // }
+  // if (minutes < 10) {
+  //   minutes = '0' + minutes;
+  // }
+    
     var newTime = {
-      clockIn: clockIn,
-      clockOut: clockOut,
-      minutes : minutes,
-      seconds: seconds
+      clockIn: clockIn.format('hh:mm'),
+      clockOut: clockOut.format('hh:mm'),
+      total: clockOut.diff(clockIn, 'minutes')
       };
 
     $.post("/api/clocks", newTime, resetList);
@@ -80,7 +103,7 @@ getTime()
       "<td data-id='" + aTimeData.id + "'>" + aTimeData.clockOut + "</td>"
     );
     newTr.append(
-      "<td data-id='" + aTimeData.id + "'>" + aTimeData.minutes + ":" + aTimeData.seconds +"</td>"
+      "<td data-id='" + aTimeData.id + "'>" + aTimeData.total +"</td>"
     );
     
       newTr.append(
