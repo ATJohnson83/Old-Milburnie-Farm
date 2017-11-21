@@ -44,6 +44,7 @@ $(document).ready(function() {
     console.log(`get harvest called`);
    $.get("/api/harvests", function(data){  
        console.log(data);
+       
       for (var i = 0; i < data.length; i++) {
         if(data[i].active == true){
           createActiveHarvestRow(data[i]);

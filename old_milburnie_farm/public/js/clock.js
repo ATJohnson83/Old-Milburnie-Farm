@@ -71,18 +71,6 @@ getTime()
   //function to add total time
   function addTime(event) {
     
-
-  // var total = Math.abs(clockOut - clockIn);
-  // var minutes = Math.floor(total / 60000);
-  // var seconds = ((total % 60000) / 1000).toFixed(0);
-  
-  // if (seconds < 10) {
-  //   seconds = "0" + seconds;
-  // }
-  // if (minutes < 10) {
-  //   minutes = '0' + minutes;
-  // }
-    
     var newTime = {
       clockIn: clockIn.format('hh:mm'),
       clockOut: clockOut.format('hh:mm'),
