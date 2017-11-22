@@ -7,6 +7,8 @@
 
 // Requiring our Todo model
 var db = require("../models");
+var Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 // Routes
 // =============================================================
@@ -17,6 +19,7 @@ module.exports = function(app) {
       res.json(dbHarvests);
     });
   });
+}
 
   // Get route for returning Harvests of a specific category by id
   app.get("/api/harvests/:id", function(req, res) {
@@ -110,17 +113,15 @@ module.exports = function(app) {
 
 //Managment Routes
 //----------------------------------------------------------------------------------------------------------------------
-app.get("/api/harvests/track", function(req, res) {
-    db.Harvest
-      .findAll({
-        CreatedAt : {
-          OpenDate : req.params.OpenDate,
-          CloseDate : req.params.CloseDate,
-        }
-      })
-      .then(function(dbHarvest) {
-        res.json(dbHarvest);
-        console.log(dbHarvest);
-      });
-  });
-};
+app.get("/api/harvest/:sdate?/:edate?" , function(req, res) {
+		db.Harvest.findAll({
+			where: {
+				date: {
+					[Op.between]: [req.params.sdate, req.params.edate]
+				}
+			}
+		}).then(function(dbHarvest) {
+      res.json(dbHarvest);
+		});
+	});
+
