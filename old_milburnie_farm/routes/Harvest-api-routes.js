@@ -19,7 +19,7 @@ module.exports = function(app) {
       res.json(dbHarvests);
     });
   });
-}
+
 
   // Get route for returning Harvests of a specific category by id
   app.get("/api/harvests/:id", function(req, res) {
@@ -124,4 +124,6 @@ app.get("/api/harvest/:sdate?/:edate?" , function(req, res) {
       res.json(dbHarvest);
 		});
 	});
+
+};
 
