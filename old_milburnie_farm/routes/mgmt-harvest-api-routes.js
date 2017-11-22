@@ -4,20 +4,20 @@ const Op = Sequelize.Op;
 
 module.exports = function(app) {
 
-app.get('/api/harvests/:name?/:type?/createdAt?/:updatedAt?') function (req, res) {
-    db.Harvest.findAll({
-        where: {
-            name : req.params.name,
-            type : req.params.type,
-            date: {
-                [Op.between] : [req.params.createdAt, req.params.updatedAt]
-            }
-           }
+app.get("/api/harvests/:sdate?/:edate?", function(req, res) {
+  db.Harvest
+    .findAll({
+      where: {
+        date: {
+          [Op.between]: [req.params.sdate, req.params.edate]
         }
-    }).then(function(dbHarvests){
-        res.json(dbHarvests);
-     });
+      }
+    })
+    .then(function(dbHarvest) {
+      res.json(dbHarvest);
     });
+  });
+};
 
 
 

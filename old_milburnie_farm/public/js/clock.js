@@ -2,16 +2,6 @@
 $(document).ready(function(){
 
 
-// //register clock in time
-//  $("#clockIn").click(function(){
-//   clockIn = moment();
-// });
- 
-// //register clock out time
-// $("#clockOut").click(function(){
-// clockOut =  moment();
-// });
-
 var totalTime = $("#totalTime");
 var clockInTime = $("#clockInTime");
 var clockOutTime = $("#clockOutTime");
