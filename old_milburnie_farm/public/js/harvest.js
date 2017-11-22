@@ -44,6 +44,7 @@ $(document).ready(function() {
     console.log(`get harvest called`);
    $.get("/api/harvests", function(data){  
        console.log(data);
+       
       for (var i = 0; i < data.length; i++) {
         if(data[i].active == true){
           createActiveHarvestRow(data[i]);
@@ -163,7 +164,7 @@ $(document).ready(function() {
   }
 
 
-//Managment Harvest Tasks --------------------------------------------------------------------------
+});//Managment Harvest Tasks 
     function trackHarvest() {
     console.log(`track harvest called`);
    $.get("/api/harvests/track", function(data){  
@@ -231,7 +232,8 @@ $(document).ready(function() {
       "<td data-id='" + dTaskData.id + "'>" + dTaskData.bed + "</td>"
     );
      newTr.append (
-     "<td data-id='" + dTaskData.id + "'>" + dTaskData.quantity + "</td>");
+     "<td data-id='" + dTaskData.id + "'>" + dTaskData.quantity + "</td>"
+     );
     newTr.append(
       "<td><button data-id='" +
         dTaskData.id +
@@ -247,11 +249,26 @@ $(document).ready(function() {
   }
 
 //Query Harvests ------------------------------------------------------
-$("#trackHarvest").click(function(event){
-   event.preventDefault();
-   $.get('/api/harvests/:name?/:type?/createdAt?/:updatedAt?', function(data) {
-     console.log(data);
-   })
-})
-  
+
+$("#trackHarvest").click(function() {
+
+  mgmtHarvest();
 });
+
+
+function mgmtHarvest(){
+  console.log(`mgmt harvest called`);
+		
+		var sdate = $('#startDate').val().trim();
+		var edate = $('#endDate').val().trim();
+
+		$.get("/api/harvest/" + sdate + "/" + edate, function(
+      data
+    ) {
+      for (var i = 0; i < data.length; i++) {
+        createHarvestRow(data[i]);
+      }
+    });
+  }
+
+

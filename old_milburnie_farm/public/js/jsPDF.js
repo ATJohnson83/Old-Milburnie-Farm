@@ -21,14 +21,8 @@ var specialElementHandlers = {
         return true;
     }
 };
-
+//print managment harvest
 $('#printMgmtHarvest').click(function () {   
-    // doc.fromHTML($('#harvests').get(0), 15, 15, {
-    //     'width': 170,
-    //         'elementHandlers': specialElementHandlers
-    // });
-    // doc.save('sample-file.pdf');
-
     html2canvas($("#harvests"), {
             background : "#ffffff",
             onrendered: function(canvas) {      
@@ -36,9 +30,66 @@ $('#printMgmtHarvest').click(function () {
                     'image/jpeg');              
                 var doc = new jsPDF('p', 'mm');
                 doc.addImage(imgData, 'jpeg', 10, 10);
-                doc.save('sample-file.pdf');
+                doc.save('harvest.pdf');
             }
         })
     
+});
+//print management time
+$("#printMgmtTime").click(function() {
+    console.log(`clicked`);
+  html2canvas($("#mgmtEmployeeTime"), {
+    background: "#ffffff",
+    onrendered: function(canvas) {
+      var imgData = canvas.toDataURL("image/jpeg");
+      var doc = new jsPDF("p", "mm");
+      doc.addImage(imgData, "jpeg", 10, 10);
+      doc.save("time.pdf");
+    }
+  });
+});
+
+//print management taks
+$("#printMgmtTasks").click(function() {
+  console.log(`clicked`);
+  html2canvas($("#mgmtTasks"), {
+    background: "#ffffff",
+    onrendered: function(canvas) {
+      var imgData = canvas.toDataURL("image/jpeg");
+      var doc = new jsPDF("p", "mm");
+      doc.addImage(imgData, "jpeg", 10, 10);
+      doc.save("mgmtTasks.pdf");
+    }
+  });
+});
+
+//print employee active tasks
+
+$("#printEmployeeTasks").click(function() {
+  console.log(`clicked`);
+  html2canvas($("#employeeTasks"), {
+    background: "#ffffff",
+    onrendered: function(canvas) {
+      var imgData = canvas.toDataURL("image/jpeg");
+      var doc = new jsPDF("p", "mm");
+      doc.addImage(imgData, "jpeg", 10, 10);
+      doc.save("employeeTasks.pdf");
+    }
+  });
+});
+
+//print employee active Harvest
+
+$("#printEmployeeHarvest").click(function() {
+  console.log(`clicked`);
+  html2canvas($("#employeeHarvest"), {
+    background: "#ffffff",
+    onrendered: function(canvas) {
+      var imgData = canvas.toDataURL("image/jpeg");
+      var doc = new jsPDF("p", "mm");
+      doc.addImage(imgData, "jpeg", 10, 10);
+      doc.save("employeeHarvest.pdf");
+    }
+  });
 });
 
