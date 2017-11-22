@@ -9,6 +9,7 @@ $(document).ready(function() {
   var trackHarvest = $("#trackHarvest");
   var deactiveHarvestList = $("#deactiveHarvest");
   var trackActiveHarvest = $("#activeHarvest");
+  var mgmtActiveHarvest = $("#mgmtActiveHarvest");
 
   $("#cancel").click(function() {
     console.log(`cancel clicked`);
@@ -257,18 +258,17 @@ $("#trackHarvest").click(function() {
 
 
 function mgmtHarvest(){
-  console.log(`mgmt harvest called`);
 		
 		var sdate = $('#startDate').val().trim();
 		var edate = $('#endDate').val().trim();
 
-		$.get("/api/harvest/" + sdate + "/" + edate, function(
-      data
-    ) {
+		$.get("/api/harvests/" + sdate + "/" + edate, function(data) {
       for (var i = 0; i < data.length; i++) {
-        createHarvestRow(data[i]);
+        createActiveHarvestRow(data[i]);
       }
     });
-  }
+
+
+  };
 
 

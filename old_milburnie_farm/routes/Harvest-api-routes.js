@@ -113,17 +113,8 @@ module.exports = function(app) {
 
 //Managment Routes
 //----------------------------------------------------------------------------------------------------------------------
-app.get("/api/harvest/:sdate?/:edate?" , function(req, res) {
-		db.Harvest.findAll({
-			where: {
-				date: {
-					[Op.between]: [req.params.sdate, req.params.edate]
-				}
-			}
-		}).then(function(dbHarvest) {
-      res.json(dbHarvest);
-		});
-	});
+
+}
 
 };
 
