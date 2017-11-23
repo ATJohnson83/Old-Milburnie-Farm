@@ -32,7 +32,7 @@ $(document).ready(function() {
   $(document).on("click", "button.user_activate", activateHarvest);
   $(document).on("click", "button.user_delete", deleteHarvest);
 
-  getHarvest();
+  // getHarvest();
 
   function resetList() {
     console.log(`reset list called`);
@@ -165,7 +165,7 @@ $(document).ready(function() {
   }
 
 
-});//Managment Harvest Tasks 
+;//Managment Harvest Tasks 
     function trackHarvest() {
     console.log(`track harvest called`);
    $.get("/api/harvests/track", function(data){  
@@ -271,4 +271,4 @@ function mgmtHarvest(){
 
   };
 
-
+})
