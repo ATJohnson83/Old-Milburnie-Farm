@@ -28,7 +28,8 @@ module.exports = function(app) {
       .findOne({
         where: {
           id: req.params.id
-        }
+        },
+        include: [db.Users]
       })
       .then(function(dbOrder) {
         res.json(dbOrder);
@@ -57,6 +58,7 @@ module.exports = function(app) {
 
 
   app.put("/api/orders", function(req, res) {
+    console.log(req);
     db.Orders
       .update(req.body, {
         where: {
