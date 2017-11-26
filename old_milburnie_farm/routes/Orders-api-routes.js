@@ -1,24 +1,16 @@
-// *********************************************************************************
-// api-routes.js - this file offers a set of routes for displaying and saving data to the db
-// *********************************************************************************
 
-// Dependencies
-// =============================================================
-
-// Requiring our Todo model
 var db = require("../models");
 
-// Routes
-// =============================================================
+
 module.exports = function(app) {
-  // GET route for getting all of the orders
+
   app.get("/api/orders/", function(req, res) {
-    db.Post.findAll({}).then(function(dbPost) {
-      res.json(dbPost);
+    db.Orders.findAll({include: [db.Users]}).then(function(dbOrders) {
+      res.json(dbOrders);
     });
   });
 
-  // Get route for returning orders of a specific category by id
+
   app.get("/api/orders/:id", function(req, res) {
     db.Orders
       .findAll({
@@ -50,29 +42,30 @@ module.exports = function(app) {
       });
   });
 
-  // DELETE route for deleting orders
+
   app.delete("/api/orders/:id", function(req, res) {
-    db.Post
+    db.Orders
       .destroy({
         where: {
           id: req.params.id
         }
       })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(dbOrders) {
+        res.json(dbOrders);
       });
   });
 
-  // PUT route for updating orders
+
   app.put("/api/orders", function(req, res) {
-    db.Post
+    db.Orders
       .update(req.body, {
         where: {
           id: req.body.id
         }
       })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(dbOrders) {
+        res.json(dbOrders);
       });
   });
+
 };
