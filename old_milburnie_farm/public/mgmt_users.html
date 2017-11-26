@@ -15,19 +15,13 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<style type="text/css">
-		ul{
-			display: inline-block;
-  		float: none;
-  		vertical-align: top;
-			text-align: center;
-		}
-	</style>
-
+	<link rel="stylesheet" type="text/css" href="./css/general_styles.css">
 </head>
 <body>
 	<div class="jumbotron text-center">
-		<h1>Old Milburnie Farm</h1>
+		<div class='logo_div text-center'>
+			<img class="img_logo" src="./images/omf_logo.png">
+		</div>
 		<ul class="nav nav-tabs">
 		  <li><a href="/mgmt_main">Main Menu</a></li>
 		  <li><a href="/mgmt_tasks">Tasks</a></li>
@@ -40,8 +34,12 @@
 	</div>
 
 <div class="container">
-	<div class="panel panel-default">
-		
+	<div class="row">
+	    <div class="col-lg-4">
+	      <h3 class='welcome'>Welcome <span class="member-name"></span></h3>
+	    </div>
+	  </div>
+	<div class="panel panel-default">	
 		<div class="panel-heading text-center">
 			<h2>Users</h2>
 		</div>
