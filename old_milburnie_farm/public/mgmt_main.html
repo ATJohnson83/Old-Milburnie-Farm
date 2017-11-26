@@ -15,22 +15,15 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<style type="text/css">
-  ul{
-      display: inline-block;
-      float: none;
-      vertical-align: top;
-      text-align: center;
-    }
-    .curusr{
-    color: blue;
-    }
-	</style>
+  <link rel="stylesheet" type="text/css" href="./css/general_styles.css">
+  
 
 </head>
 <body>
 	<div class="jumbotron text-center">
-		<h1>Old Milburnie Farm</h1>
+		<div class='logo_div text-center'>
+      <img class="img_logo" src="./images/omf_logo.png">
+    </div>
     <ul class="nav nav-tabs">
       <li><a href="/">Log Out</a></li>
     </ul>
@@ -38,30 +31,26 @@
 
 	<div class='container'>
     <div class="row">
-      <div class="col-lg-12 text-center">
-        <h3>Welcome <span class="curusr">Management Name</span></h3>
+      <div class="col-lg-4 col-lg-offset-2">
+        <h3 class='welcome'>Welcome <span class="member-name"></span></h3>
       </div>
     </div>
   	<div class="row">
     	<div class="mgmt-main text-center panel col-md-8 col-md-offset-2">
         <div class="row">
           <div class="thumbnail menu_item col-lg-6">
-
-          <a href="/mgmt_users">Users</a>
-
+            <a href="/mgmt_users">Users</a>
           </div>
           <div class="thumbnail menu_item col-lg-6">
-          <a href="/mgmt_tasks">Tasks</a>
+            <a href="/mgmt_tasks">Tasks</a>
           </div>
         </div>
         <div class="row">
           <div class="thumbnail menu_item col-lg-6">
-
             <a href="/mgmt_sales_inventory">Sales Inventory</a>
           </div>
           <div class="thumbnail menu_item col-lg-6">
             <a href="/mgmt_orders">Orders</a>
-
           </div>
         </div>
         <div class="row">
@@ -77,7 +66,8 @@
 	</div>
 </body>
 
-<script src="js/jsPDF.js"></script>
+<!-- <script src="js/jsPDF.js"></script>
 <script src='js/jspdf.plugin.addhtml.js'></script>
-<script src="js/html2canvas.js"></script>
+<script src="js/html2canvas.js"></script> -->
+<script type="text/javascript" src="./js/mgmt_main.js"></script>
 </html>
