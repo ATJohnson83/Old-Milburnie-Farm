@@ -22,12 +22,21 @@
   		vertical-align: top;
 			text-align: center;
 		}
+		.img_logo{
+		height: 200px;
+		margin: 0px;
+		padding:0px;
+		}
+		.jumbotron{
+			padding: 0px;
+		}
 	</style>
 
 </head>
 <body>
 	<div class="jumbotron text-center">
-		<h1>Old Milburnie Farm</h1>
+		<!-- <h1>Old Milburnie Farm</h1> -->
+		<img class="img_logo" src="./images/omf_logo.png">
 		<ul class="nav nav-tabs">
 		  <li><a href="/mgmt_main">Main Menu</a></li>
 		  <li><a href="/mgmt_users">Users</a></li>
@@ -40,8 +49,12 @@
 	</div>
 
 <div class="container">
+	<div class="row">
+    <div class="col-lg-12">
+      <h3>Welcome <span class="member-name"></span></h3>
+    </div>
+  </div>
 	<div class="panel panel-default">
-		
 		<div class="panel-heading text-center">
 			<h2>Orders</h2>
 		</div>
@@ -51,37 +64,32 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="mgmtords-container">
-								<h3>Active Orders</h3>
+								<h3>Open Orders</h3>
 								<table class="table table-striped">
 									<thead>
 										<th>Order #</th>
-										<th>From</th>
+										<th>Customer</th>
 										<th>Open Date</th>
-										<th>Close Date</th>
 										<th>View</th>
-										<th>DeActivate</th>
 									</thead>
-									<tbody id="mgmtactords"></tbody>
+									<tbody id="opentbl"></tbody>
 								</table>
 
 								<hr>
 								
 								<div class="row">
 									<div class="col-lg-4">
-										<h3>DeActive Orders</h3>
+										<h3>Closed Orders</h3>
 									</div>
 								</div>
 								<table class="table table-striped">
 									<thead>
 										<th>Order #</th>
-										<th>From</th>
+										<th>Customer</th>
 										<th>Open Date</th>
-										<th>Close Date</th>
 										<th>View</th>
-										<th>Activate</th>
-										<th>Delete</th>
 									</thead>
-									<tbody id="mgmtdeactords"> </tbody>
+									<tbody id="closedtbl"> </tbody>
 								</table>
 							
 							</div>
@@ -93,7 +101,8 @@
 	</div>
 </div>
 </body>
-<script src="js/jsPDF.js"></script>
+<script type="text/javascript" src="./js/mgmt_orders.js"></script>
+<!-- <script src="js/jsPDF.js"></script>
 <script src='js/jspdf.plugin.addhtml.js'></script>
-<script src="js/html2canvas.js"></script>
+<script src="js/html2canvas.js"></script> -->
 </html>
