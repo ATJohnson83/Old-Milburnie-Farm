@@ -1,10 +1,6 @@
 "use strict";
 $(document).ready(function() {
 
-	var thisUser = $(".member-name");
-
-	loggedInUser();
-
 	showMyOrders();
 
 	$('#btmo').click(showMyOrders);
@@ -19,14 +15,6 @@ $(document).ready(function() {
 		$(".my_order_view").show();
 	};
 
-
-	function loggedInUser(){
-    $.get("/api/user_data").then(function(data) {
-      thisUser.text(data.name);
-      thisUser.attr("value", data.id);
-      getUserOrders(data);
-    });
-  };
 
   function getUserOrders(data){
   	var id = data.id; 

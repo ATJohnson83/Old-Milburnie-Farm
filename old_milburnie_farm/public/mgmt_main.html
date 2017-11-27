@@ -66,8 +66,20 @@
 	</div>
 </body>
 
-<!-- <script src="js/jsPDF.js"></script>
-<script src='js/jspdf.plugin.addhtml.js'></script>
-<script src="js/html2canvas.js"></script> -->
-<script type="text/javascript" src="./js/mgmt_main.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+
+  var thisUser = $(".member-name");
+
+  loggedInUser();
+
+function loggedInUser(){
+    $.get("/api/user_data").then(function(data) {
+      thisUser.text(data.name);
+      thisUser.attr("value", data.id);
+    });
+  };
+
+});
+</script>
 </html>
