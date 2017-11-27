@@ -63,7 +63,7 @@
                                                 <th>Field</th>
                                                 <th>Bed</th>
                                                 <th>Quantity</th>
-                                                <th>Units</th>
+                                            
         
                                             </tr>
                                         </thead>
@@ -75,10 +75,11 @@
                                                     </td>
                                                     <td>
                                                         <select id="type">
-                                                            <option label="Meat">Meat</option>
-                                                            <option label="Raw Vegetables">Raw Vegetables</option>
-                                                            <option label="Lettuce">Lettuce</option>
-                                                            
+                                                            <option label="Pork">Pork</option>
+                                                            <option label="Chicken">Chicken</option>
+                                                            <option label="Mushroom">Mushroom</option>
+                                                            <option label="Spices">Spices</option>
+                                                            <option label="Vegetables">Vegetables</option>
                                                         </select>
                                                     </td>
                                                     <td>
@@ -102,10 +103,10 @@
                                     </table>
                                     <div class="row">
                                         <div class="col-lg-4">
-                                            <h3>Active Harvest</h3>
+                                            <h3>Last Added Harvest Harvest</h3>
                                         </div>
                                     </div>
-                                    <table class="table table-striped" id="employeeHarvest">
+                                    <table class="table table-striped">
                                         <thead>
                                             <tr>
                                                 <th>Date</th>
@@ -114,31 +115,13 @@
                                                 <th>Field</th>
                                                 <th>Bed</th>
                                                 <th>Quantity</th>
-                                                <th>Deactivate</th>
+                                            
                                             </tr>
                                         </thead>
-                                        <tbody id="activeHarvest">
+                                        <tbody id="employeeHarvest">
                                         </tbody>
                                     </table>
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <h3>UnActive Harvest</h3>
-                                        </div>
-                                    </div>
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <th>Date</th>
-                                            <th>Type</th>
-                                            <th>Name</th>
-                                            <th>Field</th>
-                                            <th>Bed</th>
-                                            <th>Quantity</th>
-                                            <th>activate</th>
-                                            <th>Delete</th>
-                                        </thead>
                                     
-                                        <tbody id="deactiveHarvest"> </tbody>
-                                    </table>
                                     <div class="row">
                                         <div class="thumbnail menu_item col-lg-12">
                                             <button type="submit" id="cancel" class="btn btn-primary btn-lg btn-block btn-danger">Cancel</button>
