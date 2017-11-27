@@ -10,6 +10,7 @@ $(document).ready(function() {
   var deactiveHarvestList = $("#deactiveHarvest");
   var trackActiveHarvest = $("#activeHarvest");
   var mgmtActiveHarvest = $("#mgmtActiveHarvest");
+  var employeeHarvest = $("#employeeHarvest");
 
   $("#cancel").click(function() {
     console.log(`cancel clicked`);
@@ -101,6 +102,16 @@ $(document).ready(function() {
     );
     newTr.append("</tr>");
     activeHarvestList.prepend(newTr);
+    
+    var newRow = $("<tr>");
+    newRow.append("<td data-id='" + aharvestData.id + "'>" + aharvestData.date + "</td>");
+    newRow.append("<td data-id='" + aharvestData.id + "'>" + aharvestData.type + "</td>");
+    newRow.append("<td data-id='" + aharvestData.id + "'>" + aharvestData.name + "</td>");
+    newRow.append("<td data-id='" + aharvestData.id + "'>" + aharvestData.field + "</td>");
+    newRow.append("<td data-id='" + aharvestData.id + "'>" + aharvestData.bed + "</td>");
+    newRow.append("<td data-id='" + aharvestData.id + "'>" + aharvestData.quantity + "</td>");
+    newRow.append("</tr>");
+    employeeHarvest.html(newRow);
   }
 
   function createDeactiveHarvestRow(dTaskData) {
