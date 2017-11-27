@@ -30,8 +30,8 @@ $(document).ready(function() {
   }
 
   function resetList(){
-    activeItemList.empty();
-    deactiveItemList.empty();
+    $('#achickentb').empty();
+    $('#aporktb').empty();
     getSalesInventory();
   };
 
