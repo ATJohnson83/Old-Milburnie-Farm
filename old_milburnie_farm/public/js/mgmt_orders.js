@@ -22,17 +22,17 @@ $(document).ready(function() {
 		$('#ostat').hide();
 	};
 
-	$('#editddate').click(function(){
+	$('#orddelivd').click(function(){
 		$('#orddelivd').hide();
 		$('#deliv_date').show();
 	});
 
-	$('#editpaystat').click(function(){
+	$('#ordpaystatus').click(function(){
 		$('#ordpaystatus').hide();
 		$('#pstat').show();
 	})
 
-	$('#editordstat').click(function(){
+	$('#ordstatus').click(function(){
 		$('#ordstatus').hide();
 		$('#ostat').show();
 	})
@@ -85,7 +85,12 @@ $(document).ready(function() {
 	    $("#ordnum").text(data.id);
 	    $("#ordnum").attr("data-id",data.id);
 	    $("#ordopend").text(data.open_date);
-	    $("#orddelivd").text(data.delivered_date);
+	    if(data.delivered_date == "0000-00-00"){
+	    	$("#orddelivd").text('Undelivered');
+	    }
+	    else{
+	    	 $("#orddelivd").text(data.delivered_date);
+	    };
 	    $("#ordpaystatus").text(data.payment_status);
 	    $("#ordstatus").text(data.order_status);
 	  }).done(getUserOrderLines(id));
