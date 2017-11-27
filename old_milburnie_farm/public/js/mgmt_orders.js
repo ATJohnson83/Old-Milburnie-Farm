@@ -1,9 +1,7 @@
 "use strict";
 $(document).ready(function() {
 
-	var thisUser = $(".member-name");
 
-	loggedInUser();
 	getUserOrders();
 	showCustOrders();
 	showOrdData();
@@ -39,13 +37,6 @@ $(document).ready(function() {
 		$('#ostat').show();
 	})
 
-
-	function loggedInUser(){
-    $.get("/api/user_data").then(function(data) {
-      thisUser.text(data.name);
-      thisUser.attr("value", data.id);
-    });
-  };
 
   function getUserOrders(){ 
     $.get("/api/orders/", function(data){    

@@ -8,6 +8,7 @@ $(document).ready(function() {
  var activeTaskList = $("#acttasks");
  var deactiveTaskList = $("#deacttasks");
 
+
  $("#cancel").click(function(){
    $("#name").val('');
    $("#startDate").val('');

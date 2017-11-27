@@ -1,13 +1,9 @@
 "use strict";
 
 $(document).ready(function() {
-	loggedInUser();
+
 	getSalesInventory();
 	showCreateScreen();
-
-	
-  
-  var thisUser = $(".member-name");
 
 	function showCreateScreen(){
 		$('.create_order').show();
@@ -108,12 +104,6 @@ $(document).ready(function() {
 		$('#othertb').empty();
 	};
 
-	function loggedInUser(){
-    $.get("/api/user_data").then(function(data) {
-      thisUser.attr("value", data.id);
-      thisUser.text(data.name);
-    });
-  };
 
 	function getSalesInventory(){
 		// clearCurrInv();

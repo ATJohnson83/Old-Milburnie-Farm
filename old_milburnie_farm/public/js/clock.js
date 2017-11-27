@@ -8,6 +8,7 @@ var clockOutTime = $("#clockOutTime");
 var totalTimeWorked = $("#totalTime");
 var activeTimeList = $("#activeTime");
 var deactiveTime = $("#deactiveTime");
+
 $(document).on("click", "button.user_delete", deleteTime);
 $(document).on("click", "button.totalTimeWorked", totalTime);
 
