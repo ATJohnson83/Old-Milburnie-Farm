@@ -1,27 +1,41 @@
 $(document).ready(function() {
 
-var itemName = $('#slsinv-name');
-var itemType = $('#slsinv-type');
-var itemQuantity = $('#slsinv-qnty');
-var itemUnit = $('#slsinv-unit');
-var itemPrice = $('#slsinv-price');
-var activeItemList = $('#actslsinvtb');
-var deactiveItemList = $('#deactslsinvtb');
+  var itemName = $('#slsinv-name');
+  var itemType = $('#slsinv-type');
+  var itemQuantity = $('#slsinv-qnty');
+  var itemUnit = $('#slsinv-unit');
+  var itemPrice = $('#slsinv-price');
+  var activeItemList = $('#actslsinvtb');
+  var deactiveItemList = $('#deactslsinvtb');
 
-$("#additem").click(addItem);
-$(document).on("click", "button.item_deactivate",deactivateItem);
-$(document).on("click", "button.item_activate",activateItem);
-$(document).on("click", "button.item_delete",deleteItem);
+  $("#additem").click(addItem);
+  $("#show_deac_inv").click(showDeactive);
+  $("#show_act_inv").click(showActive);
+  $(document).on("click", "button.item_deactivate",deactivateItem);
+  $(document).on("click", "button.item_activate",activateItem);
+  $(document).on("click", "button.item_delete",deleteItem);
 
-getSalesInventory();
 
-function resetList(){
+  getSalesInventory();
+  showActive();
+
+  function showActive(){
+    $("#actslsinv").show();
+    $("#deactslsinv").hide();
+  };
+
+  function showDeactive(){
+    $("#actslsinv").hide();
+    $("#deactslsinv").show();
+  }
+
+  function resetList(){
     activeItemList.empty();
     deactiveItemList.empty();
     getSalesInventory();
   };
 
-function getSalesInventory(){
+  function getSalesInventory(){
     $.get("/api/sales_inventory", function(data){ 
     console.log("db data: " + JSON.stringify(data));    
       for (var i = 0; i < data.length; i++) {
@@ -57,7 +71,24 @@ function getSalesInventory(){
     newTr.append("<td data-id='" + aItemData.id + "'>$ " + aItemData.price + "</td>");
     newTr.append("<td><button data-id='"+aItemData.id+"' class='item_deactivate btn btn-primary glyphicon glyphicon-hand-down'></button></td>");
     newTr.append("</tr>");
-    activeItemList.append(newTr);
+
+    switch (aItemData.type) {
+      case "Chicken":
+          $('#achickentb').append(newTr);
+          break;
+      case "Pork":
+           $('#aporktb').append(newTr);
+          break;
+      case "Vegetable":
+           $('#avegetabletb').append(newTr);
+          break;
+      case "Mushroom":
+           $('#amushroomtb').append(newTr);
+          break;
+      case "Other":
+           $('#aothertb').append(newTr);
+          break;
+    }
   }
 
   
@@ -71,7 +102,24 @@ function getSalesInventory(){
     newTr.append("<td><button data-id='"+dItemData.id+"' class='item_activate btn btn-primary glyphicon glyphicon-hand-up'></button></td>");
     newTr.append("<td><button data-id='"+dItemData.id+"' class='item_delete btn btn-danger glyphicon glyphicon-remove'></button></td>");
     newTr.append("</tr>");
-    deactiveItemList.append(newTr);
+
+    switch (dItemData.type) {
+      case "Chicken":
+          $('#dchickentb').append(newTr);
+          break;
+      case "Pork":
+           $('#dporktb').append(newTr);
+          break;
+      case "Vegetable":
+           $('#dvegetabletb').append(newTr);
+          break;
+      case "Mushroom":
+           $('#dmushroomtb').append(newTr);
+          break;
+      case "Other":
+           $('#dothertb').append(newTr);
+          break;
+    }
   }
 
   function deactivateItem (event){

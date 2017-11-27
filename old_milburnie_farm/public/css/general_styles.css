@@ -7,11 +7,12 @@ ul {
 }
 
 ul li a {
+	padding-top: 0;
 	color: black;
 }
 
 .img_logo {
-	height: 200px;
+	height: 170px;
 	margin: 0px;
 	padding:0px;
 }
@@ -85,6 +86,21 @@ body {
 .headdata{
 	font-size: 20px;
 	margin-left: 15px;
+}
+
+.invtblheader{
+	text-decoration: underline;
+}
+
+#show_act_inv, #show_deac_inv{
+	font-size: 18px;
+	color: #337ab7;
+	text-decoration: underline;
+	font-style: italic;
+}
+
+#show_act_inv:hover, #show_deac_inv:hover{
+	font-size: 20px;
 }
 
 
