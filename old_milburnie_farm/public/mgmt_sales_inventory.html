@@ -35,82 +35,221 @@
 
 <div class="container">
 	<div class="panel panel-default">
-		
 		<div class="panel-heading text-center">
-			<h2>Sales Inventory</h2>
+			<h1>Sales Inventory</h1>
 		</div>
-
-			<div class="panel-body">
-				<div class="form-group">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="slsinv-container">
-								
-								<h3>Add Item</h3>
-								<form id='addslsinv'>
-									<label>Name</label>
-									<input placeholder="Name" id="slsinv-name" type="text" />
-									<label>Type</label>
-									<select id="slsinv-type">
-										<option></option>
-										<option>Chicken</option>
-										<option>Pork</option>
-										<option>Vegetable</option>
-										<option>Mushroom</option>
-										<option>Other</option>
-									</select>
-									<label>Quantity</label>
-									<input placeholder="Quantity" id="slsinv-qnty"/>
-									<label>Units</label>
-									<select id="slsinv-unit">
-										<option>Pounds</option>
-									</select>
-									<label>Price $</label>
-									<input placeholder="Price" id="slsinv-price"/>
-									<button id='additem' type="submit" class="btn btn-primary glyphicon glyphicon-plus"></button>
-								</form>
-								
-								<hr>
-
-								<h3>Active Sales Inventory</h3>
-								<table class="table table-striped">
-									<thead>
-										<th>Name</th>
-										<th>Type</th>
-										<th>Quantity</th>
-										<th>Units</th>
-										<th>Price</th>
-										<th>DeActivate</th>
-									</thead>
-									<tbody id="actslsinvtb"></tbody>
-								</table>
-
-								<hr>
-								
-								<div class="row">
-									<div class="col-lg-4">
-										<h3>DeActive Sales Inventory</h3>
-									</div>
-								</div>
-								<table class="table table-striped">
-									<thead>
-										<th>Name</th>
-										<th>Type</th>
-										<th>Quantity</th>
-										<th>Units</th>
-										<th>Price</th>
-										<th>DeActivate</th>
-										<th>Delete</th>
-									</thead>
-									<tbody id="deactslsinvtb"> </tbody>
-								</table>
+		<div class="panel-body">
+			<div class="form-group">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="slsinv-container">
 							
+							<h3>Add Item</h3>
+							<form id='addslsinv'>
+								<label>Name</label>
+								<input placeholder="Name" id="slsinv-name" type="text" />
+								<label>Type</label>
+								<select id="slsinv-type">
+									<option></option>
+									<option>Chicken</option>
+									<option>Pork</option>
+									<option>Vegetable</option>
+									<option>Mushroom</option>
+									<option>Other</option>
+								</select>
+								<label>Quantity</label>
+								<input placeholder="Quantity" id="slsinv-qnty"/>
+								<label>Units</label>
+								<select id="slsinv-unit">
+									<option>Pounds</option>
+								</select>
+								<label>Price $</label>
+								<input placeholder="Price" id="slsinv-price"/>
+								<button id='additem' type="submit" class="btn btn-primary glyphicon glyphicon-plus"></button>
+							</form>
+							<hr>
+							
+							<div id="actslsinv">
+								<div class="text-center">
+									<h2 class="invtblheader">Active Sales Inventory</h2>
+									<span id="show_deac_inv">DeActive Inventory</span>
+								</div>
+								<div class="row">
+									<img class="menu_pic" src="./images/omf_chicken.jpeg">
+									<h3 class="tblhead">CHICKEN</h3>
+								</div>
+								<table class="createord table table-striped">
+									<thead>
+										<th id="">Name</th>
+										<th id="">Type</th>
+										<th id="">Quantity</th>
+										<th id="">Units</th>
+										<th id="">Price</th>
+										<th id="">Deactivate</th>
+									</thead>
+									<tbody id="achickentb"></tbody>
+								</table>
+								<hr>									
+								<div class="row">
+									<img class="menu_pic" src="./images/omf_pork.jpeg">
+									<h3 class="tblhead">PORK</h3>
+								</div>
+								<table class="createord table table-striped">
+									<thead>
+										<th id="">Name</th>
+										<th id="">Type</th>
+										<th id="">Quantity</th>
+										<th id="">Units</th>
+										<th id="">Price</th>
+										<th id="">Deactivate</th>
+									</thead>
+									<tbody id="aporktb"> </tbody>
+								</table>
+								<hr>									
+								<div class="row">
+									<img class="menu_pic" src="./images/omb_veges.jpg">
+									<h3 class="tblhead">VEGETABLES</h3>
+								</div>
+								<table class="createord table table-striped">
+									<thead>
+										<th id="">Name</th>
+										<th id="">Type</th>
+										<th id="">Quantity</th>
+										<th id="">Units</th>
+										<th id="">Price</th>
+										<th id="">Deactivate</th>
+									</thead>
+									<tbody id="avegetabletb"> </tbody>
+								</table>
+								<hr>
+								<div class="row">
+									<img class="menu_pic" src="./images/omf_mush.jpeg">
+									<h3 class="tblhead">MUSHROOMS</h3>
+								</div>
+								<table class="createord table table-striped">
+									<thead>
+										<th id="">Name</th>
+										<th id="">Type</th>
+										<th id="">Quantity</th>
+										<th id="">Units</th>
+										<th id="">Price</th>
+										<th id="">Deactivate</th>
+									</thead>
+									<tbody id="amushroomtb"> </tbody>
+								</table>
+								<hr>
+								<div class="row">
+									<img class="menu_pic" src="./images/omf_cilantro.jpeg">
+									<h3 class="tblhead">OTHER</h3>
+								</div>
+								<table class="createord table table-striped">
+									<thead>
+										<th id="">Name</th>
+										<th id="">Type</th>
+										<th id="">Quantity</th>
+										<th id="">Units</th>
+										<th id="">Price</th>
+										<th id="">Deactivate</th>
+									</thead>
+									<tbody id="aothertb"> </tbody>
+								</table>
+								<hr>
 							</div>
+							
+							
+							<div id="deactslsinv">
+								<div class="text-center">
+									<h2 class="invtblheader">DeActive Sales Inventory</h2>
+									<span id="show_act_inv">Active Inventory</span>
+								</div>
+								<div class="row">
+									<img class="menu_pic" src="./images/omf_chicken.jpeg">
+									<h3 class="tblhead">CHICKEN</h3>
+								</div>
+								<table class="createord table table-striped">
+									<thead>
+										<th id="">Name</th>
+										<th id="">Available Quantity</th>
+										<th id="">Units</th>
+										<th id="">Price</th>
+										<th id="">|</th>
+										<th id="">Order Quantity</th>
+									</thead>
+									<tbody id="dchickentb"></tbody>
+								</table>
+								<hr>									
+								<div class="row">
+									<img class="menu_pic" src="./images/omf_pork.jpeg">
+									<h3 class="tblhead">PORK</h3>
+								</div>
+								<table class="createord table table-striped">
+									<thead>
+										<th id="">Name</th>
+										<th id="">Available Quantity</th>
+										<th id="">Units</th>
+										<th id="">Price</th>
+										<th id="">|</th>
+										<th id="">Order Quantity</th>
+									</thead>
+									<tbody id="dporktb"> </tbody>
+								</table>
+								<hr>									
+								<div class="row">
+									<img class="menu_pic" src="./images/omb_veges.jpg">
+									<h3 class="tblhead">VEGETABLES</h3>
+								</div>
+								<table class="createord table table-striped">
+									<thead>
+										<th id="">Name</th>
+										<th id="">Available Quantity</th>
+										<th id="">Units</th>
+										<th id="">Price</th>
+										<th id="">|</th>
+										<th id="">Order Quantity</th>
+									</thead>
+									<tbody id="dvegetabletb"> </tbody>
+								</table>
+								<hr>
+								<div class="row">
+									<img class="menu_pic" src="./images/omf_mush.jpeg">
+									<h3 class="tblhead">MUSHROOMS</h3>
+								</div>
+								<table class="createord table table-striped">
+									<thead>
+										<th id="">Name</th>
+										<th id="">Available Quantity</th>
+										<th id="">Units</th>
+										<th id="">Price</th>
+										<th id="">|</th>
+										<th id="">Order Quantity</th>
+									</thead>
+									<tbody id="dmushroomtb"> </tbody>
+								</table>
+								<hr>
+								<div class="row">
+									<img class="menu_pic" src="./images/omf_cilantro.jpeg">
+									<h3 class="tblhead">OTHER</h3>
+								</div>
+								<table class="createord table table-striped">
+									<thead>
+										<th id="">Name</th>
+										<th id="">Available Quantity</th>
+										<th id="">Units</th>
+										<th id="">Price</th>
+										<th id="">|</th>
+										<th id="">Order Quantity</th>
+									</thead>
+									<tbody id="dothertb"> </tbody>
+								</table>
+								<hr>
+							</div>
+							
+						
 						</div>
 					</div>
 				</div>
 			</div>
-		
+		</div>	
 	</div>
 </div>
 <script type="text/javascript" src="./js/sales_inventory.js"></script>
