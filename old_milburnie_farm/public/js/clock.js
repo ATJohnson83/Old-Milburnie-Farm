@@ -5,15 +5,13 @@ $(document).ready(function(){
 var totalTime = $("#totalTime");
 var clockInTime = $("#clockInTime");
 var clockOutTime = $("#clockOutTime");
-var totalTimeWorked = $("#totalTime");
+var totalTimeWorked = $("#clockOutBtn");
 var activeTimeList = $("#activeTime");
 var deactiveTime = $("#deactiveTime");
 
 $(document).on("click", "button.user_delete", deleteTime);
 $(document).on("click", "button.totalTimeWorked", totalTime);
 
-//add tiem function
-totalTimeWorked.click(addTime);
 
 //get time function on page load
 getTime()
@@ -35,6 +33,7 @@ getTime()
 
       $("#clockInBtn").click(function(){
         clockIn = moment();
+        alert(`Clocked in at ${clockIn.format("hh:mm")}`)
       });
  
       
@@ -43,16 +42,12 @@ getTime()
 
       $("#clockOutBtn").click(function(){
         clockOut =  moment();
+        alert(`Clocked out at ${clockOut.format("hh:mm")}`)
+        addTime();
         });
 
-      $("#clockInBtn").click(function(){
-        clockIn = moment();
-      })
-
       
-
-      // total = clockOut.diff(clockIn, 'minutes');
-      // console.log(total);   
+ 
       for (var i = 0; i < data.length; i++) {
           createActiveTimeRow(data[i]);
       };
@@ -82,7 +77,7 @@ getTime()
       "<td data-id='" + aTimeData.id + "'>" + aTimeData.clockOut + "</td>"
     );
     newTr.append(
-      "<td data-id='" + aTimeData.id + "'>" + aTimeData.total +"</td>"
+      "<td data-id='" + aTimeData.id + "'>" + aTimeData.total + " minutes" + "</td>"
     );
     
       newTr.append(
@@ -93,21 +88,6 @@ getTime()
     activeTimeList.prepend(newTr);
   }
 
-  function createDeactiveTimeRow(dTimeData) {
-    console.log(dTimeData);
-    var newTr = $("<tr>");
-    newTr.append(
-      "<td data-id='" + dTimeData.id + "'>" + dTimeData.clockIn + "</td>"
-    );
-    newTr.append(
-      "<td data-id='" + dTimeData.id + "'>" + dTimeData.clockOut + "</td>"
-    );
-    newTr.append(
-      "<td data-id='" + dTimeData.id + "'>" + dTimeData.minutes + ":" + dTimeData.seconds  + "</td>"
-    );
-    newTr.append("</tr>");
-    deactiveTime .prepend(newTr);
-  }
 
 
     function deleteTime(event){
