@@ -1,10 +1,22 @@
 "use strict";
 $(document).ready(function() {
 
+	var thisUser = $(".member-name");
+	
 	showMyOrders();
+	loggedInUser();
 
 	$('#btmo').click(showMyOrders);
 	
+
+	function loggedInUser(){
+    $.get("/api/user_data").then(function(data) {
+      thisUser.text(data.name);
+      thisUser.attr("value", data.id);
+      getUserOrders(data);
+    });
+  };
+
 	function showMyOrders(){
 		$(".my_orders_view").show();
 		$(".my_order_view").hide();
@@ -51,8 +63,13 @@ $(document).ready(function() {
 	 	$.get("/api/order/"+ id, function(data){    
 	    console.log("db data:" +JSON.stringify(data));
 	    $("#ordnum").text(data.id);
-	    $("#ordopend").text(data.open_date);
-	    $("#orddelivd").text(data.delivered_date);
+	    $("#ordopend").text(data.open_date);	    
+	    if(data.delivered_date == "0000-00-00"){
+	    	$("#orddelivd").text('Undelivered');
+	    }
+	    else{
+	    	 $("#orddelivd").text(data.delivered_date);
+	    };
 	    $("#ordpaystatus").text(data.payment_status);
 	    $("#ordstatus").text(data.order_status);
 	  }).done(getUserOrderLines(id));

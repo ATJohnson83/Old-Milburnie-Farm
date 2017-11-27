@@ -1,4 +1,4 @@
-ul{
+ul {
 	display: inline-block;
 	float: none;
 	vertical-align: top;
@@ -6,17 +6,17 @@ ul{
 	font-size: 25px;
 }
 
-ul li a{
+ul li a {
 	color: black;
 }
 
-.img_logo{
+.img_logo {
 	height: 200px;
 	margin: 0px;
 	padding:0px;
 }
 
-body{
+body {
 	background: url(../images/omf_field1.jpg) no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -24,24 +24,66 @@ body{
 	background-size: cover;
 }
 
-.jumbotron{
+.jumbotron {
 	background-color: rgba(240,240,240,.7);
 	padding: 0;
 }
-
 
 .welcome {
 	color: black;
 	background-color: rgba(240,240,240,.85);
 	padding: 10px;
-	border-radius: 5%;
-}
-.member-name{
-	color: black;
-	font-size: 30px;
+	border-radius: 5px;
 	font-style: italic;
 }
 
-.panel{
+.member-name {
+	color: black;
+	font-size: 25px;
+	font-weight: bold;
+	font-style: normal;
+}
+
+.panel {
 	background-color: rgba(240,240,240,.85);
 }
+
+.menu_pic {
+	width: 100px;
+	border-radius: 50%;
+	display: inline-block;
+}
+
+.thumbnail img {
+	margin: 0px;
+}
+
+.menu_item{
+	height: 150px;
+	padding: 15px;
+}
+
+.menu_link{
+	font-size: 30px;
+	margin-left: 10px;
+}
+
+.tblhead{
+	display: inline-block;
+}
+
+.ordhead{
+	text-decoration: underline;
+}
+
+.headdata{
+	font-size: 20px;
+	margin-left: 15px;
+}
+
+
+
+
+
+
+

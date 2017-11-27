@@ -6,8 +6,9 @@ module.exports = function(sequelize, DataTypes) {
       len: [1]
     },
     delivered_date: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATEONLY,      
       allowNull: true,
+      defaultValue: "0000-00-00"
     },
     payment_status: {
       type: DataTypes.STRING,

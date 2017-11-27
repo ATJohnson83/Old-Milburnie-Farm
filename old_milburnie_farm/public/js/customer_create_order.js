@@ -2,8 +2,11 @@
 
 $(document).ready(function() {
 
+	var thisUser = $(".member-name");
+	
 	getSalesInventory();
 	showCreateScreen();
+  loggedInUser();
 
 	function showCreateScreen(){
 		$('.create_order').show();
@@ -15,6 +18,12 @@ $(document).ready(function() {
 		$('.confirm_order').show();
 	};
 
+	function loggedInUser(){
+    $.get("/api/user_data").then(function(data) {
+      thisUser.text(data.name);
+      thisUser.attr("value", data.id);
+    });
+  };
 
 	function createOrder(){
 		var date = new Date();
