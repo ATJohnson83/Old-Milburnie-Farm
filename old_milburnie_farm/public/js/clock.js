@@ -8,9 +8,12 @@ var clockOutTime = $("#clockOutTime");
 var totalTimeWorked = $("#clockOutBtn");
 var activeTimeList = $("#activeTime");
 var deactiveTime = $("#deactiveTime");
+let currentTime = moment().format("hh:mm");
 
 $(document).on("click", "button.user_delete", deleteTime);
 $(document).on("click", "button.totalTimeWorked", totalTime);
+
+$("#currentTime").html(currentTime)
 
 
 //get time function on page load

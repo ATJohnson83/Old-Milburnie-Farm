@@ -23,7 +23,7 @@ var specialElementHandlers = {
 };
 //print managment harvest
 $('#printMgmtHarvest').click(function () {   
-    html2canvas($("#harvests"), {
+    html2canvas($(".container"), {
             background : "#ffffff",
             onrendered: function(canvas) {      
                 var imgData = canvas.toDataURL(
