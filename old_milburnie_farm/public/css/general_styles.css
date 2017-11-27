@@ -30,11 +30,16 @@ body {
 }
 
 .welcome {
+	display: inline-block;
 	color: black;
 	background-color: rgba(240,240,240,.85);
 	padding: 10px;
 	border-radius: 5px;
 	font-style: italic;
+}
+
+.welcomediv {
+	padding-left: 0px;
 }
 
 .member-name {
@@ -52,6 +57,7 @@ body {
 	width: 100px;
 	border-radius: 50%;
 	display: inline-block;
+	margin: 10px;
 }
 
 .thumbnail img {
