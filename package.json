@@ -1,0 +1,24 @@
+{
+  "name": "old-milburnie-farm",
+  "version": "1.0.0",
+  "description": "Old Milburnie Farm App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ATJohnson83/Old-Milburnie-Farm.git"
+  },
+  "author": "David Palmquist, Austin Johnson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ATJohnson83/Old-Milburnie-Farm/issues"
+  },
+  "homepage": "https://github.com/ATJohnson83/Old-Milburnie-Farm#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6"
+  }
+}

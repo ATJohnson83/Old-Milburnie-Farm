@@ -5,8 +5,6 @@ $(document).ready(function() {
   var itemQuantity = $('#slsinv-qnty');
   var itemUnit = $('#slsinv-unit');
   var itemPrice = $('#slsinv-price');
-  var activeItemList = $('#actslsinvtb');
-  var deactiveItemList = $('#deactslsinvtb');
 
   $("#additem").click(addItem);
   $("#show_deac_inv").click(showDeactive);
@@ -32,6 +30,14 @@ $(document).ready(function() {
   function resetList(){
     $('#achickentb').empty();
     $('#aporktb').empty();
+    $('#avegetabletb').empty();
+    $('#amushroomtb')..empty();
+    $('#aothertb').empty();
+    $('#dchickentb').empty();
+    $('#dporktb').empty();
+    $('#dvegetabletb').empty();
+    $('#dmushroomtb')..empty();
+    $('#dothertb').empty();
     getSalesInventory();
   };
 
