@@ -89,7 +89,7 @@ body {
 }
 
 .invtblheader{
-	text-decoration: underline;
+	font-style: italic;
 }
 
 #show_act_inv, #show_deac_inv{
@@ -104,7 +104,7 @@ body {
 }
 
 #logo {
-	width: 100px;
+	height: 100px;
 }
 
 

@@ -31,12 +31,12 @@ $(document).ready(function() {
     $('#achickentb').empty();
     $('#aporktb').empty();
     $('#avegetabletb').empty();
-    $('#amushroomtb')..empty();
+    $('#amushroomtb').empty();
     $('#aothertb').empty();
     $('#dchickentb').empty();
     $('#dporktb').empty();
     $('#dvegetabletb').empty();
-    $('#dmushroomtb')..empty();
+    $('#dmushroomtb').empty();
     $('#dothertb').empty();
     getSalesInventory();
   };
