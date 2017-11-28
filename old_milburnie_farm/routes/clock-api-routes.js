@@ -11,6 +11,13 @@ var db = require("../models");
 // Routes
 // =============================================================
 module.exports = function(app) {
+
+  app.get("/api/employees", function(req, res) {
+    db.Users.findAll({}).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  }); 
+
   // GET route for getting all of the clocks
   app.get("/api/clock", function(req, res) {
     db.Clock.findAll({}).then(function(dbClock) {
@@ -86,6 +93,8 @@ module.exports = function(app) {
         res.json(dbClock);
       });
   });
+
+  
 };
 
 

@@ -18,6 +18,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     CloseDate: {
       type: DataTypes.DATEONLY,
+      defaultValue: Date
     },
     Description: {
       type: DataTypes.TEXT,

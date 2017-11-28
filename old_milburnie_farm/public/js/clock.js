@@ -63,7 +63,8 @@ getTime()
     var newTime = {
       clockIn: clockIn.format('hh:mm'),
       clockOut: clockOut.format('hh:mm'),
-      total: clockOut.diff(clockIn, 'minutes')
+      total: clockOut.diff(clockIn, 'minutes'),
+      date: clockIn.format('')
       };
 
     $.post("/api/clocks", newTime, resetList);
@@ -101,6 +102,21 @@ getTime()
       url: "/api/clocks/" + id
     }).done(resetList);
   }
+
+  getEmployees();
+
+	function getEmployees(){
+    console.log(`get employees called`);
+    $.get("/api/employees", function(data){
+      for (var i = 0; i < data.length; i++) {
+        employeeMenu(data[i].name);
+      }
+    });
+  };
+
+  function employeeMenu(employeeName){ 
+    $("#name-input").append('<option>'+employeeName+'</option>');
+    };
 
 
 
