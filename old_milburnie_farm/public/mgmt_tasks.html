@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Mgmt-Orders</title>
+    <title>Mgmt-Tasks</title>
     <meta charset="utf-8">
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <!-- Latest compiled and minified CSS -->
@@ -13,8 +13,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="./css/general_styles.css">
-    <link rel="stylesheet" type="text/css" href="./css/images.css">
     
 </head>
 
@@ -38,114 +39,89 @@
             <div class="panel-heading text-center">
                 <h2>Tasks</h2>
             </div>
-            <div class="panel-body">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="mgmtords-container">
-                                <h3>Add a task</h3>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Name </th>
-                                            <th>For</th>
-                                            <th>Description</th>
-                                            <th>Start Date</th>
-                                            <th>Close Date</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm12">
-                                    <tbody id="mgmtactords">
-                                        <tr>
-                                            <td>
-                                              <input type="text" id="name"></input>
-                                            </td>
-                                            <td>
-                                                <select id="employee">
-                                                    <option label="Employee1">Employee 1</option>
-                                                    <option label="Employee2">Employee 2</option>
-                                                    <option label="Employee3">Employee 3</option>
-                                                    <option label="Employee4">Employee 4</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <textarea name="description" rows="3" cols="20" id="description"></textarea>
-                                            </td>
-                                            <td>
-                                              <input type="date" id="startDate" required pattern=="[0-9]{4}-[0-9]{2}-[0-9]{2}"></input>
-                                            </td>
-                                            <td>
-                                              <input type="date" id="closeDate"required pattern=="[0-9]{4}-[0-9]{2}-[0-9]{2}" ></input>
-                                            </td>
-                                       
-                                            <td>
-                                                <a href="/api/tasks/" type="submit" id="save" class="btn btn-primary glyphicon glyphicon-plus"></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <h3>Active Tasks</h3>
-                                    </div>
-                                </div>
-                                <table class="table table-striped" id="mgmtTasks">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>For</th>
-                                            <th>Open Date</th>
-                                            <th>Close Date</th>
-                                            <th>Description</th>
-                                            <th>Deactivate</th>
-                                        </tr>
-                                     </thead>
-                                 <tbody id="acttasks">
-                                 </tbody>
-                                </table>
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <h3>UnActive Tasks</h3>
-                                    </div>
-                                </div>
-                                <table class="table table-striped">
-                                    <thead>
-                                        <th>Name</th>
-                                        <th>For</th>
-                                        <th>Open Date</th>
-                                        <th>Close Date</th>
+            <div class="panel-body">              
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <h3>Add a task</h3>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Task Name</th>
+                                        <th>Employee</th>
                                         <th>Description</th>
-                                        <th>activate</th>
-                                        <th>Delete</th>
-                                    </thead>
-                                    
-                                    <tbody id="deacttasks"> </tbody>
-                                </table>
-                                <div class="row">
-                                    <div class="thumbnail menu_item col-lg-12">
-                                        <button type="submit" id="cancel" class="btn btn-primary btn-lg btn-block btn-danger">Cancel</button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="thumbnail menu_item col-lg-12">
-                                        <button type="submit" id="printMgmtTasks" class="btn btn-primary btn-lg btn-block btn-success">Print</button>
-                                    </div>
-                                </div>
+                                        <th>Add Task</th>
+                                        <th>Cancel</th>                                             
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                          <input type="text" id="name"></input>
+                                        </td>
+                                        <td>
+                                            <select id="employeeList">
+                                                <option></option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <textarea name="description" rows="3" cols="20" id="description"></textarea>
+                                        </td>                                     
+                                        <td>
+                                            <a type="submit" id="add_task" style="font-size:1.5em;" class="btn btn-primary glyphicon glyphicon-plus"></a>
+                                        </td>
+                                        <td>
+                                            <a type="submit" id="cancel" style="font-size:1.5em;" class="btn btn-danger glyphicon glyphicon-remove-sign"></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h3>Open Tasks</h3>
                             </div>
                         </div>
+                        <table class="table table-striped" id="mgmtTasks">
+                            <thead>
+                                <tr>
+                                    <th>Task Name</th>
+                                    <th>Employee</th>
+                                    <th>Opened</th>
+                                    <th>Description</th>
+                                    <th>Close</th>
+                                </tr>
+                            </thead>
+                            <tbody id="opentasks">
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h3>Closed Tasks</h3>
+                            </div>
+                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Task Name</th>
+                                <th>Employee</th>
+                                <th>Opened</th>
+                                <th>Closed</th>
+                                <th>Description</th>
+                                <th>Re-Open</th>
+                                <th>Delete</th>
+                            </thead>
+                            <tbody id="closedtasks"> </tbody>
+                        </table>
                     </div>
-                </div>
+                </div>               
             </div>
         </div>
     </div>
 </body>
 <script src="/js/tasks.js"></script>
-<script src="js/jsPDF.js"></script>
+<!-- <script src="js/jsPDF.js"></script>
 <script src='js/jspdf.plugin.addhtml.js'></script>
-<script src="js/html2canvas.js"></script>
+<script src="js/html2canvas.js"></script> -->
 
 </html>
