@@ -87,7 +87,7 @@ $(document).ready(function() {
     newTr.append("<td data-id='" + dTaskData.id + "'>" + dTaskData.User.name + "</td>");
     newTr.append("<td data-id='" + dTaskData.id + "'>" + dTaskData.openDate + "</td>");
     newTr.append("<td data-id='" + dTaskData.id + "'>" + dTaskData.closeDate + "</td>");
-    newTr.append("<td data-id='" + dTaskData.id + "'>" + dTaskData.cescription + "</td>");
+    newTr.append("<td data-id='" + dTaskData.id + "'>" + dTaskData.description + "</td>");
     newTr.append("<td><button data-id='"+dTaskData.id+"' class='open_task btn btn-primary glyphicon glyphicon-hand-up'></button></td>");
     newTr.append("<td><button data-id='"+dTaskData.id+"' class='delete_task btn btn-danger glyphicon glyphicon-remove'></button></td>");
     newTr.append("</tr>");
