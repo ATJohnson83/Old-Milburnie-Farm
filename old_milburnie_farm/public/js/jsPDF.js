@@ -38,7 +38,7 @@ $('#printMgmtHarvest').click(function () {
 //print management time
 $("#printMgmtTime").click(function() {
     console.log(`clicked`);
-  html2canvas($("#mgmtEmployeeTime"), {
+  html2canvas($(".employee-main"), {
     background: "#ffffff",
     onrendered: function(canvas) {
       var imgData = canvas.toDataURL("image/jpeg");
