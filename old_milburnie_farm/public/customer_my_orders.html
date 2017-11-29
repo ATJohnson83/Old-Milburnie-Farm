@@ -15,6 +15,9 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-range/3.0.3/moment-range.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="./css/general_styles.css">
 	
 
@@ -34,6 +37,7 @@
 <div class="container">
 	<div class="my_orders_view panel panel-default">		
 		<div class="panel-heading text-center">
+		<img src="./images/omf_logo.png" id="logo">
 			<h2><span class="member-name"></span>  Orders</h2>
 		</div>		
 		<div class="panel-body">
@@ -133,11 +137,19 @@
 			</div>
 		</div>	
 	</div>
+	<div class="row">
+		<div class="thumbnail menu_item col-lg-8">
+			<button type="submit" id="printCustomerOrder" class="btn btn-primary btn-lg btn-block btn-success">Print</button>
+		</div>
+	</div>
+
 
 </div>
+
+</body>
+
 <script type="text/javascript" src="./js/customer_my_orders.js"></script>
 <script src="js/jsPDF.js"></script>
 <script src='js/jspdf.plugin.addhtml.js'></script>
 <script src="js/html2canvas.js"></script>
-</body>
 </html>
