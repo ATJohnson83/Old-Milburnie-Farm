@@ -6,9 +6,13 @@ module.exports = function(sequelize, DataTypes) {
     clockOut: {
       type: DataTypes.STRING,
       },
-      total: {
+    total: {
       type: DataTypes.STRING,
+      },
+    username: {
+        type: DataTypes.STRING,
       }
+
   });
   return Clock;
 };

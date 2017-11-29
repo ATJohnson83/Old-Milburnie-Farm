@@ -36,7 +36,9 @@ getTime()
 
       $("#clockInBtn").click(function(){
         clockIn = moment();
-        alert(`Clocked in at ${clockIn.format("hh:mm")}`)
+        username = $("#name-input").val();
+        
+        alert(`${username} Clocked in at ${clockIn.format("hh:mm")}`)
       });
  
       
@@ -45,7 +47,7 @@ getTime()
 
       $("#clockOutBtn").click(function(){
         clockOut =  moment();
-        alert(`Clocked out at ${clockOut.format("hh:mm")}`)
+        alert(`${username} Clocked out at ${clockOut.format("hh:mm")}`)
         addTime();
         });
 
@@ -59,12 +61,14 @@ getTime()
 
   //function to add total time
   function addTime(event) {
+     
+     
     
     var newTime = {
       clockIn: clockIn.format('hh:mm'),
       clockOut: clockOut.format('hh:mm'),
       total: clockOut.diff(clockIn, 'minutes'),
-      date: clockIn.format('')
+      username: username
       };
 
     $.post("/api/clocks", newTime, resetList);
@@ -72,7 +76,6 @@ getTime()
 
   function createActiveTimeRow(aTimeData) {
     console.log(`create time row called`);
-    console.log(aTimeData);
     var newTr = $("<tr>");
     newTr.append(
       "<td data-id='" + aTimeData.id + "'>" + aTimeData.clockIn + "</td>"
@@ -83,6 +86,7 @@ getTime()
     newTr.append(
       "<td data-id='" + aTimeData.id + "'>" + aTimeData.total + " minutes" + "</td>"
     );
+     newTr.append("<td data-id='" + aTimeData.id + "'>" + aTimeData.username + "</td>");
     
       newTr.append(
         "<td><button data-id='"+aTimeData.id+"' class='user_delete btn btn-danger glyphicon glyphicon-remove'></button></td>"
@@ -102,6 +106,7 @@ getTime()
       url: "/api/clocks/" + id
     }).done(resetList);
   }
+//managment time functions
 
   getEmployees();
 
@@ -117,6 +122,17 @@ getTime()
   function employeeMenu(employeeName){ 
     $("#name-input").append('<option>'+employeeName+'</option>');
     };
+
+
+
+
+$("#employeeOneTime").click(function(){
+  console.log(`employee one time called`);
+  var selectedEmployee = $("#name-input").val();
+  console.log(selectedEmployee);
+
+  
+})
 
 
 

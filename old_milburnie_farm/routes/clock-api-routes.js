@@ -13,10 +13,25 @@ var db = require("../models");
 module.exports = function(app) {
 
   app.get("/api/employees", function(req, res) {
-    db.Users.findAll({}).then(function(dbUser) {
+    db.Users.findAll({
+      where: {
+        type : "Employee"
+      }
+    }).then(function(dbUser) {
       res.json(dbUser);
     });
   }); 
+
+   app.get("/api/employees", function(req, res) {
+     db.Users.findOne({
+       where: {
+         name: req.params.name
+       }
+     }).then(function(dbUser) {
+       res.json(dbUser);
+     });
+   }); 
+
 
   // GET route for getting all of the clocks
   app.get("/api/clock", function(req, res) {
@@ -59,10 +74,11 @@ module.exports = function(app) {
       .create({
         clockIn: req.body.clockIn,
         clockOut: req.body.clockOut,
-        total: req.body.total
+        total: req.body.total,
+        username: req.body.username
       })
       .then(function(dbClock) {
-        res.json(dbClock);
+        res.json(dbClock)
       });
   });
 
