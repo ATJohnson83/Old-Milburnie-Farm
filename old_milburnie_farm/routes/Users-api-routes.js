@@ -8,6 +8,16 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/users/employees", function(req, res) {
+    db.Users.findAll({
+      where: {
+        type:"Employee"
+      }
+    }).then(function(dbUsers) {
+      res.json(dbUsers);
+    });
+  });
+
   app.get("/api/users/:id", function(req, res) {
     db.Users.findOne({
       where: {

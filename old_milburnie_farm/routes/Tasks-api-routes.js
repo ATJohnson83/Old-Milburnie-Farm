@@ -14,7 +14,7 @@ var db = require("../models");
 module.exports = function(app) {
   // GET route for getting all of the tasks
   app.get("/api/tasks/", function(req, res) {
-    db.Task.findAll({}).then(function(dbTasks) {
+    db.Task.findAll({include: [db.Users]}).then(function(dbTasks) {
       res.json(dbTasks);
     });
   });
@@ -24,7 +24,8 @@ module.exports = function(app) {
     db.Task
       .findAll({
         where: {
-          id: req.params.id
+          UserId: req.params.id,
+          closeDate: null
         }
       })
       .then(function(dbPost) {
@@ -33,7 +34,7 @@ module.exports = function(app) {
   });
 
   // Get rotue for retrieving a single Task
-  app.get("/api/tasks/:id", function(req, res) {
+  app.get("/api/task/:id", function(req, res) {
     db.Task
       .findOne({
         where: {
@@ -45,23 +46,14 @@ module.exports = function(app) {
       });
   });
 
-  // POST route for saving a new post
   app.post("/api/tasks", function(req, res) {
     console.log(req.body);
-    db.Task.create({
-      name: req.body.name,
-      employee: req.body.employee,
-      OpenDate: req.body.OpenDate,
-      CloseDate: req.body.CloseDate,
-      Description : req.body.Description,
-      active : true
-      })
-      .then(function(dbTasks) {
+    db.Task.create(req.body).then(function(dbTasks) {
         res.json(dbTasks);
       });
   });
 
-    app.delete("/api/tasks/:id", function(req, res) {
+    app.delete("/api/task/:id", function(req, res) {
     db.Task.destroy({
       where: {
         id: req.params.id
@@ -71,9 +63,9 @@ module.exports = function(app) {
     });
   });
 
-  app.put("/api/tasks/deactivate/:id", function(req, res) {
+  app.put("/api/closetask/:closeDate/:id", function(req, res) {
     db.Task.update({
-      active: false
+      closeDate: req.params.closeDate
     }, {
       where: {
         id: req.params.id
@@ -83,9 +75,9 @@ module.exports = function(app) {
     });
   });
 
-  app.put("/api/tasks/activate/:id", function(req, res) {
+  app.put("/api/opentask/:id", function(req, res) {
     db.Task.update({
-      active: true
+      closeDate: null
     }, {
       where: {
         id: req.params.id
