@@ -38,7 +38,7 @@ $('#printMgmtHarvest').click(function () {
 //print management time
 $("#printMgmtTime").click(function() {
     console.log(`clicked`);
-  html2canvas($("#mgmtEmployeeTime"), {
+  html2canvas($(".employee-main"), {
     background: "#ffffff",
     onrendered: function(canvas) {
       var imgData = canvas.toDataURL("image/jpeg");
@@ -49,7 +49,7 @@ $("#printMgmtTime").click(function() {
   });
 });
 
-//print management taks
+//print management tasks
 $("#printMgmtTasks").click(function() {
   console.log(`clicked`);
   html2canvas($("#mgmtTasks"), {
@@ -89,6 +89,20 @@ $("#printEmployeeHarvest").click(function() {
       var doc = new jsPDF("p", "mm");
       doc.addImage(imgData, "jpeg", 10, 10);
       doc.save("employeeHarvest.pdf");
+    }
+  });
+});
+
+// print customer order
+$("#printCustomerOrder").click(function() {
+  console.log(`clicked`);
+  html2canvas($(".container"), {
+    background: "#ffffff",
+    onrendered: function(canvas) {
+      var imgData = canvas.toDataURL("image/jpeg");
+      var doc = new jsPDF("p", "mm");
+      doc.addImage(imgData, "jpeg", 10, 10);
+      doc.save("customerOrder.pdf");
     }
   });
 });

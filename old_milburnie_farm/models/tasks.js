@@ -7,25 +7,26 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    openDate: {
-      type: DataTypes.DATEONLY,
-      allowNull: false
+    employee: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      len: [1]
     },
-    closeDate: {
+    OpenDate: {
       type: DataTypes.DATEONLY,
-      allowNull: true
+      defaultValue: Date
     },
-    description: {
+    CloseDate: {
+      type: DataTypes.DATEONLY,
+      defaultValue: Date
+    },
+    Description: {
       type: DataTypes.TEXT,
-      allowNull: false
+    },
+    active : {
+      type: DataTypes.BOOLEAN,
+      defaultValue : 1
     }
   });
-  Task.associate = function(models){
-    Task.belongsTo(models.Users, {
-      foreignKey: {
-        allowNull:false
-      }
-    });
-  };
   return Task;
 };

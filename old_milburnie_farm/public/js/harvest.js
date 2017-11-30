@@ -76,7 +76,7 @@ $(document).ready(function() {
   }
 
   function createActiveHarvestRow(aharvestData) {
-    console.log(`create task row called`);
+    console.log(`create active harvest row called`);
     var newTr = $("<tr>");
     newTr.append(
       "<td data-id='" + aharvestData.id + "'>" + aharvestData.date + "</td>"
@@ -193,7 +193,7 @@ $(document).ready(function() {
   };
 
    function createTrackHarvestRow(aharvestData) {
-    console.log(`create task row called`);
+    console.log(`create harvest row called`);
     var newTr = $("<tr>");
     newTr.append(
       "<td data-id='" + aharvestData.id + "'>" + aharvestData.id + "</td>"
