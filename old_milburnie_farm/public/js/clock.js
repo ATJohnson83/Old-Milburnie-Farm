@@ -10,12 +10,30 @@ var activeTimeList = $("#activeTime");
 var deactiveTime = $("#deactiveTime");
 let currentTime = moment().format("hh:mm");
 
+var thisUser = $(".member-name"); 
+let employeeName = thisUser.text();
+
+
+ var thisUser = $(".member-name");
+
+        loggedInUser();
+
+        function loggedInUser() {
+            $.get("/api/user_data").then(function (data) {
+                console.log(data)
+                thisUser.text(data.name);
+                thisUser.attr("value", data.id);
+            });
+        };
+  console.log(thisUser.data('id'));     
+
+
 $(document).on("click", "button.user_delete", deleteTime);
 $(document).on("click", "button.totalTimeWorked", totalTime);
 
 $("#currentTime").html(currentTime)
 
-
+      
 //get time function on page load
 getTime()
 
@@ -101,7 +119,6 @@ getTime()
       url: "/api/clocks/" + id
     }).done(resetList);
   }
-
 
 
 

@@ -16,7 +16,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
-    
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-range/3.0.3/moment-range.js"></script>
 
@@ -49,9 +49,15 @@
     <div class='container'>
         <div class="row">
             <div class="employee-main text-center panel col-md-6 col-md-offset-3">
+                <h3 class='welcome'>Welcome
+                    <span class="member-name"></span>
+                </h3>
                 <div class="row">
-                    <span><h1 id="currentTime"></h1></span>
+                    <span>
+                        <h1 id="currentTime"></h1>
+                    </span>
                 </div>
+
                 <div class="row">
                     <div class="thumbnail menu_item col-lg-12">
                         <button type="submit" id="clockInBtn" class="btn btn-primary btn-lg btn-block btn-info">Clock In</button>
@@ -62,17 +68,32 @@
                         <button type="submit" id="clockOutBtn" class="btn btn-primary btn-lg btn-block btn-danger">Clock Out</button>
                     </div>
                 </div>
-                
-                        </div>
-                    </div>
-                </div>
-                </div>
+
             </div>
         </div>
     </div>
+    </div>
+    </div>
+    </div>
+    </div>
 </body>
 <script src="/js/clock.js"></script>
+<script type="text/javascript">
+    // $(document).ready(function () {
+    //     var thisUser = $(".member-name");
 
+    //     loggedInUser();
+
+    //     function loggedInUser() {
+    //         $.get("/api/user_data").then(function (data) {
+    //             console.log(data)
+    //             thisUser.text(data.name);
+    //             thisUser.attr("value", data.id);
+    //         });
+    //     };
+
+    // });
+</script>
 
 
 </html>
