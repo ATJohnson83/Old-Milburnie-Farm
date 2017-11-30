@@ -16,6 +16,7 @@ module.exports = function(app) {
     db.Clock.findAll({}).then(function(dbClock) {
       res.json(dbClock);
     });
+    
   });
 
   app.get("/api/employees", function(req, res) {
@@ -59,7 +60,7 @@ module.exports = function(app) {
         clockIn: req.body.clockIn,
         clockOut: req.body.clockOut,
         total: req.body.total,
-        userId: req.body.userId
+        UserId: req.body.UserId
       })
       .then(function(dbClock) {
         res.json(dbClock);

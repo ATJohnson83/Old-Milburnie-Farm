@@ -11,9 +11,13 @@ module.exports = function(sequelize, DataTypes) {
       }
   });
 
-   Clock.associate = function(models) {
-     Clock.belongsTo(models.Users, { foreignKey: { allowNull: false } });
-   };
+  Clock.associate = function(models) {
+    Clock.belongsTo(models.Users, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
 
   return Clock;
 };

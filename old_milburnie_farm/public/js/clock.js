@@ -10,8 +10,7 @@ var activeTimeList = $("#activeTime");
 var deactiveTime = $("#deactiveTime");
 let currentTime = moment().format("hh:mm");
 
-var thisUser = $(".member-name"); 
-let employeeName = thisUser.text();
+
 
 
  var thisUser = $(".member-name");
@@ -25,7 +24,7 @@ let employeeName = thisUser.text();
                 thisUser.attr("value", data.id);
             });
         };
-  console.log(thisUser.data('id'));     
+      
 
 
 $(document).on("click", "button.user_delete", deleteTime);
@@ -55,7 +54,7 @@ getTime()
       $("#clockInBtn").click(function(){
         clockIn = moment();
         alert(`Clocked in at ${clockIn.format("hh:mm")}`)
-      });
+       });
  
       
  
@@ -64,6 +63,7 @@ getTime()
       $("#clockOutBtn").click(function(){
         clockOut =  moment();
         alert(`Clocked out at ${clockOut.format("hh:mm")}`)
+        
         addTime();
         });
 
@@ -77,11 +77,14 @@ getTime()
 
   //function to add total time
   function addTime(event) {
+
+    let userId = 100;
     
     var newTime = {
       clockIn: clockIn.format('hh:mm'),
       clockOut: clockOut.format('hh:mm'),
-      total: clockOut.diff(clockIn, 'minutes')
+      total: clockOut.diff(clockIn, 'minutes'),
+      UserId : userId
       };
 
     $.post("/api/clocks", newTime, resetList);

@@ -79,20 +79,20 @@
 </body>
 <script src="/js/clock.js"></script>
 <script type="text/javascript">
-    // $(document).ready(function () {
-    //     var thisUser = $(".member-name");
+    $(document).ready(function () {
+        var thisUser = $(".member-name");
 
-    //     loggedInUser();
+        loggedInUser();
 
-    //     function loggedInUser() {
-    //         $.get("/api/user_data").then(function (data) {
-    //             console.log(data)
-    //             thisUser.text(data.name);
-    //             thisUser.attr("value", data.id);
-    //         });
-    //     };
+        function loggedInUser() {
+            $.get("/api/user_data").then(function (data) {
+                console.log(data)
+                thisUser.text(data.name);
+                thisUser.attr("value", data.id);
+            });
+        };
 
-    // });
+    });
 </script>
 
 

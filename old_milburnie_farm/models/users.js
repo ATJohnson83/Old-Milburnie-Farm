@@ -31,6 +31,11 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
+   Users.associate = function(models) {
+     // Associating Users with Clocks
+     // When an Users is deleted, also delete any associated Clocks
+     Users.hasMany(models.Clock, { onDelete: "cascade" });
+   };
 
   Users.prototype.validPassword = function(password) {
     return (password == this.password);
