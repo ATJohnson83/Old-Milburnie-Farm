@@ -8,16 +8,19 @@ module.exports = function(sequelize, DataTypes) {
       },
       total: {
       type: DataTypes.STRING,
+      },
+      username: {
+      type: DataTypes.STRING,
       }
   });
 
-  Clock.associate = function(models) {
-    Clock.belongsTo(models.Users, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
+  // Clock.associate = function(models) {
+  //   Clock.belongsTo(models.Users, {
+  //     foreignKey: {
+  //       allowNull: false
+  //     }
+  //   });
+  // };
 
   return Clock;
 };
