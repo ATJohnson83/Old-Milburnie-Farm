@@ -43,8 +43,8 @@ $(document).ready(function() {
   	$.get("/api/task/"+taskid, function(data) {
   		var task_view = $("<div>");
   		task_view.append("<h3 class='list-group-item-heading'>"+data.name+"</h3>");
-  		task_view.append("<h4 class='list-group-item-text'>"+data.openDate+"</h4>");
-  		task_view.append("<p class='list-group-item-text'>"+data.description+"</p>");
+  		// task_view.append("<h4 class='list-group-item-text'>"+data.openDate+"</h4>");
+  		task_view.append("<p class='task_description list-group-item-text'>"+data.description+"</p>");
   		task_view.append("<button class='goback btn btn-primary'>Go Back</button>");
   		task_view.append("<button class='close_task btn btn-danger' data-id='"+data.id+"'>Close Task</button>");
   		$('#task_view').append(task_view);
