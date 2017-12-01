@@ -78,15 +78,15 @@ getTime()
   //function to add total time
   function addTime(event) {
 
-    let userId = 100;
+  
     
     var newTime = {
       clockIn: clockIn.format('hh:mm'),
       clockOut: clockOut.format('hh:mm'),
       total: clockOut.diff(clockIn, 'minutes'),
-      UserId : userId
+      username: thisUser[0].innerText
       };
-
+    console.log(newTime);
     $.post("/api/clocks", newTime, resetList);
   }
 
@@ -102,6 +102,9 @@ getTime()
     );
     newTr.append(
       "<td data-id='" + aTimeData.id + "'>" + aTimeData.total + " minutes" + "</td>"
+    );
+     newTr.append
+     ("<td data-id='" + aTimeData.id + "'>" + aTimeData.username +  "</td>"
     );
     
       newTr.append(
