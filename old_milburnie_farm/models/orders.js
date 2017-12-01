@@ -26,6 +26,11 @@ module.exports = function(sequelize, DataTypes) {
         allowNull:false
       }
     });
+
+    Users.hasMany(models.Order_Lines, {
+      onDelete: "cascade"
+    });
   };
+
   return Orders;
 };
