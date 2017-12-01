@@ -31,6 +31,20 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
+  Author.associate = function(models) {
+    
+    Users.hasMany(models.Task, {
+      onDelete: "cascade"
+    });
+
+    Users.hasMany(models.Orders, {
+      onDelete: "cascade"
+    });
+
+    Users.hasMany(models.Task, {
+      onDelete: "cascade"
+    });
+  };
 
   Users.prototype.validPassword = function(password) {
     return (password == this.password);
