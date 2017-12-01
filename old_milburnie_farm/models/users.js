@@ -31,7 +31,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Author.associate = function(models) {
+  Users.associate = function(models) {
     
     Users.hasMany(models.Task, {
       onDelete: "cascade"

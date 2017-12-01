@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
 
-    Users.hasMany(models.Order_Lines, {
+    Orders.hasMany(models.Order_Lines, {
       onDelete: "cascade"
     });
   };
