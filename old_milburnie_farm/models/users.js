@@ -37,13 +37,14 @@ module.exports = function(sequelize, DataTypes) {
       onDelete: "cascade"
     });
 
+    Users.hasMany(models.Clock,
+       { onDelete: "cascade" });
+
     Users.hasMany(models.Orders, {
       onDelete: "cascade"
     });
 
-    Users.hasMany(models.Task, {
-      onDelete: "cascade"
-    });
+  
   };
 
   Users.prototype.validPassword = function(password) {
