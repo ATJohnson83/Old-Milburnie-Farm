@@ -81,25 +81,27 @@ body {
 
 .ordhead{
 	text-decoration: underline;
+	display: inline-block;
 }
 
 .headdata{
 	font-size: 20px;
 	margin-left: 15px;
+	display: inline-block;
 }
 
 .invtblheader{
 	font-style: italic;
 }
 
-#show_act_inv, #show_deac_inv{
+.pagelink{
 	font-size: 18px;
 	color: #337ab7;
 	text-decoration: underline;
 	font-style: italic;
 }
 
-#show_act_inv:hover, #show_deac_inv:hover{
+.pagelink:hover{
 	font-size: 20px;
 }
 
@@ -115,6 +117,8 @@ body {
 	margin: 15px;
 	font-size: 20px;
 }
+
+
 
 
 
