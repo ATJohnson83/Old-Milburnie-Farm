@@ -13,14 +13,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       }
   });
-
-  // Clock.associate = function(models) {
-  //   Clock.belongsTo(models.Users, {
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   });
-  // };
-
+  
   return Clock;
 };

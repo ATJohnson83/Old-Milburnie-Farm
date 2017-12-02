@@ -92,14 +92,14 @@ getTime()
 
   
     
-    var newTime = {
-      clockIn: clockIn.format('hh:mm'),
+    var updatedTime = {
+      
       clockOut: clockOut.format('hh:mm'),
       total: clockOut.diff(clockIn, 'minutes'),
-      username: thisUser[0].innerText
+    
       };
-    console.log(newTime);
-    $.post("/api/clocks", newTime, resetList);
+    console.log(updatedTime);
+    $.post("/api/clocks/:name?", updatedTime, resetList);
   }
 
   function createActiveTimeRow(aTimeData) {

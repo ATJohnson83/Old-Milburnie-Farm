@@ -94,6 +94,18 @@ module.exports = function(app) {
         res.json(dbClock);
       });
   });
+
+  //updating the clockOut time
+   app.put("/api/clocks/:name?", function(req, res) {
+     db.Harvest.update(
+       { clockOut: {clockOut : req.params.clockOut} }, 
+       { where: { total: req.params.total } })
+       .then(
+       function(dbClocks) {
+         res.json(dbClocks);
+       }
+     );
+   });
 };
 
 
