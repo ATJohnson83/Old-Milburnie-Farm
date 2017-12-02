@@ -97,7 +97,7 @@ module.exports = function(app) {
 
   //updating the clockOut time
    app.put("/api/clocks/:name?", function(req, res) {
-     db.Harvest.update(
+     db.Clock.update(
        { clockOut: {clockOut : req.params.clockOut} }, 
        { where: { total: req.params.total } })
        .then(
