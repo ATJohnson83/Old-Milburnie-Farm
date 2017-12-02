@@ -54,6 +54,8 @@ getTime()
       $("#clockInBtn").click(function(){
         clockIn = moment();
         alert(`Clocked in at ${clockIn.format("hh:mm")}`)
+
+        addTime();
        });
  
       
@@ -64,7 +66,7 @@ getTime()
         clockOut =  moment();
         alert(`Clocked out at ${clockOut.format("hh:mm")}`)
         
-        addTime();
+        updateTime();
         });
 
       
@@ -76,7 +78,17 @@ getTime()
   };
 
   //function to add total time
-  function addTime(event) {
+    function addTime(event) {
+      var newTime = { clockIn: clockIn.format("hh:mm"), 
+      clockOut: 'still clocked in',
+      total: '' ,
+      username: thisUser[0].innerText };
+      console.log(newTime);
+      $.post("/api/clocks", newTime, resetList);
+    }
+
+  //function to updated total time
+  function updateTime(event) {
 
   
     
