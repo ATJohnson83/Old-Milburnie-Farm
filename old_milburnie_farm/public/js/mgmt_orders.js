@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 	getUserOrders();
 	showCustOrders();
-	showOrdData();
+	showOrdDate();
 
 	function showCustOrders(){
 		$(".cust_orders_view").show();
@@ -16,26 +16,20 @@ $(document).ready(function() {
 		$(".cust_order_view").show();
 	};
 
-	function showOrdData(){
-		$('#deliv_date').hide();
-		$('#pstat').hide();
-		$('#ostat').hide();
+	function showOrdDate(){
+		$('#editdatediv').hide();
 	};
 
-	$('#orddelivd').click(function(){
-		$('#orddelivd').hide();
-		$('#deliv_date').show();
+	$('#datediv').click(function(){
+		$('#datediv').hide();
+		$('#editdatediv').show();
 	});
 
-	$('#ordpaystatus').click(function(){
-		$('#ordpaystatus').hide();
-		$('#pstat').show();
-	})
+	$('#btco').click(function(event){
+		event.stopPropagation();
+		window.location.href = "/mgmt_orders";
 
-	$('#ordstatus').click(function(){
-		$('#ordstatus').hide();
-		$('#ostat').show();
-	})
+	});
 
 
   function getUserOrders(){ 
@@ -69,6 +63,7 @@ $(document).ready(function() {
 			Closedtr.append("<td>"+ data.User.name+"</td>");
 			Closedtr.append("<td>"+ data.open_date+"</td>");
 			Closedtr.append("<td><button data-id='"+ data.id +"' class='viewmyorder btn btn-primary glyphicon glyphicon-sunglasses'></button></td>");
+			Closedtr.append("<td><button data-id='"+ data.id +"' class='deleteorder btn btn-danger glyphicon glyphicon glyphicon-remove'></button></td>");
 		closedtbl.append(Closedtr);
 	 };
 
@@ -77,6 +72,16 @@ $(document).ready(function() {
 		var id = $(this).data('id');
 		getUserOrder(id);
 	});
+
+	 $(document).on('click','button.deleteorder',function(event){
+		event.stopPropagation();
+		var id = $(this).data('id');
+		$.ajax({
+      method: "DELETE",
+      url: "/api/orders/" + id
+    }).done(getUserOrders);
+	});
+
 
 	 function getUserOrder(id){
 	 	$.get("/api/order/"+ id, function(data){    
@@ -93,10 +98,13 @@ $(document).ready(function() {
 	    };
 	    $("#ordpaystatus").text(data.payment_status);
 	    $("#ordstatus").text(data.order_status);
-	  }).done(getUserOrderLines(id));
+	  }).done(function(){
+	  	getUserOrderLines(id);
+	  });
 	};
 
 	function getUserOrderLines(id){
+		$("#viewmyorder").empty();
 		$.get("/api/order_lines/" + id, function(data){
 			var lineTotals = [];
 			for (var i = 0; i < data.length; i++) {
@@ -120,27 +128,62 @@ $(document).ready(function() {
 	 	showCustOrder();
 	};
 
-	$("#savOrd").click(function(){
-		var ordId = $("#ordnum").attr('data-id');
-		var newDate = $("#deliv_date").val().trim();
-		var newOStat = $("#ostat").val().trim();
-		var newPStat = $("#pstat").val().trim();
-		var orderChanges = {
-			id: ordId,
-			delivered_date: newDate,
-			payment_status: newPStat,
-			orders_status: newOStat
-		};
-		console.log('newdata:' + JSON.stringify(orderChanges));
+	$(".ordstat").click(function(){
+		alert("ordstat");
+		var ordstat = $(this).data("id");
+		var id =  $("#ordnum").data("id");
+		var order = {
+			id: id,
+			order_status: ordstat
+		};	
 		 $.ajax({
       method: "PUT",
       url: "/api/orders",
-      data: orderChanges
+      data: order
     })
     .done(function() {
-      window.location.href = "/mgmt_orders";
+     getUserOrder(id);
     });
 	});
+
+	$(".paystat").click(function(){
+		var paystat = $(this).data("id");
+		var id =  $("#ordnum").data("id");
+		var payment = {
+			id: id,
+			payment_status: paystat
+		};	
+		 $.ajax({
+      method: "PUT",
+      url: "/api/orders",
+      data: payment
+    })
+    .done(function() {
+     getUserOrder(id);
+    });
+	});
+
+	$("#save_date").click(function(){
+		var deliv_date = $("#deliv_date").val().trim();
+		var id =  $("#ordnum").data("id");
+		var delivered = {
+			id: id,
+			delivered_date: deliv_date
+		};	
+		 $.ajax({
+      method: "PUT",
+      url: "/api/orders",
+      data: delivered
+    })
+    .done(function() {
+     getUserOrder(id);
+    });
+	});
+
+	$("#clear_date").click(function(){
+		$("#deliv_date").val(null);
+	});
+
 
 	function getOrderTotals(lineTotals){
 		var totalPrice = lineTotals.reduce(function(sum, value) {

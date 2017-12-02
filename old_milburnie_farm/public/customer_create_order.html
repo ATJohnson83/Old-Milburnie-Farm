@@ -141,7 +141,7 @@
 				<div class="confirm_order panel panel-default">	
 					<div class="panel-heading text-center">
 						<h2>Confirm Your Order</h2>
-						<a href="/customer_create_order">Create Another Order</a>
+						<a class="pagelink" href="/customer_create_order">Create Another Order</a>
 					</div>
 					<div class="panel-body">
 						<div class="form-group">
@@ -176,10 +176,16 @@
 												<th>Item Amount</th>
 											</thead>
 											<tbody id="confirmol"></tbody>
-										</table>							
-										<div id="odrttl">
-											<h4>Total: $<span id="oltotals"></span></h4>
-										</div>							
+										</table>
+										<thead>
+											<th></th>
+											<th></th>
+											<th></th>
+											<th></th>
+											<th></th>
+											<th></th>
+											<th><h4>Total: $<span id="oltotals"></span></h4></th>
+										</thead>														
 										<div class="text-center">
 											<button id="cancel_order" class="btn btn-danger">Cancel Order</button>
 											<button id="place_order" class="btn btn-primary">Place Order</button>											

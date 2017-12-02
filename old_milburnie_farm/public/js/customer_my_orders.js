@@ -76,6 +76,7 @@ $(document).ready(function() {
 	};
 
 	function getUserOrderLines(id){
+		$("#viewmyorder").empty();
 		$.get("/api/order_lines/" + id, function(data){
 			var lineTotals = [];
 			for (var i = 0; i < data.length; i++) {

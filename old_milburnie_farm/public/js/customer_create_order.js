@@ -3,6 +3,8 @@
 $(document).ready(function() {
 
 	var thisUser = $(".member-name");
+
+	$('#cancel_order').click(cancelOrder);
 	
 	getSalesInventory();
 	showCreateScreen();
@@ -91,6 +93,17 @@ $(document).ready(function() {
 		})
 	};
 
+	function cancelOrder(){
+		var id = $('#ordnum').attr("value");
+    $.ajax({
+      method: "DELETE",
+      url: "/api/orders/" + id
+    }).done(function(){
+    	window.location.href = "/customer_create_order";
+    });
+  }
+
+
 	function updateSlsInv(olines){
 		var itemID = olines.itemid;
 		var slsquant = olines.quantavail;
@@ -101,7 +114,7 @@ $(document).ready(function() {
       url: "/api/sales_inventory/update/"+itemID+"/"+newslsquant
     }).done(function(res){
     	console.log('update DB res: '+ res);
-    	window.location.href = "/customer_create_order";
+    	window.location.href = "/customer_main";
     });
 	}
 
