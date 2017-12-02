@@ -33,7 +33,7 @@ $(document).ready(function() {
 		var orderData={
 			UserId: thisUser.attr("value"),
 			open_date: formattedDate,
-			delivered_date: "0000-00-00"
+			delivered_date: "2017-11-30"
 		};
 		$.post("/api/orders", orderData, function(data) {
 		var orderNum = data.id;
