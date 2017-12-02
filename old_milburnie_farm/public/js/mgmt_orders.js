@@ -52,7 +52,7 @@ $(document).ready(function() {
 			Opentr.append("<td>"+ data.id +"</td>");
 			Opentr.append("<td>"+ data.User.name+"</td>");
 			Opentr.append("<td>"+ data.open_date+"</td>");
-			Opentr.append("<td><button data-id='"+ data.id +"' class='viewmyorder btn btn-primary glyphicon glyphicon-sunglasses'></button></td>");
+			Opentr.append("<td><button data-id='"+ data.id +"' class='viewmyorder btn btn-primary glyphicon glyphicon-sunglasses'></button></td></tr>");
 		opentbl.append(Opentr);
 	 };
 
@@ -63,7 +63,7 @@ $(document).ready(function() {
 			Closedtr.append("<td>"+ data.User.name+"</td>");
 			Closedtr.append("<td>"+ data.open_date+"</td>");
 			Closedtr.append("<td><button data-id='"+ data.id +"' class='viewmyorder btn btn-primary glyphicon glyphicon-sunglasses'></button></td>");
-			Closedtr.append("<td><button data-id='"+ data.id +"' class='deleteorder btn btn-danger glyphicon glyphicon glyphicon-remove'></button></td>");
+			Closedtr.append("<td><button data-id='"+ data.id +"' class='deleteorder btn btn-danger glyphicon glyphicon glyphicon-remove'></button></td></tr>");
 		closedtbl.append(Closedtr);
 	 };
 
@@ -79,7 +79,9 @@ $(document).ready(function() {
 		$.ajax({
       method: "DELETE",
       url: "/api/orders/" + id
-    }).done(getUserOrders);
+    }).done(function(){
+    	window.location.href = "/mgmt_orders";
+    })
 	});
 
 
@@ -99,6 +101,7 @@ $(document).ready(function() {
 	    $("#ordpaystatus").text(data.payment_status);
 	    $("#ordstatus").text(data.order_status);
 	  }).done(function(){
+
 	  	getUserOrderLines(id);
 	  });
 	};

@@ -24,7 +24,8 @@ module.exports = function(sequelize, DataTypes) {
     Task.belongsTo(models.Users,{
       foreignKey: {
         allowNull: false
-      }
+      },
+      onDelete: "CASCADE"
     });
   };
   return Task;
