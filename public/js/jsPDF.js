@@ -96,12 +96,12 @@ $("#printEmployeeHarvest").click(function() {
 // print customer order
 $("#printCustomerOrder").click(function() {
   console.log(`clicked`);
-  html2canvas($(".container"), {
+  html2canvas($(".my_order_view"), {
     background: "#ffffff",
     onrendered: function(canvas) {
       var imgData = canvas.toDataURL("image/jpeg");
       var doc = new jsPDF("p", "mm");
-      doc.addImage(imgData, "jpeg", 10, 10);
+      doc.addImage(imgData, "jpeg", 0, 0);
       doc.save("customerOrder.pdf");
     }
   });

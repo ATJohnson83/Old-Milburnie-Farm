@@ -31,7 +31,8 @@ module.exports = function(sequelize, DataTypes) {
     Order_Lines.belongsTo(models.Orders, {
       foreignKey: {
         allowNull:false
-      }
+      },
+      onDelete: "CASCADE"
     });
   };
   return Order_Lines;

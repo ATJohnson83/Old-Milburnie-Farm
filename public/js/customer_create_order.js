@@ -32,7 +32,8 @@ $(document).ready(function() {
 		var formattedDate = moment(date).format('YYYY-MM-DD');
 		var orderData={
 			UserId: thisUser.attr("value"),
-			open_date: formattedDate 
+			open_date: formattedDate,
+			delivered_date: "2017-11-30"
 		};
 		$.post("/api/orders", orderData, function(data) {
 		var orderNum = data.id;

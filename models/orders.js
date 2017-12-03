@@ -24,12 +24,11 @@ module.exports = function(sequelize, DataTypes) {
     Orders.belongsTo(models.Users, {
       foreignKey: {
         allowNull:false
-      }
+      },
+      onDelete: "CASCADE"
     });
 
-    Orders.hasMany(models.Order_Lines, {
-      onDelete: "cascade"
-    });
+    Orders.hasMany(models.Order_Lines);
   };
 
   return Orders;
