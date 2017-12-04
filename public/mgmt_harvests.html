@@ -1,46 +1,63 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Mgmt-Harvest</title>
 	<meta charset="utf-8">
-	<script
-  src="https://code.jquery.com/jquery-3.2.1.js"
-  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	    crossorigin="anonymous">
 
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	    crossorigin="anonymous">
 
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	    crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="./css/general_styles.css">
-	
+
 
 </head>
+
 <body>
 	<div class="jumbotron text-center">
 		<div class='logo_div text-center'>
-        <img class="img_logo" src="./images/omf_logo.png">
-    </div>
+			<img class="img_logo" src="./images/omf_logo.png">
+		</div>
 		<ul class="nav nav-tabs">
-		  <li><a href="/mgmt_main">Main Menu</a></li>
-		  <li><a href="/mgmt_users">Users</a></li>
-		  <li><a href="/mgmt_tasks">Tasks</a></li>
-		  <li><a href="/mgmt_sales_inventory">Sales Inventory</a></li>
-		  <li><a href="/mgmt_orders">Orders</a></li>
-		  <li><a href="/mgmt_employee_time">Employee Time</a></li>
-		  <li><a href="/">Log Out</a></li>
+			<li>
+				<a href="/mgmt_main">Main Menu</a>
+			</li>
+			<li>
+				<a href="/mgmt_users">Users</a>
+			</li>
+			<li>
+				<a href="/mgmt_tasks">Tasks</a>
+			</li>
+			<li>
+				<a href="/mgmt_sales_inventory">Sales Inventory</a>
+			</li>
+			<li>
+				<a href="/mgmt_orders">Orders</a>
+			</li>
+			<li>
+				<a href="/mgmt_employee_time">Employee Time</a>
+			</li>
+			<li>
+				<a href="/">Log Out</a>
+			</li>
 		</ul>
 	</div>
 
-<div class="container">
-	<div class="panel panel-default">
-		<div class="panel-heading text-center">
-			<h2><img src="./images/omf_logo.png" id="logo">Harvest</h2>
-		</div>
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading text-center">
+				<h2>
+					<img src="./images/omf_logo.png" id="logo">Harvest</h2>
+			</div>
 			<div class="panel-body">
 				<div class="form-group">
 					<div class="row">
@@ -50,23 +67,29 @@
 								<table class="table table-striped">
 									<thead>
 										<tr>
-										
+
 											<th>Open Date</th>
 											<th>Close Date</th>
 										</tr>
 									</thead>
 									<tbody id="mgmtActiveHarvest">
 										<tr>
-											
-											<td><input type="date" id="startDate"></td>
-											<td><input type="date" id="endDate"></td>
-											<td><button type="submit" id="trackHarvest" class="btn btn-info">track harvests</button></td>
+
+											<td>
+												<input type="date" id="startDate">
+											</td>
+											<td>
+												<input type="date" id="endDate">
+											</td>
+											<td>
+												<button type="submit" id="trackHarvest" class="btn btn-info">track harvests</button>
+											</td>
 										</tr>
 									</tbody>
 								</table>
 
 								<hr>
-								
+
 								<div class="row">
 									<div class="col-lg-4">
 										<h3>Active Harvests</h3>
@@ -84,8 +107,8 @@
 									</thead>
 
 									<tbody id="activeHarvest">
-									
-									 </tbody>
+
+									</tbody>
 								</table>
 
 								<div class="row">
@@ -106,28 +129,32 @@
 									</thead>
 
 									<tbody id="deactiveHarvest">
-									
-									 </tbody>
+
+									</tbody>
 								</table>
 
-                                </div>
-                                <div class="row">
-                                    <div class="thumbnail menu_item col-lg-12">
-                                        <button type="submit" id="printMgmtHarvest" class="btn btn-primary btn-lg btn-block btn-info">Print</button>
-                                    </div>
-                                </div>
-							
 							</div>
+
+
+							<div class="row">
+								<div class="col-lg-2 col-lg-offset-5">
+
+									<button type="submit" id="printMgmtHarvest" class="btn btn-lg btn-block btn-primary glyphicon glyphicon-print"> Print</button>
+								</div>
+							</div>
+
 						</div>
 					</div>
 				</div>
 			</div>
-		
+		</div>
+
 	</div>
-</div>
+	</div>
 </body>
 <script src="/js/harvest.js"></script>
 <script src="js/jsPDF.js"></script>
 <script src='js/jspdf.plugin.addhtml.js'></script>
 <script src="js/html2canvas.js"></script>
+
 </html>
