@@ -37,7 +37,6 @@
 <div class="container">
 	<div class="my_orders_view panel panel-default">		
 		<div class="panel-heading text-center">
-		<img src="./images/omf_logo.png" id="logo">
 			<h2><span class="member-name"></span>  Orders</h2>
 		</div>		
 		<div class="panel-body">
@@ -52,7 +51,7 @@
 									<th id="">Order Date</th>
 									<th id="">View</th>
 								</thead>
-								<tbody id="customeractords"></tbody>
+								<tbody id="customeropenords"></tbody>
 							</table>
 
 							<hr>
@@ -68,7 +67,7 @@
 									<th id="">Order Date</th>
 									<th id="">View</th>
 								</thead>
-								<tbody id="customerdeactords"> </tbody>
+								<tbody id="customerclosedords"> </tbody>
 							</table>
 						
 						</div>
@@ -80,8 +79,16 @@
 
 	<div class="my_order_view panel panel-default">	
 		<div class="panel-heading text-center">
-			<h2>Your Order</h2>
-			<h5 class="pagelink" id="btmo">Back to My Orders</h5>
+			<div class="row">
+				<div class="col-lg-2">
+					<img src="./images/omf_logo.png" id="logo">
+				</div>
+				<div class="col-lg-8">
+					<h2>Your Order</h2>
+					<h5 class="pagelink" id="btmo">Back to Customer Orders</h5>
+				</div>
+				<div class="col-lg-2"></div>
+			</div>		
 		</div>
 		<div class="panel-body">
 			<div class="form-group">

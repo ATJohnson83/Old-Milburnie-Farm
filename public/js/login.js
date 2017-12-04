@@ -26,7 +26,6 @@ $(document).ready(function() {
     // if (!userData.name || !userData.password) {
     //   return;
     // };
-    alert("user sending to login");
     loginUser(userData.username, userData.password, userData.type);
   };
 
@@ -42,7 +41,7 @@ $(document).ready(function() {
         console.log('Data from server: ' +data);
         window.location.replace(data);
       }).catch(function(err) {
-        console.log(err);
+        alert(err);
       });
     }
     else if(type == "Employee"){
@@ -53,7 +52,7 @@ $(document).ready(function() {
       }).then(function(data) {
         window.location.replace(data);
       }).catch(function(err) {
-        console.log(err);
+        alert(err);
       });
     }
 
@@ -65,7 +64,7 @@ $(document).ready(function() {
       }).then(function(data) {
         window.location.replace(data);
       }).catch(function(err) {
-        console.log(err);
+        alert(JSON.stringify(err));
       });
     }
   };
