@@ -36,21 +36,33 @@ $(document).ready(function() {
 
 	        if(data[i].order_status == "Open"){
 
-	          createActiveRow(data[i]);
+	          createOpenRow(data[i]);
+	        }
+	        else{
+	        	createClosedRow(data[i]);
 	        }
 	      };
 	      console.log("db data:" +JSON.stringify(data));
 	    })
 	 };
 
-	 function createActiveRow(data){
-	 	var customeractords = $('#customeractords');
+	 function createOpenRow(data){
+	 	var customeropenords = $('#customeropenords');
 	 	var myOrderstr = $("<tr>");
 			myOrderstr.append("<td>"+ data.id +"</td>");
 			myOrderstr.append("<td>"+ data.open_date+"</td>");
 
 			myOrderstr.append("<td><button data-id='"+ data.id +"' class='viewmyorder btn btn-primary glyphicon glyphicon-sunglasses'></button></td>");
-		customeractords.append(myOrderstr);
+		customeropenords.append(myOrderstr);
+	 };
+
+	 function createClosedRow(data){
+	 	var customerclosedords = $('#customerclosedords');
+	 	var myOrderstr = $("<tr>");
+		myOrderstr.append("<td>"+ data.id +"</td>");
+		myOrderstr.append("<td>"+ data.open_date+"</td>");
+		myOrderstr.append("<td><button data-id='"+ data.id +"' class='viewmyorder btn btn-primary glyphicon glyphicon-sunglasses'></button></td>");
+		customerclosedords.append(myOrderstr);
 	 }
 
 	$(document).on('click','button.viewmyorder',function(event){
@@ -64,7 +76,7 @@ $(document).ready(function() {
 	    console.log("db data:" +JSON.stringify(data));
 	    $("#ordnum").text(data.id);
 	    $("#ordopend").text(data.open_date);	    
-	    if(data.delivered_date == "0000-00-00"){
+	    if(data.delivered_date == null){
 	    	$("#orddelivd").text('Undelivered');
 	    }
 	    else{

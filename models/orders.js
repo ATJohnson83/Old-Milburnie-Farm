@@ -8,7 +8,6 @@ module.exports = function(sequelize, DataTypes) {
     delivered_date: {
       type: DataTypes.DATEONLY,      
       allowNull: true,
-      defaultValue: "0000-00-00"
     },
     payment_status: {
       type: DataTypes.STRING,

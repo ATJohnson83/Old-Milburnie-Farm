@@ -92,7 +92,7 @@ $(document).ready(function() {
 	    $("#ordnum").text(data.id);
 	    $("#ordnum").attr("data-id",data.id);
 	    $("#ordopend").text(data.open_date);
-	    if(data.delivered_date == "0000-00-00"){
+	    if(data.delivered_date == null){
 	    	$("#orddelivd").text('Undelivered');
 	    }
 	    else{
