@@ -3,18 +3,14 @@ var passport = require("../config/passport");
 
 module.exports = function(app){
 
-  app.post("/api/login/customer", passport.authenticate("local"), function(req, res) {
-    console.log("user login info: " +req.user.dataValues.name);
+  app.post("/api/login", passport.authenticate("local"), function(req, res) {
+    console.log("---------------------------");
+    console.log(req);
+    console.log(res);
+    console.log("---------------------------");
     res.json("/customer_main");
   });
 
-  app.post("/api/login/employee", passport.authenticate("local"), function(req, res) {
-    res.json("/employee_main");
-  });
-
-  app.post("/api/login/mgmt", passport.authenticate("local"), function(req, res) {
-    res.json("/mgmt_main");
-  });
 
   app.get("/logout", function(req, res) {
     req.logout();
