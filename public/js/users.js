@@ -6,12 +6,12 @@ $(document).ready(function() {
   var userPass = $('#user-password');
   var activeUserList = $('#actusrtb');
   var deactiveUserList = $('#deactusrtb');
-  
+
   $("#adduser").click(addUser);
   $(document).on("click", "button.user_deactivate",deactivateUser);
   $(document).on("click", "button.user_activate",activateUser);
   $(document).on("click", "button.user_delete",deleteUser);
-  
+  $(document).on("click", "button.user_password", showPassword);
   getUsers();
 
   function resetList(){
@@ -49,7 +49,7 @@ $(document).ready(function() {
     newTr.append("<td data-id='" + aUserData.id + "'>" + aUserData.name + "</td>");
     newTr.append("<td data-id='" + aUserData.id + "'>" + aUserData.type + "</td>");
     newTr.append("<td data-id='" + aUserData.id + "'>" + aUserData.username + "</td>");
-    newTr.append("<td><button data-id='"+aUserData.id+"' type='button' class='user_password btn btn-primary glyphicon glyphicon-modal-window' data-toggle='modal' data-target='.bs-example-modal-sm'></button></td>");
+    newTr.append("<td><button data-password='"+aUserData.password+"'data-id='"+aUserData.id+"' type='button' class='user_password btn btn-primary glyphicon glyphicon-modal-window' data-toggle='modal' data-target='.bs-example-modal-sm'></button></td>");
     newTr.append("<td><button data-id='"+aUserData.id+"' class='user_deactivate btn btn-primary glyphicon glyphicon-hand-down'></button></td>");
     newTr.append("</tr>");
     activeUserList.append(newTr);
@@ -92,5 +92,12 @@ $(document).ready(function() {
       url: "/api/users/" + id
     }).done(resetList);
   }
+
+  function showPassword (event){
+    event.stopPropagation();
+    var password = $(this).data("password");
+    $('.modal-password').text(password);
+  }
+
 
 });
