@@ -21,7 +21,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-range/3.0.3/moment-range.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/general_styles.css">
-    
+
 
 </head>
 
@@ -43,7 +43,9 @@
             <li>
                 <a href="/mgmt_sales_inventory">Sales Inventory</a>
             </li>
-            <li><a href="/mgmt_orders">Orders</a></li>
+            <li>
+                <a href="/mgmt_orders">Orders</a>
+            </li>
             <li>
                 <a href="/mgmt_harvests">Harvests</a>
             </li>
@@ -54,12 +56,16 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="employee-main text-center panel col-md-6 col-md-offset-3"><img src="./images/omf_logo.png" id="logo">
-                <h1>Employee Time</h1>
+            <div class="employee-main text-center panel col-md-6 col-md-offset-3" style="padding: 5px">
+                <img src="./images/omf_logo.png" id="logo">
+                <h1></h1>
+
+
                 <table class="table table-striped" id="mgmtEmployeeTime">
                     <thead>
-                        <th>Clock In</th>
-                        <th>Clock Out</th>
+                        <th>Date Worked</th>
+                        <th>Clocked In</th>
+                        <th>Clocked Out</th>
                         <th>Time Worked</th>
                         <th>Employee</th>
                         <th>Delete Time Record</th>
@@ -69,14 +75,24 @@
                     <tbody id="activeTime">
 
                     </tbody>
+
                 </table>
                 <div class="row">
-                    <div class="col-lg-4 col-lg-offset-4">
-                        <button type="submit" id="printMgmtTime" class="btn btn-lg btn-block btn-primary glyphicon glyphicon-print"> Print</button>
+                    <div class="col-lg-2 col-lg-offset-5">
+
+                        <button type="submit" id="printMgmtTime" class="btn btn-lg btn-primary glyphicon glyphicon-print"> Print</button>
                     </div>
                 </div>
             </div>
-        </div>            
+
+
+
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
     </div>
 </body>
 <script src="/js/clock.js"></script>

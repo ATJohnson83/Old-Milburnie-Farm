@@ -1,18 +1,7 @@
-Revert "think its already pushed"
+Merge branch 'master' of https://github.com/ATJohnson83/Old-Milburnie-Farm
 
-This reverts commit 7a0d05d4259e5af713820d0a3565b07587785dd9.
-
-# Please enter the commit message for your changes. Lines starting
-# with '#' will be ignored, and an empty message aborts the commit.
-# On branch master
-# Your branch is up-to-date with 'origin/master'.
+# Please enter a commit message to explain why this merge is necessary,
+# especially if it merges an updated upstream into a topic branch.
 #
-# Changes to be committed:
-#	modified:   public/employee_harvest.html
-#	modified:   public/js/login.js
-#	modified:   public/mgmt_employee_time.html
-#	modified:   public/mgmt_harvests.html
-#	modified:   public/mgmt_sales_inventory.html
-#	modified:   public/mgmt_users.html
-#	modified:   routes/login-api-routes.js
-#
+# Lines starting with '#' will be ignored, and an empty message aborts
+# the commit.

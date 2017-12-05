@@ -132,7 +132,6 @@ $(document).ready(function() {
 	};
 
 	$(".ordstat").click(function(){
-		alert("ordstat");
 		var ordstat = $(this).data("id");
 		var id =  $("#ordnum").data("id");
 		var order = {
