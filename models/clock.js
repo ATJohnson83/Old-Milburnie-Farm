@@ -11,16 +11,11 @@ module.exports = function(sequelize, DataTypes) {
       },
       username: {
       type: DataTypes.STRING,
+      },
+      date: {
+      type: DataTypes.STRING,
       }
   });
-
-  // Clock.associate = function(models) {
-  //   Clock.belongsTo(models.Users, {
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   });
-  // };
 
   return Clock;
 };
