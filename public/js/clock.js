@@ -44,15 +44,23 @@ $(document).ready(function() {
 
       $("#clockInBtn").click(function() {
         clockIn = moment();
-        alert(`Clocked in on ${clockIn.format("MM-DD")} at ${clockIn.format("hh:mm")}`);
+        alert(
+          `Clocked in on ${clockIn.format("MM-DD")} at ${clockIn.format(
+            "hh:mm"
+          )}`
+        );
       });
 
       //register clock out time
 
       $("#clockOutBtn").click(function() {
         clockOut = moment();
-        date = moment().format('MM-DD')
-        alert(`Clocked out on  ${clockOut.format("hh:mm")} at ${clockOut.format('MM-DD')}`);
+        date = moment().format("MM-DD");
+        alert(
+          `Clocked out on  ${clockOut.format("hh:mm")} at ${clockOut.format(
+            "MM-DD"
+          )}`
+        );
 
         addTime();
       });
@@ -80,9 +88,9 @@ $(document).ready(function() {
     console.log(`create time row called`);
     console.log(aTimeData);
     var newTr = $("<tr>");
-      newTr.append(
-        "<td data-id='" + aTimeData.id + "'>" + aTimeData.date + "</td>"
-      );
+    newTr.append(
+      "<td data-id='" + aTimeData.id + "'>" + aTimeData.date + "</td>"
+    );
     newTr.append(
       "<td data-id='" + aTimeData.id + "'>" + aTimeData.clockIn + "</td>"
     );
