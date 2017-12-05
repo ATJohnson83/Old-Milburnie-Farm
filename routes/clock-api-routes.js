@@ -60,7 +60,8 @@ module.exports = function(app) {
         clockIn: req.body.clockIn,
         clockOut: req.body.clockOut,
         total: req.body.total,
-        username: req.body.username
+        username: req.body.username,
+        date: req.body.date
       })
       .then(function(dbClock) {
         res.json(dbClock);
