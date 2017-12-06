@@ -6,6 +6,10 @@ ul {
 	font-size: 25px;
 }
 
+#noshow{
+	color: rgba(240,240,240,.1);
+}
+
 ul li a {
 	padding-top: 0;
 	color: black;
